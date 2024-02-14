@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+app-root {
+    display: block;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
