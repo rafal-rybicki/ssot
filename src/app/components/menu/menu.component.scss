@@ -1,0 +1,71 @@
+:host {
+    display: block;
+    z-index: 100;
+    min-width: 100%; 
+    height:100%;
+
+    &.open {
+        nav {
+            margin-left: 0;
+        }
+    }
+    
+    nav {
+        z-index: 10;
+        position: relative;
+        margin-left: -270px;
+        width: 270px;
+        height: 100%;
+        background-color: lightgray;
+        position: fixed;
+        
+        button {
+            z-index: 1;
+            position: fixed;
+            top: 23px;
+            left: 14px;
+            font-size: 26px;
+        }
+        
+        ul {
+            z-index: 2;
+            position: relative;
+            padding: 10px;
+            background-color: inherit;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    :host.open {
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color:black;
+            opacity: 0.5;
+            min-height: 100%;
+            min-width: 100vw;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    :host {
+        position: relative;
+        width: 270px;
+
+        &.open {
+            nav button {
+                left: 290px;
+            }
+        }
+
+        nav {
+            .overlay {
+                display: none;
+            }
+        }
+    }
+}

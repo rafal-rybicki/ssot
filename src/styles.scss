@@ -10,10 +10,25 @@ app-root {
     min-width: 100vw;
 }
 
+a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 li {
     list-style: none;
 }
 
-a {
-    text-decoration: none;
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

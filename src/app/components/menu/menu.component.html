@@ -1,0 +1,43 @@
+<nav>
+    <button (click)="toggle()" class="center-content">
+        <i class="bi bi-list"></i>
+    </button>
+    <ul>
+        <app-menu-item
+            cssClass="inbox"
+            path="inbox"
+            text="Inbox"
+        />
+        <app-menu-item
+            cssClass="calendar3-event"
+            path="today"
+            text="Today"
+        />
+        <app-menu-item
+            cssClass="calendar3-week"
+            path="week"
+            text="Week"
+        />
+        <app-menu-item
+            cssClass="calendar3"
+            path="upcoming"
+            text="Upcoming"
+        />
+        <app-menu-item
+            cssClass="rocket-takeoff"
+            path="habits"
+            text="Habits"
+        />
+    </ul>
+    <ul>
+        @for (project of projects; track $index) {
+            <app-menu-item 
+                color="{{ project.color }}"
+                cssClass="circle-fill project-icon"
+                path="project/{{ project.id }}"
+                text="{{ project.name }}"
+            />
+        }
+    </ul>
+</nav>
+<div (click)="toggle()" class="overlay"></div>
