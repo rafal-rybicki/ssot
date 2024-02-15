@@ -19,17 +19,10 @@
         background-color: var(--primary);
         position: fixed;
         
-        button {
-            z-index: 1;
+        app-icon-button {
             position: fixed;
             top: 20px;
-            left: 14px;
-            font-size: 26px;
-
-            &:hover {
-                background-color: var(--accent);
-                border-radius: var(--border-radius);
-            }
+            left: 20px;
         }
         
         ul {
@@ -62,7 +55,7 @@
         width: 270px;
 
         &.open {
-            nav button {
+            nav app-icon-button {
                 left: 290px;
             }
         }

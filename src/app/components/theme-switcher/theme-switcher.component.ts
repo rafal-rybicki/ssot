@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ThemeService } from '../../services/theme.service';
+import { IconButtonComponent } from '../icon-button/icon-button.component';
 
 @Component({
   selector: 'app-theme-switcher',
   standalone: true,
-  imports: [],
+  imports: [IconButtonComponent],
   templateUrl: './theme-switcher.component.html',
   styleUrl: './theme-switcher.component.scss'
 })
@@ -16,5 +17,6 @@ export class ThemeSwitcherComponent {
   toggle() {
     this.theme.loadTheme(this.isDarkTheme ? 'light' : 'dark');
     this.isDarkTheme = !this.isDarkTheme;
+    console.log('in theme switcher')
   }
 }

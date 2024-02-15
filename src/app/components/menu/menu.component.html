@@ -1,7 +1,8 @@
 <nav>
-    <button (click)="toggle()" class="center-content">
+    <!-- <button (click)="toggle()" class="center-content">
         <i class="bi bi-list"></i>
-    </button>
+    </button> -->
+    <app-icon-button icon="list" (onClick)="toggle()" />
     <ul>
         <app-menu-item
             cssClass="inbox"
