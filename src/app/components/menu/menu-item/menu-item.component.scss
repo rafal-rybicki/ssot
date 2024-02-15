@@ -2,10 +2,10 @@ li {
     a {
         position: relative;
         padding: 7px 10px 7px 35px;
-        border-radius: 5px;
+        border-radius: var(--border-radius);
 
-        &.active {
-            background-color: white;
+        &.active, &:hover {
+            background-color: var(--accent);
         }
 
         i {

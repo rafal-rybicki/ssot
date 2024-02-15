@@ -1,13 +1,22 @@
+:root {
+    --border-radius: 5px;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    color: var(--text-color);
+}
+
 app-root {
     display: block;
     min-height: 100vh;
     min-width: 100vw;
+    background-color: var(--background);
 }
 
 a {
@@ -21,6 +30,7 @@ button {
     border: none;
     background-color: transparent;
     cursor: pointer;
+    color: inherit;
 }
 
 li {

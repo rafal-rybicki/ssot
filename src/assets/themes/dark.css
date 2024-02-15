@@ -1,0 +1,9 @@
+:root {
+    --primary: black;
+    --secondary: #191919;
+    --accent: #474747;
+    --warn: red;
+    --success: green;
+    --background: #1E1E1E;
+    --text-color: white;
+}
