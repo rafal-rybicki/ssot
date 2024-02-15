@@ -10,12 +10,13 @@ li {
 
         i {
             position: absolute;
-            top: 8px;
+            top: 6.5px;
             left: 10px;
 
             &.project-icon {
                 font-size: 12px;
                 left: 13px;
+                top: 8px;
             }
         }
     }
