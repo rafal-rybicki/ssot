@@ -1,0 +1,11 @@
+<i (click)="changeCompletion()" class="bi {{ isCompleted ? 'bi-check-square-fill' : 'bi-square' }} completion"></i>
+
+<p (click)="showDescription()" class="content">
+    {{ content }}
+
+    @if (hasSubtasks) {
+        <span class="subtasks">
+            {{ completedSubtasks }}/{{ allSubtasks }}
+        </span>
+    }
+</p>

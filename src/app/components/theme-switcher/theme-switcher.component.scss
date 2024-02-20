@@ -1,7 +1,8 @@
 :host {
-    position: absolute;
+    position: fixed;
     top: 13px;
     right: 13px;
+    z-index: 10;
     
     button {
         font-size: 22px;

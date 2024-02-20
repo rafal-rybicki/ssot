@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { TaskComponent } from '../../components/task/task.component';
 
 @Component({
   selector: 'app-project-page',
   standalone: true,
-  imports: [],
+  imports: [TaskComponent],
   templateUrl: './project-page.component.html',
   styleUrl: './project-page.component.scss',
   host: {

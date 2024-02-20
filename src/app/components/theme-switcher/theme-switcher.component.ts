@@ -17,6 +17,5 @@ export class ThemeSwitcherComponent {
   toggle() {
     this.theme.loadTheme(this.isDarkTheme ? 'light' : 'dark');
     this.isDarkTheme = !this.isDarkTheme;
-    console.log('in theme switcher')
   }
 }

@@ -13,6 +13,5 @@ export class IconButtonComponent {
 
   handleOnClick() {
     this.onClick.emit();
-    console.log('handling')
   }
 }
