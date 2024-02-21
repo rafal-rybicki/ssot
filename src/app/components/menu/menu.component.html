@@ -1,7 +1,4 @@
 <nav>
-    <!-- <button (click)="toggle()" class="center-content">
-        <i class="bi bi-list"></i>
-    </button> -->
     <app-icon-button icon="list" (onClick)="toggle()" />
     <ul>
         <app-menu-item
@@ -31,7 +28,7 @@
         />
     </ul>
     <ul>
-        @for (project of projects; track $index) {
+        @for (project of projects$ | async; track $index) {
             <app-menu-item 
                 color="{{ project.color }}"
                 cssClass="circle-fill project-icon"
