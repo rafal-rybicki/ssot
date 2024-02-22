@@ -1,29 +1,10 @@
 <h1>ProjectName</h1>
 
-<app-task content="TASK 1" [isCompleted]="true" [allSubtasks]="3" [completedSubtasks]="3" />
-<app-task content="task 2" [isCompleted]="false" />
-<app-task content="task 3" [isCompleted]="true" />
-<app-task content="TASK 4" [isCompleted]="false" />
-<app-task content="task 5" [isCompleted]="true" />
-<app-task content="TASK 6" [isCompleted]="false" [allSubtasks]="6" [completedSubtasks]="0" />
-
-<app-task content="TASK 1" [isCompleted]="true" [allSubtasks]="3" [completedSubtasks]="3" />
-<app-task content="task 2" [isCompleted]="false" />
-<app-task content="task 3" [isCompleted]="true" />
-<app-task content="TASK 4" [isCompleted]="false" />
-<app-task content="task 5" [isCompleted]="true" />
-<app-task content="TASK 6" [isCompleted]="false" [allSubtasks]="6" [completedSubtasks]="0" />
-
-<app-task content="TASK 1" [isCompleted]="true" [allSubtasks]="3" [completedSubtasks]="3" />
-<app-task content="task 2" [isCompleted]="false" />
-<app-task content="task 3" [isCompleted]="true" />
-<app-task content="TASK 4" [isCompleted]="false" />
-<app-task content="task 5" [isCompleted]="true" />
-<app-task content="TASK 6" [isCompleted]="false" [allSubtasks]="6" [completedSubtasks]="0" />
-
-<app-task content="TASK 1" [isCompleted]="true" [allSubtasks]="3" [completedSubtasks]="3" />
-<app-task content="task 2" [isCompleted]="false" />
-<app-task content="task 3" [isCompleted]="true" />
-<app-task content="TASK 4" [isCompleted]="false" />
-<app-task content="task 5" [isCompleted]="true" />
-<app-task content="TASK 6" [isCompleted]="false" [allSubtasks]="6" [completedSubtasks]="0" />
+@for (task of tasks; track $index) {
+    <app-task
+        [allSubtasks]="task.allSubtasks || 0"
+        [completedSubtasks]="task.completedSubtasks || 0"  
+        [content]="task.content"
+        [isCompleted]="task.isCompleted"
+    />
+}
