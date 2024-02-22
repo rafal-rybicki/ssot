@@ -1,6 +1,7 @@
 export interface Task {
-    content: string;
+    allSubtasks?: number;
     completedSubtasks?: number;
+    content: string;
     date: number;
     description?: string;
     duration: number;
@@ -12,5 +13,4 @@ export interface Task {
     priority: boolean;
     projectId?: string;
     sectionId?: string;
-    subtasks?: number;
 }
