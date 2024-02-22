@@ -1,0 +1,83 @@
+:host {
+    position: relative;
+    z-index: 10;
+    display: block;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: var(--accent);
+    
+    form {
+        font-size: 16px;
+
+        div {
+            display: flex;
+            align-items: center;
+            height: 26px;
+            
+            &.content {
+                margin-bottom: 10px;
+
+                input {
+                    padding: 0 5px;
+                    flex: 1;
+                }
+            }
+            
+            &.subtasks {
+                input {
+                    max-width: 50px;
+                    text-align: center;
+                }
+            }
+            
+            label {
+                min-width: 65px;
+                margin-right: 10px;
+                display: inline-block;
+            }
+
+            input {
+                height: 100%;
+                border-radius: 3px;
+                border: none;
+                font-size: 16px;
+            }
+        }
+
+        button {
+            position: absolute;
+            border-radius: 3px;
+            color: white;
+            font-size: 16px;
+            font-family: 'Times New Roman', Times, serif;
+            padding: 4px 6px;
+            border: none;
+            bottom: 10px;
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            &.btn-cancel {
+                right: 50px;
+                background-color: red;
+                margin: 0 10px 0 270px;
+            }
+
+            &.btn-submit {
+                right: 10px;
+                background-color: green;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .subtasks {
+        input {
+            padding-left: 10px;
+        }
+    }
+}

@@ -1,0 +1,11 @@
+:host {
+    display: block;
+    margin: 20px auto 10px;
+    user-select: none;
+
+    p {
+        color: var(--text);
+        cursor: pointer;
+        font-weight: bold;
+    }
+}
