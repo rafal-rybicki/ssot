@@ -20,6 +20,7 @@ import { TaskNewComponent } from '../../components/task-new/task-new.component';
   }
 })
 export class ProjectPageComponent {
+  id!: string;
   tasks: Task[] = [];
 
   constructor(
@@ -29,10 +30,12 @@ export class ProjectPageComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      
       this.store.pipe(
         select(selectTasksState),
         map(
-          tasks => tasks.filter(task => task.projectId === params['id'])
+          tasks => tasks.filter(task => task.projectId! === this.id)
         )
       ).subscribe(tasks => this.tasks = tasks)
     })
