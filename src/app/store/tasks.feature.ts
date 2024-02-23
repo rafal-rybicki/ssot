@@ -6,7 +6,6 @@ interface State extends Array<Task> {}
   
 const initialState: State = [
     {
-        allSubtasks: 5,
         completedSubtasks: 4,
         content: 'task x',
         date: 1708532094837,
@@ -17,7 +16,8 @@ const initialState: State = [
         ownerId: '1',
         order: 0,
         priority: false,
-        projectId: '1'
+        projectId: '1',
+        subtasks: 5,
     },
     {
         content: 'task 2',
@@ -32,7 +32,6 @@ const initialState: State = [
         projectId: '1',
     },
     {
-        allSubtasks: 5,
         completedSubtasks: 4,
         content: 'task 3',
         date: 1708532094837,
@@ -43,7 +42,8 @@ const initialState: State = [
         ownerId: '1',
         order: 0,
         priority: false,
-        projectId: '1'
+        projectId: '1',
+        subtasks: 5,
     },
     {
         content: 'task 4',
@@ -61,7 +61,7 @@ const initialState: State = [
         content: 'task from project 2',
         date: 1708532094837,
         duration: 5,
-        id: '4',
+        id: '5',
         isCompleted: false,
         isTimeSet: false,
         ownerId: '1',

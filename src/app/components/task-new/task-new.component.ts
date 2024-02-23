@@ -23,7 +23,7 @@ export class TaskNewComponent {
 
   onSave(values: Partial<Task>): void {
     this.store.dispatch(addTask({
-      allSubtasks: values.allSubtasks!,
+      subtasks: values.subtasks!,
       completedSubtasks: 0,
       content: values.content!,
       date: new Date().valueOf(),

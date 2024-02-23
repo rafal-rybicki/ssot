@@ -11,20 +11,20 @@ import { Task } from '../../models/task.model';
   styleUrl: './task-editor.component.scss'
 })
 export class TaskEditorComponent {
-  @Input() content: string = '';
-  @Input() subtasks: number = 0;
+  @Input() currentContent: string = '';
+  @Input() currentSubtasks: number = 0;
   @Output() close = new EventEmitter<void>();
   @Output() save = new EventEmitter<Partial<Task>>();
 
   public taskForm = new FormGroup({
-    content: new FormControl(this.content, [Validators.required]),
-    subtasks: new FormControl(this.subtasks, [Validators.required]),
+    content: new FormControl(this.currentContent, [Validators.required]),
+    subtasks: new FormControl(this.currentSubtasks, [Validators.required]),
   });
 
   ngOnInit(): void {
     this.taskForm.patchValue({
-      content: this.content,
-      subtasks: this.subtasks
+      content: this.currentContent,
+      subtasks: this.currentSubtasks
     });
   }
 
@@ -37,12 +37,17 @@ export class TaskEditorComponent {
     
     this.save.emit({
       content: this.taskForm.value.content!,
-      allSubtasks: subtasks == 1 ? 0 : subtasks,
+      subtasks: subtasks === 1 ? 0 : subtasks
     });
 
     this.taskForm.patchValue({
       content: '',
       subtasks: 0
     });
+  }
+
+  get isValid() {
+    return this.taskForm.valid && 
+      (this.taskForm.value.content !== this.currentContent || this.taskForm.value.subtasks !== this.currentSubtasks)
   }
 }
