@@ -8,6 +8,8 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrl: './icon-button.component.scss'
 })
 export class IconButtonComponent {
+  @Input() height: number = 37;
+  @Input() fontSize: number = 26;
   @Input({ required: true }) icon!: string;
   @Output() onClick = new EventEmitter<void>();
 

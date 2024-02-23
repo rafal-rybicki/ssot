@@ -1,9 +1,4 @@
 button {
-    font-size: 26px;
-    padding: 5px;
-    height: 37px;
-    width: 37px;
-
     &:hover {
         background-color: var(--accent);
         border-radius: var(--border-radius);

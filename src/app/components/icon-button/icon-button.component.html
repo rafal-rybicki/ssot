@@ -1,3 +1,8 @@
-<button (click)="handleOnClick()" class="center-content">
+<button
+    (click)="handleOnClick()"
+    [style.fontSize.px]="fontSize"
+    [style.minHeight.px]="height"
+    [style.minWidth.px]="height"
+>
     <i class="bi bi-{{ icon }}"></i>
 </button>
