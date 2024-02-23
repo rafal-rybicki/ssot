@@ -1,11 +1,33 @@
-<i (click)="changeCompletion()" class="bi {{ isCompleted ? 'bi-check-square-fill' : 'bi-square' }} completion"></i>
+@if (isEdited) {
+    <app-task-editor
+        [currentContent]="content"
+        [currentSubtasks]="subtasks"
+        (close)="toggleEditor()"
+        (save)="update($event)"
+    />
+} @else {
+    <i (click)="changeCompletion()" class="bi {{ isCompleted ? 'bi-check-square-fill' : 'bi-square' }} completion"></i>
 
-<p (click)="showDescription()" class="content">
-    {{ content }}
+    <p (click)="showDescription()" class="content">
+        {{ content }}
 
-    @if (hasSubtasks) {
-        <span class="subtasks">
-            {{ completedSubtasks }}/{{ allSubtasks }}
-        </span>
-    }
-</p>
+        @if (hasSubtasks) {
+            <span class="subtasks">
+                {{ completedSubtasks }}/{{ subtasks }}
+            </span>
+        }
+    </p>
+
+    <app-icon-button
+        [height]="27"
+        [fontSize]="15"
+        icon="trash3"
+        (onClick)="delete()"
+    />
+    <app-icon-button
+        [height]="27"
+        [fontSize]="15"
+        icon="pen"
+        (onClick)="toggleEditor()"
+    />
+}

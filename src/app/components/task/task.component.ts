@@ -1,9 +1,15 @@
-import { Component, HostBinding, HostListener, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { deleteTask, updateTask } from '../../store/tasks.actions';
+
+import { IconButtonComponent } from '../icon-button/icon-button.component';
+import { TaskEditorComponent } from '../task-editor/task-editor.component';
+import { Task } from '../../models/task.model';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [],
+  imports: [TaskEditorComponent, IconButtonComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -13,9 +19,14 @@ export class TaskComponent {
   }
 
   @Input({ required: true }) content!: string;
+  @Input({ required: true }) id!: string;
   @Input({ required: true }) isCompleted!: boolean;
-  @Input() allSubtasks: number = 0;
+  @Input() subtasks: number = 0;
   @Input() completedSubtasks: number = 0;
+
+  isEdited = false;
+
+  constructor(private store: Store) {}
 
   changeCompletion() {
     if (!this.isCompleted) {
@@ -33,14 +44,31 @@ export class TaskComponent {
   }
 
   showDescription() {
-    alert('there will be modal with description')
+    alert('there will be modal with description');
+  }
+
+  delete() {
+    this.store.dispatch(deleteTask({ taskId: this.id }));
+  }
+
+  update(values: Partial<Task>) {
+    if (values.subtasks! < this.subtasks) {
+      values.completedSubtasks = 0;
+    }
+
+    this.store.dispatch(updateTask({ taskId: this.id, values }));
+    this.toggleEditor();
+  }
+
+  toggleEditor() {
+    this.isEdited = !this.isEdited;
   }
 
   get hasSubtasks(): boolean {
-    return this.allSubtasks > 0;
+    return this.subtasks > 0;
   }
 
   private get allSubtasksAreCompleted(): boolean {
-    return this.completedSubtasks === this.allSubtasks;
+    return this.completedSubtasks === this.subtasks;
   }
 }
