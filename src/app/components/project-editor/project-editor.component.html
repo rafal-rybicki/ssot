@@ -1,0 +1,31 @@
+<form
+    class="editor"
+    [formGroup]="taskForm"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="name">
+        <label for="name">Name</label>
+        <input autofocus type="text" formControlName="name" autocomplete="off"/>
+    </div>
+
+    <div class="color">
+        <label for="subtasks">Color</label>
+        <input type="color" name="color" formControlName="color" value="#ff0000"/>
+    </div>
+
+    <div class="view">
+        <label for="subtasks">View</label>
+        <select name="view" formControlName="view" >
+            <option value="list">List</option>
+            <option value="board">Board</option>
+        </select>
+    </div>
+
+    <button (click)="onClose()" class="btn-cancel" type="button">
+        Cancel
+    </button>
+
+    <button class="btn-submit" type="submit" [disabled]="!taskForm.valid">
+        Save
+    </button>
+</form>

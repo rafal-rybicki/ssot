@@ -22,4 +22,9 @@ export class MenuComponent {
   toggle() {
     this.isOpen = !this.isOpen;
   }
+
+  openProjectEditor() {
+    const editor = document.querySelector('app-project-editor') as HTMLElement;
+    editor.style.display = 'block'
+  }
 }

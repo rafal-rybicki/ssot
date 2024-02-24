@@ -3,6 +3,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { RouterOutlet } from '@angular/router';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { ThemeService } from './services/theme.service';
+import { ProjectEditorComponent } from './components/project-editor/project-editor.component';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,7 @@ import { ThemeService } from './services/theme.service';
   imports: [
     MenuComponent,
     ThemeSwitcherComponent,
+    ProjectEditorComponent,
     RouterOutlet
   ],
   templateUrl: './app.component.html',

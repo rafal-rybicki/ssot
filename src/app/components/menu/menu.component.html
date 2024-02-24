@@ -27,6 +27,7 @@
             text="Habits"
         />
     </ul>
+    <button (click)="openProjectEditor()">Add new project</button>
     <ul>
         @for (project of projects$ | async; track $index) {
             <app-menu-item 

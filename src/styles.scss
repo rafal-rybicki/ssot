@@ -34,6 +34,22 @@ button {
     background-color: transparent;
     cursor: pointer;
     color: inherit;
+    border-radius: var(--border-radius);
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    &.btn-cancel {
+        background-color: grey;
+        color: white;
+    }
+
+    &.btn-submit {
+        background-color: green;
+        color: white;
+    }
 }
 
 li {
