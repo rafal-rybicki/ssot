@@ -1,9 +1,8 @@
-import { Color } from "./color.model";
 import { View } from "./view.model";
 
 export interface Project {
     areaId?: string;
-    color: Color; 
+    color: string; 
     description?: string;
     id: string;
     isActive: boolean;

@@ -1,14 +1,14 @@
 import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { Project } from '../models/project.model';
 import { View } from '../models/view.model';
-import { Color } from '../models/color.model';
+import * as ProjectsActions from './projects.actions';
 
 interface State extends Array<Project> {}
   
 const initialState: State = [
     {
         areaId: '1',
-        color: Color.Blue,
+        color: 'blue',
         id: '1',
         isActive: true,
         name: 'Project 1',
@@ -18,7 +18,7 @@ const initialState: State = [
     },
     {
         areaId: '1',
-        color: Color.Yellow,
+        color: 'yellow',
         id: '2',
         isActive: true,
         name: 'Project 2',
@@ -28,7 +28,7 @@ const initialState: State = [
     },
     {
         areaId: '1',
-        color: Color.Blue,
+        color: 'green',
         id: '3',
         isActive: true,
         name: 'Project 3',
@@ -38,7 +38,7 @@ const initialState: State = [
     },
     {
         areaId: '1',
-        color: Color.Yellow,
+        color: 'orange',
         id: '4',
         isActive: false,
         name: 'Project 4',
@@ -51,7 +51,21 @@ const initialState: State = [
 export const projectsFeature = createFeature({
     name: 'projects',
     reducer: createReducer(
-        initialState
+        initialState,
+        on(
+            ProjectsActions.addProject,
+            (state, task) => [...state, task]
+        ),
+        on(
+            ProjectsActions.deleteProject,
+            (state, { projectId }) => [...state.filter(project => project.id !== projectId)]
+        ),
+        on(
+            ProjectsActions.updateProject,
+            (state, { projectId, values }) => [
+                ...state.map((project) => project.id === projectId ? { ...project, ...values } : project)
+            ]
+        )
     ),
     extraSelectors: ({ selectProjectsState }) => ({
         selectActiveProjects: createSelector(
