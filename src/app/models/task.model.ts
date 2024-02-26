@@ -7,10 +7,10 @@ export interface Task {
     id: string;
     isCompleted: boolean;
     isTimeSet: boolean;
-    ownerId: string;
+    ownerId: number;
     order: number;
     priority: boolean;
-    projectId?: string;
-    sectionId?: string;
+    projectId?: number;
+    sectionId?: number;
     subtasks?: number;
 }

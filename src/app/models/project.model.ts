@@ -1,13 +1,13 @@
 import { View } from "./view.model";
 
 export interface Project {
-    areaId?: string;
+    areaId?: number;
     color: string; 
     description?: string;
-    id: string;
+    id: number;
     isActive: boolean;
     name: string;
-    ownerId: string; 
+    ownerId: number; 
     order: number;
     view: View; 
 }
