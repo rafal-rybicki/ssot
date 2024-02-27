@@ -3,6 +3,7 @@ import { TaskEditorComponent } from '../task-editor/task-editor.component';
 import { Task } from '../../models/task.model';
 import { Store } from '@ngrx/store';
 import { addTask } from '../../store/tasks.actions';
+import { TaskService } from '../../services/task.service';
 
 @Component({
   selector: 'app-task-new',
@@ -28,14 +29,14 @@ export class TaskNewComponent {
       content: values.content!,
       date: new Date().valueOf(),
       duration: 5,
-      id: Math.random(),
+      id: new Date().valueOf(),
       isCompleted: false,
       isTimeSet: false,
       order: 0,
       ownerId: 1,
       priority: false,
       projectId: this.projectId,
-      sectionId: Math.random(),
+      sectionId: 0,
     }))
   }
 }
