@@ -20,7 +20,7 @@ import { TaskNewComponent } from '../../components/task-new/task-new.component';
   }
 })
 export class ProjectPageComponent {
-  id!: string;
+  id!: number;
   tasks: Task[] = [];
 
   constructor(

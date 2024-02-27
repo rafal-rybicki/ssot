@@ -4,7 +4,7 @@ export interface Task {
     date: number;
     description?: string;
     duration: number;
-    id: string;
+    id: number;
     isCompleted: boolean;
     isTimeSet: boolean;
     ownerId: number;

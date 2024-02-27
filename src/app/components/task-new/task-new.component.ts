@@ -12,7 +12,7 @@ import { addTask } from '../../store/tasks.actions';
   styleUrl: './task-new.component.scss'
 })
 export class TaskNewComponent {
-  @Input() projectId?: string;
+  @Input() projectId?: number;
   showEditor = false;
 
   constructor(private store: Store) {}
@@ -28,14 +28,14 @@ export class TaskNewComponent {
       content: values.content!,
       date: new Date().valueOf(),
       duration: 5,
-      id: Math.random().toString(),
+      id: Math.random(),
       isCompleted: false,
       isTimeSet: false,
       order: 0,
-      ownerId: 'ownerId',
+      ownerId: 1,
       priority: false,
       projectId: this.projectId,
-      sectionId: 'sectionId',
+      sectionId: Math.random(),
     }))
   }
 }
