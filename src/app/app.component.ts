@@ -4,6 +4,8 @@ import { RouterOutlet } from '@angular/router';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { ThemeService } from './services/theme.service';
 import { ProjectEditorComponent } from './components/project-editor/project-editor.component';
+import { Store } from '@ngrx/store';
+import { appInit } from './store/app.actions';
 
 @Component({
   selector: 'app-root',
@@ -18,9 +20,10 @@ import { ProjectEditorComponent } from './components/project-editor/project-edit
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  constructor(private theme: ThemeService) {};
+  constructor(private theme: ThemeService, private store: Store) {};
 
   ngOnInit() {
+    this.store.dispatch(appInit());
     this.theme.loadTheme('dark');
   }
 

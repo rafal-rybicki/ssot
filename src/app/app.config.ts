@@ -7,6 +7,8 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { projectsFeature } from './store/projects.feature';
 import { tasksFeature } from './store/tasks.feature';
 import { HttpClientModule } from '@angular/common/http';
+import { provideEffects } from '@ngrx/effects';
+import { ProjectsEffects } from './store/projects.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,10 +16,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore(),
     provideState(projectsFeature),
+    provideEffects(ProjectsEffects),
     provideState(tasksFeature),
     provideStoreDevtools({
-      maxAge: 25,
-      logOnly: !isDevMode()
-    })
-  ]
+        maxAge: 25,
+        logOnly: !isDevMode()
+    }),
+    provideEffects()
+]
 };
