@@ -39,8 +39,7 @@ export class ProjectEditorComponent {
 
   onSubmit() {
     const id = Math.random();
-
-    this.store.dispatch(addProject({
+    const project = {
       color: this.taskForm.value.color!,
       id,
       isActive: true,
@@ -48,7 +47,9 @@ export class ProjectEditorComponent {
       order: 0,
       ownerId: 1,
       view: View.List,
-    }))
+    }
+
+    this.store.dispatch(addProject({ project }))
 
     this.taskForm.patchValue({
       color: 'black',

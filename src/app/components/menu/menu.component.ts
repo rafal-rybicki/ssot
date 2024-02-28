@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 export class MenuComponent {
   @HostBinding('class.open') get class() { return this.isOpen };
   projects$ = this.store.select(selectActiveProjects);
-  isOpen = false;
+  isOpen = true;
 
   constructor(private store: Store) {}
 

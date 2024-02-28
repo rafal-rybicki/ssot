@@ -1,29 +1,28 @@
 import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { Project } from '../models/project.model';
-import * as ProjectsActions from './projects.actions';
-
-interface State extends Array<Project> {}
+import { ProjectsApiActions } from './projects-api.actions';
   
-const initialState: State = [
-]
+const initialState: Project[] = []
 
 export const projectsFeature = createFeature({
     name: 'projects',
     reducer: createReducer(
         initialState,
         on(
-            ProjectsActions.addProject,
-            (state, task) => [...state, task]
+            ProjectsApiActions.projectsLoadedSuccess,
+            (state, { projects }) => [...projects]
         ),
         on(
-            ProjectsActions.deleteProject,
+            ProjectsApiActions.projectAddedSuccess,
+            (state, { project }) => [...state, project]
+        ),
+        on(
+            ProjectsApiActions.projectDeletedSuccess,
             (state, { projectId }) => [...state.filter(project => project.id !== projectId)]
         ),
         on(
-            ProjectsActions.updateProject,
-            (state, { projectId, values }) => [
-                ...state.map((project) => project.id === projectId ? { ...project, ...values } : project)
-            ]
+            ProjectsApiActions.projectUpdatedSuccess,
+            (state, { project }) => [...state.map((p) => p.id === project.id ? { ...project } : p)]
         )
     ),
     extraSelectors: ({ selectProjectsState }) => ({
