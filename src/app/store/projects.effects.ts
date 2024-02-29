@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from '@ngrx/effects';
 import { ProjectService } from '../services/project.service';
-import { appInit } from './app.actions';
 import { EMPTY, catchError, exhaustMap, map, tap } from 'rxjs';
 import { ProjectsApiActions } from './projects-api.actions';
 import { addProject } from './projects.actions';
@@ -10,7 +9,7 @@ import { addProject } from './projects.actions';
 export class ProjectsEffects {
     loadProjects$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(appInit),
+            ofType(ROOT_EFFECTS_INIT),
             exhaustMap(() => this.projectService.getProjects()
                 .pipe(
                     map(projects => ProjectsApiActions.projectsLoadedSuccess({ projects })),
@@ -20,7 +19,7 @@ export class ProjectsEffects {
         )
     )
 
-    addproject$ = createEffect(() => 
+    addProject$ = createEffect(() => 
         this.actions$.pipe(
             ofType(addProject),
             exhaustMap(action => this.projectService.createProject(action.project)

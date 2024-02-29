@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from '@ngrx/effects';
 import { TaskService } from '../services/task.service';
-import { appInit } from './app.actions';
 import { EMPTY, catchError, exhaustMap, map, tap } from 'rxjs';
 import { TasksApiActions } from './tasks-api.actions';
 import { addTask, deleteTask, updateTask } from './tasks.actions';
 
 @Injectable()
 export class TasksEffects {
-    loadProjects$ = createEffect(() => 
+    loadTasks$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(appInit),
+            ofType(ROOT_EFFECTS_INIT),
             exhaustMap(() => this.taskService.getTasks()
                 .pipe(
                     map(tasks => TasksApiActions.tasksLoadedSuccess({ tasks })),

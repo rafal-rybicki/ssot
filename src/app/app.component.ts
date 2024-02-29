@@ -5,7 +5,6 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
 import { ThemeService } from './services/theme.service';
 import { ProjectEditorComponent } from './components/project-editor/project-editor.component';
 import { Store } from '@ngrx/store';
-import { appInit } from './store/app.actions';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +22,6 @@ export class AppComponent {
   constructor(private theme: ThemeService, private store: Store) {};
 
   ngOnInit() {
-    this.store.dispatch(appInit());
     this.theme.loadTheme('dark');
   }
 
