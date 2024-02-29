@@ -2,7 +2,7 @@ import { Component, HostBinding } from '@angular/core';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { Store } from '@ngrx/store';
-import { selectActiveProjects } from '../../store/projects.feature';
+import { selectActiveProjects } from '../../store/projects/projects.feature';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -25,6 +25,11 @@ export class MenuComponent {
 
   openProjectEditor() {
     const editor = document.querySelector('app-project-editor') as HTMLElement;
+    editor.style.display = 'block'
+  }
+
+  openAreaEditor() {
+    const editor = document.querySelector('app-area-editor') as HTMLElement;
     editor.style.display = 'block'
   }
 }

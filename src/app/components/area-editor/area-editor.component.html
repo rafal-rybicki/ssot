@@ -1,0 +1,18 @@
+<form
+    class="editor"
+    [formGroup]="areaForm"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="name">
+        <label for="name">Name</label>
+        <input autofocus type="text" formControlName="name" autocomplete="off"/>
+    </div>
+
+    <button (click)="onClose()" class="btn-cancel" type="button">
+        Cancel
+    </button>
+
+    <button class="btn-submit" type="submit" [disabled]="!areaForm.valid">
+        Save
+    </button>
+</form>

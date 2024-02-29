@@ -27,16 +27,20 @@
             text="Habits"
         />
     </ul>
-    <button (click)="openProjectEditor()">Add new project</button>
     <ul>
         @for (project of projects$ | async; track $index) {
             <app-menu-item 
-                color="{{ project.color }}"
-                cssClass="circle-fill project-icon"
-                path="project/{{ project.id }}"
-                text="{{ project.name }}"
+            color="{{ project.color }}"
+            cssClass="circle-fill project-icon"
+            path="project/{{ project.id }}"
+            text="{{ project.name }}"
             />
         }
     </ul>
+    <br>
+    <button (click)="openAreaEditor()">Add new area</button>
+    <br>
+    <br>
+    <button (click)="openProjectEditor()">Add new project</button>
 </nav>
 <div (click)="toggle()" class="overlay"></div>
