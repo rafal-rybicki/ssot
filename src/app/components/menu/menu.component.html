@@ -37,6 +37,13 @@
             />
         }
     </ul>
+    @for (area of areas$ | async; track $index) {
+        <app-area
+            [name]="area.name"
+            [id]="area.id"
+            [isOpen]="area.isOpen"
+        />
+    }
     <br>
     <button (click)="openAreaEditor()">Add new area</button>
     <br>
