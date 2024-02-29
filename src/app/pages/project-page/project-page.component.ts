@@ -2,7 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 
 import { TaskComponent } from '../../components/task/task.component';
-import { selectTasksState } from '../../store/tasks.feature';
+import { selectTasksState } from '../../store/tasks/tasks.feature';
 import { CommonModule } from '@angular/common';
 import { map } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

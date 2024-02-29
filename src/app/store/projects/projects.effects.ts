@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from '@ngrx/effects';
-import { ProjectService } from '../services/project.service';
+import { ProjectService } from '../../services/project.service';
 import { EMPTY, catchError, exhaustMap, map, tap } from 'rxjs';
 import { ProjectsApiActions } from './projects-api.actions';
 import { addProject } from './projects.actions';

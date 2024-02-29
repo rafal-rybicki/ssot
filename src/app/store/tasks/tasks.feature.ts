@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { Task } from '../models/task.model';
+import { Task } from '../../models/task.model';
 import { TasksApiActions } from './tasks-api.actions';
   
 const initialState: Task[] = []

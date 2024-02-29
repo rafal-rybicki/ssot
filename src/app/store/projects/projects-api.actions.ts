@@ -1,5 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { Project } from '../models/project.model';
+import { Project } from '../../models/project.model';
 
 export const ProjectsApiActions = createActionGroup({
     source: 'Projects API',

@@ -1,5 +1,5 @@
 import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
-import { Project } from '../models/project.model';
+import { Project } from '../../models/project.model';
 import { ProjectsApiActions } from './projects-api.actions';
   
 const initialState: Project[] = []

@@ -5,6 +5,7 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
 import { ThemeService } from './services/theme.service';
 import { ProjectEditorComponent } from './components/project-editor/project-editor.component';
 import { Store } from '@ngrx/store';
+import { AreaEditorComponent } from './components/area-editor/area-editor.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { Store } from '@ngrx/store';
   imports: [
     MenuComponent,
     ThemeSwitcherComponent,
+    AreaEditorComponent,
     ProjectEditorComponent,
     RouterOutlet
   ],

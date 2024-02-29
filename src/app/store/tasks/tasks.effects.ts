@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from '@ngrx/effects';
-import { TaskService } from '../services/task.service';
+import { TaskService } from '../../services/task.service';
 import { EMPTY, catchError, exhaustMap, map, tap } from 'rxjs';
 import { TasksApiActions } from './tasks-api.actions';
 import { addTask, deleteTask, updateTask } from './tasks.actions';
@@ -44,16 +44,16 @@ export class TasksEffects {
     )
 
     updateTask$ = createEffect(() => 
-    this.actions$.pipe(
-        ofType(updateTask),
-        exhaustMap(({ taskId, values }) => this.taskService.updateTask(taskId, values)
-            .pipe(
-                map(task => TasksApiActions.taskUpdatedSuccess({ task })),
-                catchError(() => EMPTY)
+        this.actions$.pipe(
+            ofType(updateTask),
+            exhaustMap(({ taskId, values }) => this.taskService.updateTask(taskId, values)
+                .pipe(
+                    map(task => TasksApiActions.taskUpdatedSuccess({ task })),
+                    catchError(() => EMPTY)
+                )
             )
         )
     )
-)
 
     constructor(
         private actions$: Actions,

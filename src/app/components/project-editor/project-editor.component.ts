@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { addProject } from '../../store/projects.actions';
+import { addProject } from '../../store/projects/projects.actions';
 import { View } from '../../models/view.model';
 import { Router } from '@angular/router';
 

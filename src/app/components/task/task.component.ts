@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { deleteTask, updateTask } from '../../store/tasks.actions';
+import { deleteTask, updateTask } from '../../store/tasks/tasks.actions';
 
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { TaskEditorComponent } from '../task-editor/task-editor.component';

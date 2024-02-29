@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { TaskEditorComponent } from '../task-editor/task-editor.component';
 import { Task } from '../../models/task.model';
 import { Store } from '@ngrx/store';
-import { addTask } from '../../store/tasks.actions';
+import { addTask } from '../../store/tasks/tasks.actions';
 import { TaskService } from '../../services/task.service';
 
 @Component({
