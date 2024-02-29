@@ -22,7 +22,7 @@ export const projectsFeature = createFeature({
         ),
         on(
             ProjectsApiActions.projectUpdatedSuccess,
-            (state, { project }) => [...state.map((p) => p.id === project.id ? { ...project } : p)]
+            (state, { project }) => [...state.map((p) => p.id === project.id ? project : p)]
         )
     ),
     extraSelectors: ({ selectProjectsState }) => ({

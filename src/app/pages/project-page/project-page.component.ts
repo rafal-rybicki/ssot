@@ -30,14 +30,16 @@ export class ProjectPageComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = params['id'];
+      this.id = Number(params['id']);
       
       this.store.pipe(
         select(selectTasksState),
         map(
           tasks => tasks.filter(task => task.projectId! === this.id)
         )
-      ).subscribe(tasks => this.tasks = tasks)
+      ).subscribe(tasks => {
+        this.tasks = tasks
+      })
     })
   }
 }

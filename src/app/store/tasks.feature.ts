@@ -1,27 +1,28 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { Task } from '../models/task.model';
-import * as TasksActions from './tasks.actions';
-
-interface State extends Array<Task> {}
+import { TasksApiActions } from './tasks-api.actions';
   
-const initialState: State = [
-]
+const initialState: Task[] = []
 
 export const tasksFeature = createFeature({
     name: 'tasks',
     reducer: createReducer(
         initialState,
         on(
-            TasksActions.addTask,
-            (state, task) => [...state, task]
+            TasksApiActions.tasksLoadedSuccess,
+            (state, { tasks }) => [...tasks]
         ),
         on(
-            TasksActions.deleteTask,
+            TasksApiActions.taskAddedSuccess,
+            (state, { task }) => [...state, task]
+        ),
+        on(
+            TasksApiActions.taskDeletedSuccess,
             (state, { taskId }) => [...state.filter(task => task.id !== taskId)]
         ),
         on(
-            TasksActions.updateTask,
-            (state, { taskId, values }) => [...state.map((task) => task.id === taskId ? { ...task, ...values } : task)]
+            TasksApiActions.taskUpdatedSuccess,
+            (state, { task }) => [...state.map((t) => t.id === task.id ? task : t)]
         )
     )
 })

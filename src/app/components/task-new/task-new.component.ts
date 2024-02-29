@@ -23,13 +23,13 @@ export class TaskNewComponent {
   }
 
   onSave(values: Partial<Task>): void {
-    this.store.dispatch(addTask({
+    const task = {
       subtasks: values.subtasks!,
       completedSubtasks: 0,
       content: values.content!,
       date: new Date().valueOf(),
       duration: 5,
-      id: new Date().valueOf(),
+      id: Math.random(),
       isCompleted: false,
       isTimeSet: false,
       order: 0,
@@ -37,6 +37,8 @@ export class TaskNewComponent {
       priority: false,
       projectId: this.projectId,
       sectionId: 0,
-    }))
+    }
+    
+    this.store.dispatch(addTask({ task }))
   }
 }
