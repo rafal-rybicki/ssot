@@ -1,155 +1,157 @@
 {
-    "areas": [
-        {
-            "id": 1,
-            "isOpen": true,
-            "name": "area 1",
-            "order": 1,
-            "ownerId": 1
-        },
-        {
-            "id": 2,
-            "isOpen": false,
-            "name": "area 2",
-            "order": 2,
-            "ownerId": 1
-        }
-    ],
-    "projects": [
-        {
-            "areaId": 1,
-            "color": "green",
-            "id": 1,
-            "isActive": true,
-            "name": "Project 1",
-            "ownerId": 1,
-            "order": 1,
-            "view": "list"
-        },
-        {
-            "areaId": 1,
-            "color": "blue",
-            "id": 2,
-            "isActive": true,
-            "name": "Project 2",
-            "ownerId": 1,
-            "order": 2,
-            "view": "list"
-        },{
-            "areaId": 1,
-            "color": "yellow",
-            "id": 3,
-            "isActive": true,
-            "name": "Project 3",
-            "ownerId": 1,
-            "order": 3,
-            "view": "list"
-        },
-        {
-            "areaId": 1,
-            "color": "red",
-            "id": 4,
-            "isActive": false,
-            "name": "Project 4",
-            "ownerId": 1,
-            "order": 4,
-            "view": "list"
-        }
-    ],
-    "quotes": [
-        {
-            "author": "Alexander the Great",
-            "content": "An army of sheep led by a lion is better than an army of lions led by a sheep",
-            "id": 1,
-            "ownerId": 1
-        },
-        {
-            "author": "Mahatma Gandhi",
-            "content": "Be the change that you wish to see in the world",
-            "id": 2,
-            "ownerId": 1
-        },
-        {
-            "author": "F. Scott Fitzgerald",
-            "content": "Show me a hero, and I'll write you a tragedy",
-            "id": 3,
-            "ownerId": 1
-        }
-    ],
-    "tasks": [
-        {
-            "content": "task 1",
-            "date": 1708532094837,
-            "duration": 5,
-            "id": 1,
-            "isCompleted": true,
-            "isTimeSet": false,
-            "ownerId": 1,
-            "order": 1,
-            "priority": false,
-            "projectId": 1
-        },
-        {
-            "completedSubtasks": 4,
-            "content": "task 2",
-            "date": 1708532094837,
-            "duration": 5,
-            "id": 2,
-            "isCompleted": false,
-            "isTimeSet": false,
-            "ownerId": 1,
-            "order": 2,
-            "priority": false,
-            "projectId": 1,
-            "subtasks": 5
-        },
-        {
-            "completedSubtasks": 4,
-            "content": "task 3",
-            "date": 1708532094837,
-            "duration": 5,
-            "id": 3,
-            "isCompleted": true,
-            "isTimeSet": false,
-            "ownerId": 1,
-            "order": 3,
-            "priority": false,
-            "projectId": 1,
-            "subtasks": 4
-        },
-        {
-            "completedSubtasks": 4,
-            "content": "task 4",
-            "date": 1708532094837,
-            "duration": 5,
-            "id": 4,
-            "isCompleted": false,
-            "isTimeSet": false,
-            "ownerId": 1,
-            "order": 3,
-            "priority": false,
-            "projectId": 1,
-            "subtasks": 5
-        },
-        {
-            "content": "task 5 (from project 2)",
-            "date": 1708532094837,
-            "duration": 5,
-            "id": 5,
-            "isCompleted": false,
-            "isTimeSet": false,
-            "ownerId": 1,
-            "order": 5,
-            "priority": false,
-            "projectId": 2
-        }
-    ],
-    "users": [
-        {
-            "email": "user@gmail.com",
-            "id": 1,
-            "password": "password123",
-            "username": "User1"
-        }
-    ]
+  "areas": [
+    {
+      "id": "1",
+      "isOpen": true,
+      "name": "area 1",
+      "order": 1,
+      "ownerId": "1"
+    },
+    {
+      "id": "2",
+      "isOpen": false,
+      "name": "area 2",
+      "order": 2,
+      "ownerId": "1"
+    }
+  ],
+  "projects": [
+    {
+      "areaId": 1,
+      "color": "green",
+      "id": "1",
+      "isActive": true,
+      "name": "Project 1",
+      "ownerId": "1",
+      "order": 1,
+      "view": "list"
+    },
+    {
+      "areaId": "1",
+      "color": "blue",
+      "id": "2",
+      "isActive": true,
+      "name": "Project 2",
+      "ownerId": "1",
+      "order": 2,
+      "view": "list"
+    },
+    {
+      "areaId": "1",
+      "color": "yellow",
+      "id": "3",
+      "isActive": true,
+      "name": "Project 3",
+      "ownerId": "1",
+      "order": 3,
+      "view": "list"
+    },
+    {
+      "areaId": "1",
+      "color": "red",
+      "id": "4",
+      "isActive": false,
+      "name": "Project 4",
+      "ownerId": "1",
+      "order": 4,
+      "view": "list"
+    }
+  ],
+  "quotes": [
+    {
+      "author": "Alexander the Great",
+      "content": "An army of sheep led by a lion is better than an army of lions led by a sheep",
+      "id": "1",
+      "ownerId": 1
+    },
+    {
+      "author": "Mahatma Gandhi",
+      "content": "Be the change that you wish to see in the world",
+      "id": "2",
+      "ownerId": 1
+    },
+    {
+      "author": "F. Scott Fitzgerald",
+      "content": "Show me a hero, and I'll write you a tragedy",
+      "id": "3",
+      "ownerId": 1
+    }
+  ],
+  "tasks": [
+    {
+      "content": "task 1 changed",
+      "date": 1708532094837,
+      "duration": 5,
+      "id": "1",
+      "isCompleted": true,
+      "isTimeSet": false,
+      "ownerId": "1",
+      "order": 1,
+      "priority": false,
+      "projectId": "1",
+      "subtasks": 0
+    },
+    {
+      "completedSubtasks": 4,
+      "content": "task 2",
+      "date": 1708532094837,
+      "duration": 5,
+      "id": "2",
+      "isCompleted": false,
+      "isTimeSet": false,
+      "ownerId": "1",
+      "order": 2,
+      "priority": false,
+      "projectId": "1",
+      "subtasks": 5
+    },
+    {
+      "completedSubtasks": 4,
+      "content": "task 3",
+      "date": 1708532094837,
+      "duration": 5,
+      "id": "3",
+      "isCompleted": true,
+      "isTimeSet": false,
+      "ownerId": "1",
+      "order": 3,
+      "priority": false,
+      "projectId": "1",
+      "subtasks": 4
+    },
+    {
+      "completedSubtasks": 4,
+      "content": "task 4",
+      "date": 1708532094837,
+      "duration": 5,
+      "id": "4",
+      "isCompleted": false,
+      "isTimeSet": false,
+      "ownerId": "1",
+      "order": 3,
+      "priority": false,
+      "projectId": "1",
+      "subtasks": 5
+    },
+    {
+      "content": "task 5 (from project 2)",
+      "date": 1708532094837,
+      "duration": 5,
+      "id": "5",
+      "isCompleted": false,
+      "isTimeSet": false,
+      "ownerId": "1",
+      "order": 5,
+      "priority": false,
+      "projectId": "2"
+    }
+  ],
+  "users": [
+    {
+      "email": "user@gmail.com",
+      "id": "1",
+      "password": "password123",
+      "username": "User1"
+    }
+  ]
 }

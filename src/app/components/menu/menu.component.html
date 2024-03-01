@@ -30,10 +30,10 @@
     <ul>
         @for (project of projects$ | async; track $index) {
             <app-menu-item 
-            color="{{ project.color }}"
-            cssClass="circle-fill project-icon"
-            path="project/{{ project.id }}"
-            text="{{ project.name }}"
+                color="{{ project.color }}"
+                cssClass="circle-fill project-icon"
+                path="project/{{ project.id }}"
+                text="{{ project.name }}"
             />
         }
     </ul>

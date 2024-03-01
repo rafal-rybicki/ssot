@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { addArea } from '../../store/areas/areas.actions';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-area-editor',
@@ -31,11 +32,11 @@ export class AreaEditorComponent {
 
   onSubmit() {
     const area = {
-      id: Math.random(),
+      id: uuid(),
       isOpen: true,
       name: this.areaForm.value.name!,
       order: 0,
-      ownerId: 1
+      ownerId: '1'
     }
 
     this.store.dispatch(addArea({ area }))

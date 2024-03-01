@@ -1,6 +1,6 @@
 export interface Quote {
     author?: string;
-    id: number;
+    id: string;
     content: string;
-    ownerId: number;
+    ownerId: string;
 }

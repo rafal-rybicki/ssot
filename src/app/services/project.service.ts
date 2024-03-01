@@ -20,11 +20,11 @@ export class ProjectService {
     return this.http.post<Project>(this.url, project);
   }
 
-  updateProject(id: number, values: Partial<Project>): Observable<Project> {
+  updateProject(id: string, values: Partial<Project>): Observable<Project> {
     return this.http.patch<Project>(`${this.url}/${id}`, values);
   }
 
-  deleteProject(id: number): Observable<any> {
+  deleteProject(id: string): Observable<any> {
     return this.http.delete<Project>(`${this.url}/${id}`);
   }
 }

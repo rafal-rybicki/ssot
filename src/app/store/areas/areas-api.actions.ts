@@ -6,7 +6,7 @@ export const AreasApiActions = createActionGroup({
     events: {
         areaAddedSuccess: props<{ area: Area }>(),
         areaAddedFailure: props<{ errorMsg: string }>(),
-        areaDeletedSuccess: props<{ areaId: number }>(),
+        areaDeletedSuccess: props<{ areaId: string }>(),
         areaDeletedFailure: props<{ errorMsg: string }>(),
         areaUpdatedSuccess: props<{ area: Area }>(), 
         areaUpdatedFailure: props<{ errorMsg: string }>(),

@@ -20,11 +20,11 @@ export class AreaService {
     return this.http.post<Area>(this.url, area);
   }
 
-  updateArea(id: number, values: Partial<Area>): Observable<Area> {
+  updateArea(id: string, values: Partial<Area>): Observable<Area> {
     return this.http.patch<Area>(`${this.url}/${id}`, values);
   }
 
-  deleteArea(id: number): Observable<any> {
+  deleteArea(id: string): Observable<any> {
     return this.http.delete<Area>(`${this.url}/${id}`);
   }
 }

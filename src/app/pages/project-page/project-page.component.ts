@@ -20,7 +20,7 @@ import { TaskNewComponent } from '../../components/task-new/task-new.component';
   }
 })
 export class ProjectPageComponent {
-  id!: number;
+  id!: string;
   tasks: Task[] = [];
 
   constructor(
@@ -30,7 +30,7 @@ export class ProjectPageComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = Number(params['id']);
+      this.id = params['id'];
       
       this.store.pipe(
         select(selectTasksState),

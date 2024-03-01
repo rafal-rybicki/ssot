@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { addProject } from '../../store/projects/projects.actions';
 import { View } from '../../models/view.model';
 import { Router } from '@angular/router';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-project-editor',
@@ -38,14 +39,14 @@ export class ProjectEditorComponent {
   }
 
   onSubmit() {
-    const id = Math.random();
+    const id = uuid();
     const project = {
       color: this.taskForm.value.color!,
       id,
       isActive: true,
       name: this.taskForm.value.name!,
       order: 0,
-      ownerId: 1,
+      ownerId: '1',
       view: View.List,
     }
 

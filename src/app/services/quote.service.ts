@@ -20,11 +20,11 @@ export class QuoteService {
     return this.http.post<Quote>(this.url, quote);
   }
 
-  updateQuote(id: number, values: Partial<Quote>): Observable<Quote> {
+  updateQuote(id: string, values: Partial<Quote>): Observable<Quote> {
     return this.http.patch<Quote>(`${this.url}/${id}`, values);
   }
 
-  deleteQuote(id: number): Observable<any> {
+  deleteQuote(id: string): Observable<any> {
     return this.http.delete<Quote>(`${this.url}/${id}`);
   }
 }
