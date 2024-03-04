@@ -1,5 +1,5 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { Area } from '../../models/area';
+import { Area } from '../../models/area.model';
 import { AreasApiActions } from './areas-api.actions';
   
 const initialState: Area[] = []
