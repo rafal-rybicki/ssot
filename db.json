@@ -79,22 +79,9 @@
   ],
   "tasks": [
     {
-      "content": "task 1 changed",
-      "date": 1708532094837,
-      "duration": 5,
-      "id": "1",
-      "isCompleted": true,
-      "isTimeSet": false,
-      "ownerId": "1",
-      "order": 1,
-      "priority": false,
-      "projectId": "1",
-      "subtasks": 0
-    },
-    {
       "completedSubtasks": 4,
       "content": "task 2",
-      "date": 1708532094837,
+      "date": "",
       "duration": 5,
       "id": "2",
       "isCompleted": false,
@@ -108,7 +95,7 @@
     {
       "completedSubtasks": 4,
       "content": "task 3",
-      "date": 1708532094837,
+      "date": "2024-3-16",
       "duration": 5,
       "id": "3",
       "isCompleted": true,
@@ -122,7 +109,7 @@
     {
       "completedSubtasks": 4,
       "content": "task 4",
-      "date": 1708532094837,
+      "date": "2024-3-7",
       "duration": 5,
       "id": "4",
       "isCompleted": false,
@@ -135,7 +122,7 @@
     },
     {
       "content": "task 5 (from project 2)",
-      "date": 1708532094837,
+      "date": "2024-3-5",
       "duration": 5,
       "id": "5",
       "isCompleted": false,

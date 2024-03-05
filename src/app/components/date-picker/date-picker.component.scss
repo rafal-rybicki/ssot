@@ -1,0 +1,9 @@
+:host {
+    position: relative;
+
+    app-calendar {
+        position: absolute;
+        z-index: 100;
+        transform: translateX(-50%);
+    }
+}

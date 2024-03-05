@@ -5,11 +5,12 @@ import { deleteTask, updateTask } from '../../store/tasks/tasks.actions';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { TaskEditorComponent } from '../task-editor/task-editor.component';
 import { Task } from '../../models/task.model';
+import { DatePickerComponent } from '../date-picker/date-picker.component';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [TaskEditorComponent, IconButtonComponent],
+  imports: [TaskEditorComponent, IconButtonComponent, DatePickerComponent],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -21,8 +22,9 @@ export class TaskComponent {
   @Input({ required: true }) content!: string;
   @Input({ required: true }) id!: string;
   @Input({ required: true }) isCompleted!: boolean;
-  @Input() subtasks: number = 0;
   @Input() completedSubtasks: number = 0;
+  @Input() date?: string | null;
+  @Input() subtasks: number = 0;
 
   isEdited = false;
 

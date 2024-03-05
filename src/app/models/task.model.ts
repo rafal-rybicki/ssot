@@ -1,7 +1,7 @@
 export interface Task {
     completedSubtasks?: number;
     content: string;
-    date: number;
+    date?: string;
     description?: string;
     duration: number;
     id: string;

@@ -27,7 +27,7 @@ export class TaskNewComponent {
       subtasks: values.subtasks!,
       completedSubtasks: 0,
       content: values.content!,
-      date: new Date().valueOf(),
+      date: '2024-3-7',
       duration: 5,
       id: uuid(),
       isCompleted: false,

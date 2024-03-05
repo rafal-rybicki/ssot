@@ -2,6 +2,7 @@
 
 @for (task of tasks; track $index) {
     <app-task
+        [date]="task.date"
         [subtasks]="task.subtasks || 0"
         [completedSubtasks]="task.completedSubtasks || 0"  
         [content]="task.content"

@@ -1,0 +1,44 @@
+<span class="month">{{ monthName }} {{ selectedYear }}</span>
+
+<div class="actions">
+    <app-icon-button 
+        [height]="20"
+        [fontSize]="12"
+        icon="chevron-left"
+        (onClick)="prev()"
+    />
+    <app-icon-button 
+        [height]="20"
+        [fontSize]="8"
+        icon="circle-fill"
+        (onClick)="reset()"
+    />
+    <app-icon-button 
+        [height]="20"
+        [fontSize]="12"
+        icon="chevron-right"
+        (onClick)="next()"
+    />
+</div>
+
+<div class="days">
+    <span class="week-day">M</span>
+    <span class="week-day">T</span>
+    <span class="week-day">W</span>
+    <span class="week-day">T</span>
+    <span class="week-day">F</span>
+    <span class="week-day">S</span>
+    <span class="week-day">S</span>
+
+    <span class="offset" [style.width.px]="offset"></span>
+
+    @for (day of days; track $index) {
+        <button
+            class="day"
+            [class.selected]="day === selectedDay && initialMonth === selectedMonth"
+            (click)="selectDay(day)"
+        >
+            {{ day }}
+        </button>
+    }
+</div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from '@ngrx/effects';
 import { TaskService } from '../../services/task.service';
-import { EMPTY, catchError, exhaustMap, map, tap } from 'rxjs';
+import { EMPTY, catchError, exhaustMap, map } from 'rxjs';
 import { TasksApiActions } from './tasks-api.actions';
 import { addTask, deleteTask, updateTask } from './tasks.actions';
 
