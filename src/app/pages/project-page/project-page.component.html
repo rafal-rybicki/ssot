@@ -1,6 +1,6 @@
-<h1>ProjectName</h1>
+<h1>{{ name }}</h1>
 
-@for (task of tasks; track $index) {
+@for (task of tasks$ | async; track $index) {
     <app-task
         [date]="task.date"
         [subtasks]="task.subtasks || 0"
