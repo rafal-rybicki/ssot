@@ -1,0 +1,13 @@
+<h1>{{ day }} {{ month }}</h1>
+
+@for (task of tasks$ | async; track $index) {
+    <app-task
+        [subtasks]="task.subtasks || 0"
+        [completedSubtasks]="task.completedSubtasks || 0"  
+        [content]="task.content"
+        [isCompleted]="task.isCompleted"
+        [id]="task.id"
+    />
+}
+
+<app-task-new [date]="date"/>

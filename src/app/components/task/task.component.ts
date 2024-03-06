@@ -43,6 +43,11 @@ export class TaskComponent {
       this.isCompleted = false;
       this.completedSubtasks = 0;
     }
+
+    this.dispatchValues({
+      isCompleted: this.isCompleted,
+      completedSubtasks: this.completedSubtasks
+    });
   }
 
   showDescription() {
@@ -58,7 +63,7 @@ export class TaskComponent {
       values.completedSubtasks = 0;
     }
 
-    this.store.dispatch(updateTask({ taskId: this.id, values }));
+    this.dispatchValues(values);
     this.toggleEditor();
   }
 
@@ -72,5 +77,9 @@ export class TaskComponent {
 
   private get allSubtasksAreCompleted(): boolean {
     return this.completedSubtasks === this.subtasks;
+  }
+
+  private dispatchValues(values: Partial<Task>) {
+    this.store.dispatch(updateTask({ taskId: this.id, values }));
   }
 }

@@ -26,15 +26,13 @@ export class DatePickerComponent {
   month!: number;
   year!: number;
 
+  ngOnInit() {
+    this.setCalendarValues();
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['date'].currentValue !== changes['date'].previousValue) {
-      if (this.date) {
-        [this.year, this.month, this.day] = this.date.split('-').map(string => Number(string));
-      } else {
-        this.day = null
-        this.month = this.calendarService.getCurrentMonth();
-        this.year = this.calendarService.getCurrentYear();
-      }
+      this.setCalendarValues();
     }
   }
 
@@ -45,5 +43,15 @@ export class DatePickerComponent {
   setDate(date: string) {
     this.toggleCalendar();
     this.store.dispatch(updateTask({ taskId: this.id, values: { date } }))
+  }
+
+  private setCalendarValues() {
+    if (this.date) {
+      [this.year, this.month, this.day] = this.date.split('-').map(string => Number(string));
+    } else {
+      this.day = null
+      this.month = this.calendarService.getCurrentMonth();
+      this.year = this.calendarService.getCurrentYear();
+    }
   }
 }

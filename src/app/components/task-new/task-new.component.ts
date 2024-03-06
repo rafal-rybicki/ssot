@@ -14,6 +14,7 @@ import { v4 as uuid } from 'uuid';
 })
 export class TaskNewComponent {
   @Input() projectId?: string;
+  @Input() date?: string;
   showEditor = false;
 
   constructor(private store: Store) {}
@@ -27,7 +28,7 @@ export class TaskNewComponent {
       subtasks: values.subtasks!,
       completedSubtasks: 0,
       content: values.content!,
-      date: '2024-3-7',
+      date: values.date ? values.date : this.date,
       duration: 5,
       id: uuid(),
       isCompleted: false,

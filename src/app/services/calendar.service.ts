@@ -1,9 +1,27 @@
 import { Injectable } from '@angular/core';
+import { Today } from '../models/today.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CalendarService {
+  getToday(): Today {
+    const day = this.getCurrentDay();
+    const month = this.getCurrentMonth();
+    const year = this.getCurrentYear();
+
+    return {
+      date: `${year}-${month}-${day}`,
+      day,
+      month: this.getMonthName(month),
+      year
+    }
+  }
+
+  getCurrentDay(): number {
+    return new Date().getDate();
+  }
+
   getCurrentMonth(): number {
     return new Date().getMonth() + 1;
   }
