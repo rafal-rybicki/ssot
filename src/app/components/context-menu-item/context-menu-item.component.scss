@@ -4,6 +4,7 @@ li {
     cursor: pointer;
     display: flex;
     align-items: center;
+    min-width: max-content;
 
     &:hover {
         background-color: var(--secondary);

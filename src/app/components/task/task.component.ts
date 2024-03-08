@@ -5,12 +5,16 @@ import { deleteTask, updateTask } from '../../store/tasks/tasks.actions';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { TaskEditorComponent } from '../task-editor/task-editor.component';
 import { Task } from '../../models/task.model';
-import { DatePickerComponent } from '../date-picker/date-picker.component';
+import { TaskContextMenuComponent } from './task-context-menu/task-context-menu.component';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [TaskEditorComponent, IconButtonComponent, DatePickerComponent],
+  imports: [
+    TaskEditorComponent,
+    IconButtonComponent,
+    TaskContextMenuComponent
+  ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
 })
@@ -52,10 +56,6 @@ export class TaskComponent {
 
   showDescription() {
     alert('there will be modal with description');
-  }
-
-  delete() {
-    this.store.dispatch(deleteTask({ taskId: this.id }));
   }
 
   update(values: Partial<Task>) {

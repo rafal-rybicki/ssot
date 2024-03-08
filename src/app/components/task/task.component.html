@@ -21,17 +21,6 @@
             [{{ date }}]
         }
     </p>
-    <app-date-picker [date]="date" [id]="id" (update)="update($event)" />
-    <app-icon-button
-        [height]="27"
-        [fontSize]="15"
-        icon="pen"
-        (onClick)="toggleEditor()"
-    />
-    <app-icon-button
-        [height]="27"
-        [fontSize]="15"
-        icon="trash3"
-        (onClick)="delete()"
-    />
+    <!-- <app-date-picker [date]="date" [id]="id" (update)="update($event)" />  -->
+    <app-task-context-menu [id]="id" (openEditor)="toggleEditor()"/>
 }
