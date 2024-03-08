@@ -1,4 +1,4 @@
-import { createFeature, createReducer, on } from '@ngrx/store';
+import { createFeature, createReducer, createSelector, on } from '@ngrx/store';
 import { Task } from '../../models/task.model';
 import { TasksApiActions } from './tasks-api.actions';
   
@@ -24,11 +24,28 @@ export const tasksFeature = createFeature({
             TasksApiActions.taskUpdatedSuccess,
             (state, { task }) => [...state.map((t) => t.id === task.id ? task : t)]
         )
-    )
+    ),
+    extraSelectors: ({ selectTasksState }) => {
+        const selectTasksBySectionId = createSelector(
+            selectTasksState,
+            (tasks) => tasks.reduce((acc: any, task: Task) => {
+                if(task.sectionId) {
+                    if (acc[task.sectionId]) {
+                        acc[task.sectionId].push(task)
+                    } else {
+                        acc[task.sectionId] = [task]
+                    }
+                }
+                return acc;
+            }, {})
+        )
+        return { selectTasksBySectionId }
+    }
 })
 
 export const {
     name,
     reducer,
     selectTasksState,
+    selectTasksBySectionId,
 } = tasksFeature;

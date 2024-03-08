@@ -1,3 +1,4 @@
+import { Section } from "./section.model";
 import { View } from "./view.model";
 
 export interface Project {
@@ -9,5 +10,6 @@ export interface Project {
     name: string;
     ownerId: string; 
     order: number;
+    sections: Section[];
     view: View; 
 }

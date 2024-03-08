@@ -1,0 +1,16 @@
+@if (id !== projectId) {
+    <h2>{{ name }}</h2>
+}
+
+@for (task of tasks$ | async; track task.id) {
+    <app-task
+        [date]="task.date"
+        [subtasks]="task.subtasks || 0"
+        [completedSubtasks]="task.completedSubtasks || 0"  
+        [content]="task.content"
+        [isCompleted]="task.isCompleted"
+        [id]="task.id"
+    />
+}
+
+<app-task-new [projectId]="projectId" [sectionId]="id"/>

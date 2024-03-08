@@ -1,19 +1,16 @@
 import { Component, inject } from '@angular/core';
-
-import { TaskComponent } from '../../components/task/task.component';
 import { CommonModule } from '@angular/common';
-import { TaskNewComponent } from '../../components/task-new/task-new.component';
 import { select, Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
-import { selectTasksState } from '../../store/tasks/tasks.feature';
-import { map, mergeMap, Observable } from 'rxjs';
+import { mergeMap } from 'rxjs';
 import { selectProjectsState } from '../../store/projects/projects.feature';
-import { Task } from '../../models/task.model';
+import { Section } from '../../models/section.model';
+import { SectionComponent } from './section/section.component';
 
 @Component({
   selector: 'app-project-page',
   standalone: true,
-  imports: [CommonModule, TaskComponent, TaskNewComponent],
+  imports: [CommonModule, SectionComponent],
   templateUrl: './project-page.component.html',
   styleUrl: './project-page.component.scss',
   host: {
@@ -25,22 +22,17 @@ export class ProjectPageComponent {
   private route = inject(ActivatedRoute);
 
   name!: string;
-  id!: string;
-  tasks$!: Observable<Task[]>;
+  sections!: Section[];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.id = params['id'];
-
       this.store.pipe(
         select(selectProjectsState),
-        mergeMap(projects => projects.filter(project => project.id === this.id))
-      ).subscribe(project => this.name = project.name)
-
-      this.tasks$ = this.store.pipe(
-        select(selectTasksState),
-        map(tasks => tasks.filter(task => task.projectId === this.id))
-      )
+        mergeMap(projects => projects.filter(project => project.id === params['id']))
+      ).subscribe(project => {
+        this.name = project.name;
+        this.sections = project.sections;
+      })
     })
   }
 }

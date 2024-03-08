@@ -47,6 +47,15 @@ export class ProjectEditorComponent {
       name: this.taskForm.value.name!,
       order: 0,
       ownerId: '1',
+      sections: [
+       {
+        name: 'default',
+        id: uuid(),
+        isOpen: true,
+        order: 1,
+        projectId: id
+       }
+      ],
       view: View.List,
     }
 

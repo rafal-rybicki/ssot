@@ -24,6 +24,29 @@
       "name": "Project 1",
       "ownerId": "1",
       "order": 1,
+      "sections": [
+        {
+          "id": "1",
+          "name": "default section",
+          "order": 0,
+          "projectId": "1",
+          "isOpen": true
+        },
+        {
+          "id": "10",
+          "name": "section",
+          "order": 1,
+          "projectId": "1",
+          "isOpen": true
+        },
+        {
+          "id": "11",
+          "name": "section2",
+          "order": 2,
+          "projectId": "1",
+          "isOpen": true
+        }
+      ],
       "view": "list"
     },
     {
@@ -34,6 +57,15 @@
       "name": "Project 2",
       "ownerId": "1",
       "order": 2,
+      "sections": [
+        {
+          "id": "2",
+          "name": "default section",
+          "order": 0,
+          "projectId": "2",
+          "isOpen": true
+        }
+      ],
       "view": "list"
     },
     {
@@ -44,6 +76,15 @@
       "name": "Project 3",
       "ownerId": "1",
       "order": 3,
+      "sections": [
+        {
+          "id": "3",
+          "name": "default section",
+          "order": 0,
+          "projectId": "3",
+          "isOpen": true
+        }
+      ],
       "view": "list"
     },
     {
@@ -54,6 +95,15 @@
       "name": "Project 4",
       "ownerId": "1",
       "order": 4,
+      "sections": [
+        {
+          "id": "4",
+          "name": "default section",
+          "order": 0,
+          "projectId": "4",
+          "isOpen": true
+        }
+      ],
       "view": "list"
     }
   ],
@@ -79,50 +129,23 @@
   ],
   "tasks": [
     {
-      "completedSubtasks": 5,
-      "content": "task2",
-      "date": "2024-3-6",
+      "completedSubtasks": 2,
+      "content": "task",
+      "date": "",
       "duration": 5,
       "id": "2",
-      "isCompleted": true,
+      "isCompleted": false,
       "isTimeSet": false,
       "ownerId": "1",
       "order": 2,
       "priority": false,
       "projectId": "1",
+      "sectionId": "1",
       "subtasks": 5
     },
     {
-      "completedSubtasks": 4,
-      "content": "task 3",
-      "date": "2024-3-6",
-      "duration": 5,
-      "id": "3",
-      "isCompleted": true,
-      "isTimeSet": false,
-      "ownerId": "1",
-      "order": 3,
-      "priority": false,
-      "projectId": "1",
-      "subtasks": 4
-    },
-    {
-      "completedSubtasks": 4,
-      "content": "task 4",
-      "date": "2024-3-7",
-      "duration": 5,
-      "id": "4",
-      "isCompleted": false,
-      "isTimeSet": false,
-      "ownerId": "1",
-      "order": 3,
-      "priority": false,
-      "projectId": "1",
-      "subtasks": 5
-    },
-    {
-      "content": "task 5 (from project 2)",
-      "date": "2024-3-7",
+      "content": "today task from project 2",
+      "date": "2024-3-8",
       "duration": 5,
       "id": "5",
       "isCompleted": false,
@@ -130,20 +153,9 @@
       "ownerId": "1",
       "order": 5,
       "priority": false,
-      "projectId": "2"
-    },
-    {
-      "id": "f5048565-8393-42e1-9eec-e8c98b61378e",
-      "subtasks": 0,
-      "completedSubtasks": 0,
-      "content": "test",
-      "date": "2024-3-7",
-      "duration": 5,
-      "isCompleted": false,
-      "isTimeSet": false,
-      "order": 0,
-      "ownerId": "1",
-      "priority": false
+      "projectId": "2",
+      "sectionId": "2",
+      "subtasks": 0
     },
     {
       "id": "c493a63c-f384-42a8-955b-422e007f4260",
@@ -157,7 +169,37 @@
       "ownerId": "1",
       "priority": false,
       "projectId": "3",
+      "sectionId": "3",
       "date": "2024-3-7"
+    },
+    {
+      "id": "8adeefed-bc97-49d1-94eb-4a1c88b61808",
+      "subtasks": 0,
+      "completedSubtasks": 0,
+      "content": "today task",
+      "duration": 5,
+      "isCompleted": false,
+      "isTimeSet": false,
+      "order": 0,
+      "ownerId": "1",
+      "priority": false,
+      "projectId": "1",
+      "sectionId": "11",
+      "date": "2024-3-8"
+    },
+    {
+      "id": "50a9c9e8-ed9c-49c6-823a-4d1844d84318",
+      "subtasks": 0,
+      "completedSubtasks": 0,
+      "content": "some task",
+      "duration": 5,
+      "isCompleted": false,
+      "isTimeSet": false,
+      "order": 0,
+      "ownerId": "1",
+      "priority": false,
+      "projectId": "1",
+      "sectionId": "10"
     }
   ],
   "users": [

@@ -1,14 +1,10 @@
 <h1>{{ name }}</h1>
 
-@for (task of tasks$ | async; track $index) {
-    <app-task
-        [date]="task.date"
-        [subtasks]="task.subtasks || 0"
-        [completedSubtasks]="task.completedSubtasks || 0"  
-        [content]="task.content"
-        [isCompleted]="task.isCompleted"
-        [id]="task.id"
+@for (section of sections; track section.id) {
+    <app-section 
+        [name]="section.name"
+        [id]="section.id"
+        [isOpen]="section.isOpen"
+        [projectId]="section.projectId"
     />
 }
-
-<app-task-new [projectId]="id"/>

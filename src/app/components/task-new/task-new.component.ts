@@ -13,8 +13,9 @@ import { v4 as uuid } from 'uuid';
   styleUrl: './task-new.component.scss'
 })
 export class TaskNewComponent {
-  @Input() projectId?: string;
   @Input() date?: string;
+  @Input() projectId?: string;
+  @Input() sectionId?: string;
   showEditor = false;
 
   constructor(private store: Store) {}
@@ -36,7 +37,8 @@ export class TaskNewComponent {
       order: 0,
       ownerId: '1',
       priority: false,
-      projectId: this.projectId
+      projectId: this.projectId,
+      sectionId: this.sectionId
     }
     
     this.store.dispatch(addTask({ task }))
