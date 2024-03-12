@@ -34,8 +34,10 @@ export class TaskContextMenuComponent {
   }
 
   delete() {
-    this.toggle();
-    this.store.dispatch(deleteTask({ taskId: this.id }));
+    if (confirm('Are you sure?')) {
+      this.toggle();
+      this.store.dispatch(deleteTask({ taskId: this.id }));
+    }
   }
 
   toggle() {
