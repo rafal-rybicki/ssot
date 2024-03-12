@@ -2,18 +2,18 @@ import { Component, HostBinding, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { updateTask } from '../../store/tasks/tasks.actions';
 
-import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { TaskEditorComponent } from '../task-editor/task-editor.component';
 import { Task } from '../../models/task.model';
 import { TaskContextMenuComponent } from './task-context-menu/task-context-menu.component';
 import { DatePickerComponent } from '../date-picker/date-picker.component';
+import { TaskCheckboxComponent } from './task-checkbox/task-checkbox.component';
 
 @Component({
   selector: 'app-task',
   standalone: true,
   imports: [
+    TaskCheckboxComponent,
     TaskEditorComponent,
-    IconButtonComponent,
     TaskContextMenuComponent,
     DatePickerComponent
   ],
@@ -36,26 +36,6 @@ export class TaskComponent {
   showDatePicker = false;
 
   constructor(private store: Store) {}
-
-  changeCompletion() {
-    if (!this.isCompleted) {
-      if (this.hasSubtasks && !this.allSubtasksAreCompleted) {
-        this.completedSubtasks = this.completedSubtasks + 1;
-      } 
-      
-      if (!this.hasSubtasks || this.allSubtasksAreCompleted) {
-        this.isCompleted = true;
-      }
-    } else {
-      this.isCompleted = false;
-      this.completedSubtasks = 0;
-    }
-
-    this.dispatchValues({
-      isCompleted: this.isCompleted,
-      completedSubtasks: this.completedSubtasks
-    });
-  }
 
   showDescription() {
     alert('there will be modal with description');
@@ -85,10 +65,6 @@ export class TaskComponent {
 
   get hasSubtasks(): boolean {
     return this.subtasks > 0;
-  }
-
-  private get allSubtasksAreCompleted(): boolean {
-    return this.completedSubtasks === this.subtasks;
   }
 
   private dispatchValues(values: Partial<Task>) {

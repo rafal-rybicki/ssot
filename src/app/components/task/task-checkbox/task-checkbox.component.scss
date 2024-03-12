@@ -1,0 +1,7 @@
+i {
+    margin: 0 5px 0 1px;
+
+    &.completed {
+        color: var(--success);
+    }
+}

@@ -6,7 +6,12 @@
         (save)="update($event)"
     />
 } @else {
-    <i (click)="changeCompletion()" class="bi {{ isCompleted ? 'bi-check-square-fill' : 'bi-square' }} completion"></i>
+    <app-task-checkbox
+        [id]="id"
+        [isCompleted]="isCompleted"
+        [subtasks]="subtasks"
+        [completedSubtasks]="completedSubtasks"
+    />
 
     <p (click)="showDescription()" class="content">
         {{ content }}
