@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { IconButtonComponent } from '../../icon-button/icon-button.component';
 import { CalendarService } from '../../../services/calendar.service';
+import { CalendarDate } from '../../../models/calendar-date.model';
 
 @Component({
   selector: 'app-calendar',
@@ -12,26 +13,22 @@ import { CalendarService } from '../../../services/calendar.service';
 export class CalendarComponent {
   private calendarService = inject(CalendarService);
 
-  @Input() initialDay: number | null = null;
-  @Input({ required: true }) initialMonth!: number;
-  @Input({ required: true }) initialYear!: number;
+  @Input({ required: true }) date!: string;
   @Output() onSelect = new EventEmitter<string>();
   
   selectedDay!: number | null;
   selectedMonth!: number;
   selectedYear!: number;
-  days!: number[];
+  days!: CalendarDate[];
   monthName!: string;
   offset!: number;
   
-ngOnInit(){
-  this.selectedDay = this.initialDay;
-  this.selectedMonth = this.initialMonth;
-  this.selectedYear = this.initialYear;
-  this.days = this.calendarService.getDaysOfMonth(this.selectedYear, this.selectedMonth);
-  this.monthName = this.calendarService.getMonthName(this.selectedMonth);
-  this.offset = this.calendarService.getOffset(this.selectedYear, this.selectedMonth) * 30;
-}
+  ngOnInit(){
+    this.reset();
+    this.days = this.calendarService.getDaysOfMonth(this.selectedYear, this.selectedMonth);
+    this.monthName = this.calendarService.getMonthName(this.selectedMonth);
+    this.offset = this.calendarService.getOffset(this.selectedYear, this.selectedMonth) * 30;
+  }
   
   next() {
     if (this.selectedMonth == 12) {
@@ -56,19 +53,17 @@ ngOnInit(){
   }
 
   reset() {
-    this.selectedDay = this.initialDay;
-    this.selectedMonth = this.initialMonth;
-    this.selectedYear = this.initialYear;
+    [
+      this.selectedYear,
+      this.selectedMonth,
+      this.selectedDay
+    ] = this.date!.split('-').map(string => Number(string));
+
     this.setMonth();
   }
 
-  selectDay(day: number) {
-    if (this.selectedDay === day) {
-      this.onSelect.emit('')
-    } else {
-      const selectedDate = `${this.selectedYear}-${this.selectedMonth}-${day}`
-      this.onSelect.emit(selectedDate)
-    }
+  selectDate(date: string) {
+    this.onSelect.emit(date)
   }
 
   private setMonth() {

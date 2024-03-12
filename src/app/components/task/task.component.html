@@ -21,6 +21,9 @@
             [{{ date }}]
         }
     </p>
-    <!-- <app-date-picker [date]="date" [id]="id" (update)="update($event)" />  -->
-    <app-task-context-menu [id]="id" (openEditor)="toggleEditor()"/>
+    <app-task-context-menu [id]="id" (openEditor)="toggleEditor()" (openDatePicker)="toggleDatePicker()" />
+    
+    @if (showDatePicker) {
+        <app-date-picker [date]="date" (onSave)="setDate($event)" /> 
+    }
 }

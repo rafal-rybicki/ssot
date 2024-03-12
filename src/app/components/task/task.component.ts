@@ -1,11 +1,12 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { deleteTask, updateTask } from '../../store/tasks/tasks.actions';
+import { updateTask } from '../../store/tasks/tasks.actions';
 
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { TaskEditorComponent } from '../task-editor/task-editor.component';
 import { Task } from '../../models/task.model';
 import { TaskContextMenuComponent } from './task-context-menu/task-context-menu.component';
+import { DatePickerComponent } from '../date-picker/date-picker.component';
 
 @Component({
   selector: 'app-task',
@@ -13,7 +14,8 @@ import { TaskContextMenuComponent } from './task-context-menu/task-context-menu.
   imports: [
     TaskEditorComponent,
     IconButtonComponent,
-    TaskContextMenuComponent
+    TaskContextMenuComponent,
+    DatePickerComponent
   ],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss'
@@ -27,10 +29,11 @@ export class TaskComponent {
   @Input({ required: true }) id!: string;
   @Input({ required: true }) isCompleted!: boolean;
   @Input() completedSubtasks: number = 0;
-  @Input() date?: string | null;
+  @Input() date?: string;
   @Input() subtasks: number = 0;
 
   isEdited = false;
+  showDatePicker = false;
 
   constructor(private store: Store) {}
 
@@ -65,6 +68,15 @@ export class TaskComponent {
 
     this.dispatchValues(values);
     this.toggleEditor();
+  }
+
+  setDate(date: string) {
+    this.toggleDatePicker();
+    this.dispatchValues({ date });
+  }
+
+  toggleDatePicker() {
+    this.showDatePicker = !this.showDatePicker;
   }
 
   toggleEditor() {

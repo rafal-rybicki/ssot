@@ -1,15 +1,7 @@
-<app-icon-button
-    [height]="27"
-    [fontSize]="15"
-    icon="calendar3"
-    (onClick)="toggleCalendar()"
+<app-calendar
+    [date]="selectedDate"
+    (onSelect)="setDate($event)"
 />
 
-@if (showCalendar) {
-    <app-calendar
-        [initialDay]="day"
-        [initialMonth]="month"
-        [initialYear]="year"
-        (onSelect)="setDate($event)"
-    />
-}
+<button (click)="clear()" class="clear-btn">Clear</button>
+<button (click)="save()" class="save-btn">Save</button>

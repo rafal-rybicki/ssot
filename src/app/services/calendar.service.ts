@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Today } from '../models/today.model';
+import { CalendarDate } from '../models/calendar-date.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +31,13 @@ export class CalendarService {
     return new Date().getFullYear();
   }
 
-  getDaysOfMonth(year: number, month: number): number[] {
+  getDaysOfMonth(year: number, month: number): CalendarDate[] {
     const daysInMonth = this.getDaysInMonth(year, month);
 
-    return Array(daysInMonth).fill(0).map((x,i) => i + 1);
+    return Array(daysInMonth).fill(0).map((x,i) => ({
+      day: i + 1,
+      value: `${year}-${month}-${i+1}`
+    }));
   }
 
   getMonthName(month: number): string {

@@ -3,12 +3,11 @@ import { IconButtonComponent } from '../../icon-button/icon-button.component';
 import { ContextMenuItemComponent } from '../../context-menu-item/context-menu-item.component';
 import { Store } from '@ngrx/store';
 import { deleteTask } from '../../../store/tasks/tasks.actions';
-import { DatePickerComponent } from '../../date-picker/date-picker.component';
 
 @Component({
   selector: 'app-task-context-menu',
   standalone: true,
-  imports: [IconButtonComponent, ContextMenuItemComponent, DatePickerComponent],
+  imports: [IconButtonComponent, ContextMenuItemComponent],
   templateUrl: './task-context-menu.component.html',
   styleUrl: './task-context-menu.component.scss',
   host: {
@@ -20,13 +19,13 @@ export class TaskContextMenuComponent {
 
   @Input({ required: true }) id!: string;
   @Output() openEditor = new EventEmitter<void>();
+  @Output() openDatePicker = new EventEmitter<void>();
 
   isOpen = false;
-  showDatePicker = false;
 
-  delete() {
+  changeDate() {
     this.toggle();
-    this.store.dispatch(deleteTask({ taskId: this.id }));
+    this.openDatePicker.emit();
   }
 
   edit() {
@@ -34,9 +33,9 @@ export class TaskContextMenuComponent {
     this.openEditor.emit();
   }
 
-  toggleDatePicker() {
-    this.showDatePicker = !this.showDatePicker;
+  delete() {
     this.toggle();
+    this.store.dispatch(deleteTask({ taskId: this.id }));
   }
 
   toggle() {

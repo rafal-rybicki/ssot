@@ -144,20 +144,6 @@
       "subtasks": 5
     },
     {
-      "content": "today task from project 2",
-      "date": "2024-3-8",
-      "duration": 5,
-      "id": "5",
-      "isCompleted": false,
-      "isTimeSet": false,
-      "ownerId": "1",
-      "order": 5,
-      "priority": false,
-      "projectId": "2",
-      "sectionId": "2",
-      "subtasks": 0
-    },
-    {
       "id": "8adeefed-bc97-49d1-94eb-4a1c88b61808",
       "subtasks": 0,
       "completedSubtasks": 0,
@@ -184,7 +170,8 @@
       "ownerId": "1",
       "priority": false,
       "projectId": "1",
-      "sectionId": "10"
+      "sectionId": "10",
+      "date": ""
     }
   ],
   "users": [

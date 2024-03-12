@@ -32,13 +32,13 @@
 
     <span class="offset" [style.width.px]="offset"></span>
 
-    @for (day of days; track $index) {
+    @for (d of days; track d.value) {
         <button
             class="day"
-            [class.selected]="day === selectedDay && initialMonth === selectedMonth"
-            (click)="selectDay(day)"
+            [class.selected]="d.value === date"
+            (click)="selectDate(d.value)"
         >
-            {{ day }}
+            {{ d.day }}
         </button>
     }
 </div>
