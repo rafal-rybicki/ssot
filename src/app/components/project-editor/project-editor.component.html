@@ -1,6 +1,6 @@
 <form
     class="editor"
-    [formGroup]="taskForm"
+    [formGroup]="projectForm"
     (ngSubmit)="onSubmit()"
 >
     <div class="name">
@@ -25,7 +25,7 @@
         Cancel
     </button>
 
-    <button class="btn-submit" type="submit" [disabled]="!taskForm.valid">
+    <button class="btn-submit" type="submit" [disabled]="!projectForm.valid">
         Save
     </button>
 </form>

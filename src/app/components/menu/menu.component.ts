@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, computed, inject } from '@angular/core';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { IconButtonComponent } from '../icon-button/icon-button.component';
 import { Store } from '@ngrx/store';
@@ -6,6 +6,7 @@ import { selectActiveProjects } from '../../store/projects/projects.feature';
 import { CommonModule } from '@angular/common';
 import { AreaComponent } from './area/area.component';
 import { selectAreasState } from '../../store/areas/areas.feature';
+import { AuthService } from '../../auth/auth.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,6 +17,9 @@ import { selectAreasState } from '../../store/areas/areas.feature';
 })
 export class MenuComponent {
   @HostBinding('class.open') get class() { return this.isOpen };
+
+  private auth = inject(AuthService);
+  
   areas$ = this.store.select(selectAreasState);
   projects$ = this.store.select(selectActiveProjects);
   isOpen = true;
@@ -34,5 +38,9 @@ export class MenuComponent {
   openAreaEditor() {
     const editor = document.querySelector('app-area-editor') as HTMLElement;
     editor.style.display = 'block'
+  }
+
+  logout() {
+    this.auth.logout();
   }
 }

@@ -18,7 +18,7 @@ export class ProjectEditorComponent {
   @Input() currentName: string = '';
   @Input() currentView: string = 'list';
 
-  public taskForm = new FormGroup({
+  public projectForm = new FormGroup({
     color: new FormControl(this.currentColor, [Validators.required]),
     name: new FormControl(this.currentName, [Validators.required]),
     view: new FormControl(this.currentView, [Validators.required])
@@ -27,7 +27,7 @@ export class ProjectEditorComponent {
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit() {
-    this.taskForm.patchValue({
+    this.projectForm.patchValue({
       color: this.currentColor,
       name: this.currentName,
       view: this.currentView
@@ -41,10 +41,10 @@ export class ProjectEditorComponent {
   onSubmit() {
     const id = uuid();
     const project = {
-      color: this.taskForm.value.color!,
+      color: this.projectForm.value.color!,
       id,
       isActive: true,
-      name: this.taskForm.value.name!,
+      name: this.projectForm.value.name!,
       order: 0,
       ownerId: '1',
       sections: [
@@ -61,7 +61,7 @@ export class ProjectEditorComponent {
 
     this.store.dispatch(addProject({ project }))
 
-    this.taskForm.patchValue({
+    this.projectForm.patchValue({
       color: 'black',
       name: '',
       view: 'list'
