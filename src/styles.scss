@@ -56,6 +56,41 @@ li {
     list-style: none;
 }
 
+.auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    
+    form {
+        width: 100%;
+        max-width: 400px;
+        margin: 50px 0 20px;
+    
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            
+            input {
+                margin: 10px 0 15px;
+                padding: 5px;
+            }
+        }
+    
+        button {
+            background-color: var(--accent);
+            width: 100%;
+            font-size: 16px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    
+        .errors {
+            color: red;
+        }
+    }
+}
+
 .main-container {
     display: block;
 
