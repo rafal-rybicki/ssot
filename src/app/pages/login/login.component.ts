@@ -20,14 +20,16 @@ export class LoginComponent {
   msg = '';
 
   loginForm = this.formBuilder.nonNullable.group({
-    email: ['', Validators.required],
+    username: ['', Validators.required],
     password: ['', Validators.required]
   });
 
   onSubmit() {
     this.auth.login(
-      this.loginForm.controls.email.value,
+      this.loginForm.controls.username.value,
       this.loginForm.controls.password.value
-    ).subscribe(msg => this.msg = msg)
+    ).subscribe(msg => {
+      this.msg = msg
+    })
   }
 }
