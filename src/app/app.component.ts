@@ -1,10 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MenuComponent } from './components/menu/menu.component';
 import { RouterOutlet } from '@angular/router';
-import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { ThemeService } from './services/theme.service';
-import { ProjectEditorComponent } from './components/project-editor/project-editor.component';
-import { AreaEditorComponent } from './components/area-editor/area-editor.component';
 import { AuthService } from './auth/auth.service';
 
 @Component({
@@ -12,9 +9,6 @@ import { AuthService } from './auth/auth.service';
   standalone: true,
   imports: [
     MenuComponent,
-    ThemeSwitcherComponent,
-    AreaEditorComponent,
-    ProjectEditorComponent,
     RouterOutlet
   ],
   templateUrl: './app.component.html',

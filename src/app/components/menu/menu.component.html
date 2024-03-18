@@ -1,59 +1,49 @@
-<nav>
-    <app-icon-button icon="list" (onClick)="toggle()" />
+<nav class="main-menu">
     <ul>
-        <app-menu-item
-            cssClass="inbox"
-            path="inbox"
-            text="Inbox"
-        />
-        <app-menu-item
-            cssClass="calendar3-event"
-            path="today"
-            text="Today"
-        />
-        <app-menu-item
-            cssClass="calendar3-week"
-            path="week"
-            text="Week"
-        />
-        <app-menu-item
-            cssClass="calendar3"
-            path="upcoming"
-            text="Upcoming"
-        />
-        <app-menu-item
-            cssClass="rocket-takeoff"
-            path="habits"
-            text="Habits"
-        />
+        <li>
+            <a routerLink="/inbox" routerLinkActive="active">
+                <i class="bi bi-inbox"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/today" routerLinkActive="active">
+                <i class="bi bi-calendar3-event"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/priorities" routerLinkActive="active">
+                <i class="bi bi-star-fill"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/calendar" routerLinkActive="active">
+                <i class="bi bi-calendar3"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/habits" routerLinkActive="active">
+                <i class="bi bi-rocket-takeoff"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/projects" routerLinkActive="active">
+                <i class="bi bi-check-square"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/notes" routerLinkActive="active">
+                <i class="bi bi-journal-text"></i>
+            </a>
+        </li>
+        <li class="settings">
+            <a routerLink="/settings" routerLinkActive="active">
+                <i class="bi bi-gear"></i>
+            </a>
+        </li>
+        <li class="logout">
+            <a routerLink="/logout" routerLinkActive="active" (click)="logout()">
+                <i class="bi bi-door-closed"></i>
+            </a>
+        </li>
     </ul>
-    <ul>
-        @for (project of projects$ | async; track $index) {
-            <app-menu-item 
-                color="{{ project.color }}"
-                cssClass="circle-fill project-icon"
-                path="project/{{ project.id }}"
-                text="{{ project.name }}"
-            />
-        }
-    </ul>
-    @for (area of areas$ | async; track $index) {
-        <app-area
-            [name]="area.name"
-            [id]="area.id"
-            [isOpen]="area.isOpen"
-        />
-    }
-    <br>
-    <button (click)="openAreaEditor()">Add new area</button>
-    <br>
-    <br>
-    <button (click)="openProjectEditor()">Add new project</button>
-    <br>
-    <br>
-    <button (click)="logout()">Logout</button>
-    <br>
-    <br>
 </nav>
-
-<div (click)="toggle()" class="overlay"></div>
