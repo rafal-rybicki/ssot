@@ -1,16 +1,33 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Area } from '../models/area.model';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment.development';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AreaService {
-  url = environment.baseUrl + '/areas';
+  // private auth = inject(AuthService);
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  private url = '/areas';
+  // private headers = new HttpHeaders({
+  //   'Authorization': 'Bearer ' + this.auth.accessToken()
+  // });
+
+  // getAreas(): Observable<Area[]> {
+  //   return this.http.get<Area[]>(this.url, {
+  //     headers: this.headers
+  //   });
+  // }
+
+  // createArea(area: Area): Observable<Area> {
+  //   console.log(area)
+  //   return this.http.post<Area>(this.url, area, {
+  //     headers: this.headers
+  //   });
+  // }
 
   getAreas(): Observable<Area[]> {
     return this.http.get<Area[]>(this.url);

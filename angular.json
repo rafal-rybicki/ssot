@@ -76,8 +76,7 @@
             }
           },
           "options": {
-            "buildTarget": "ssot:build",
-            "proxyConfig": "src/proxy.conf.json"
+            "buildTarget": "ssot:build"
           },
           "defaultConfiguration": "development"
         },

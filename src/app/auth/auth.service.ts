@@ -11,11 +11,12 @@ export class AuthService {
   private http = inject(HttpClient);
   private router = inject(Router);
 
-  private accessToken = signal<string>('');
+  private _accessToken = signal<string>('find backend developer');
   private refreshToken = signal<string>('');
-  // private isAuthenticated = signal<boolean>(false);
 
-  isLoggedIn = computed(() => !!this.accessToken());
+  private url = 'http://localhost:3000/users' ;
+
+  isLoggedIn = computed(() => !!this._accessToken());
 
   authenticate = effect(() => {
     if (this.isLoggedIn()) {
@@ -31,22 +32,37 @@ export class AuthService {
     this.setTokens(access, refresh)
   }
 
-  login(username: string, password: string): Observable<string> {
-    return this.http.post<AuthToken>('/auth/token/', {
-      username,
-      password
-    }).pipe(
+  login(email: string, password: string): Observable<string> {
+    const query = `?email=${email}&password=${password}`;
+
+    return this.http.get<User[]>(this.url+ query).pipe(
       map(response => {
-        this.setTokens(response.access, response.refresh)
-        return 'OK';
-      }),
-      catchError(err => {
-        return of(err.error.detail)
+        const user = response[0];
+
+        if(user) {  
+          this.setTokens('access', 'refresh')
+          return 'OK';
+        } else {
+          return 'Invalid password or email';
+        }
       })
     )
-  }
 
-  logout() {
+    // return this.http.post<AuthToken>('/auth/token/', {
+    //   username,
+    //   password
+    // }).pipe(
+    //   map(response => {
+    //     this.setTokens(response.access, response.refresh)
+    //     return 'OK';
+    //   }),
+    //   catchError(err => {
+    //     return of(err.error.detail)
+    //   })
+    // )
+  }  
+
+    logout() {
     this.setTokens('', '')
   }
 
@@ -72,6 +88,10 @@ export class AuthService {
         // })
       })
     )
+  }
+
+  get accessToken() {
+    return this._accessToken;
   }
 
   private setTokens(access: string, refresh: string) {

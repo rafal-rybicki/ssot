@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { addArea } from '../../store/areas/areas.actions';
 import { v4 as uuid } from 'uuid';
+import { addArea } from '../../store/areas/areas.actions';
 
 @Component({
   selector: 'app-area-editor',
@@ -37,9 +37,9 @@ export class AreaEditorComponent {
       name: this.areaForm.value.name!,
       order: 0,
       ownerId: '1'
-    }
+    };
 
-    this.store.dispatch(addArea({ area }))
+    this.store.dispatch(addArea({ area }));
 
     this.areaForm.patchValue({
       name: ''
