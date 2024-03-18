@@ -1,5 +1,5 @@
 import { Section } from "./section.model";
-import { View } from "./view.model";
+import { View } from "../../../models/view.model";
 
 export interface Project {
     areaId?: string;

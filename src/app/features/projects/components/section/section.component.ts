@@ -1,8 +1,8 @@
 import { Component, Input, inject } from '@angular/core';
-import { TaskNewComponent } from '../../../components/task-new/task-new.component';
+import { TaskNewComponent } from '../../../../components/task-new/task-new.component';
 import { Store, select } from '@ngrx/store';
-import { selectTasksBySectionId } from '../../../store/tasks/tasks.feature';
-import { TaskComponent } from '../../../components/task/task.component';
+import { selectTasksBySectionId } from '../../../../store/tasks/tasks.feature';
+import { TaskComponent } from '../../../../components/task/task.component';
 import { CommonModule } from '@angular/common';
 import { map } from 'rxjs';
 

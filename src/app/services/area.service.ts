@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Area } from '../models/area.model';
+import { Area } from '../features/projects/models/area.model';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 

@@ -1,5 +1,5 @@
 import { createActionGroup, props } from '@ngrx/store';
-import { Area } from '../../models/area.model';
+import { Area } from '../../features/projects/models/area.model';
 
 export const AreasApiActions = createActionGroup({
     source: 'Areas API',

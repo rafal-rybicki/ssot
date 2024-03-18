@@ -7,10 +7,10 @@ import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
 import { areasFeature } from './store/areas/areas.feature';
-import { projectsFeature } from './store/projects/projects.feature';
+import { projectsFeature } from './features/projects/store/projects.feature';
 import { tasksFeature } from './store/tasks/tasks.feature';
 import { AreasEffects } from './store/areas/areas.effects';
-import { ProjectsEffects } from './store/projects/projects.effects';
+import { ProjectsEffects } from './features/projects/store/projects.effects';
 import { TasksEffects } from './store/tasks/tasks.effects';
 
 export const appConfig: ApplicationConfig = {

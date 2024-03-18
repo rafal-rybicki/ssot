@@ -3,21 +3,18 @@ import { CommonModule } from '@angular/common';
 import { select, Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap } from 'rxjs';
-import { selectProjectsState } from '../../store/projects/projects.feature';
+import { SectionComponent } from '../section/section.component';
 import { Section } from '../../models/section.model';
-import { SectionComponent } from './section/section.component';
+import { selectProjectsState } from '../../store/projects.feature';
 
 @Component({
-  selector: 'app-project-page',
+  selector: 'app-project',
   standalone: true,
   imports: [CommonModule, SectionComponent],
-  templateUrl: './project-page.component.html',
-  styleUrl: './project-page.component.scss',
-  host: {
-    '[class]': "'main-container'",
-  }
+  templateUrl: './project.component.html',
+  styleUrl: './project.component.scss'
 })
-export class ProjectPageComponent {
+export class ProjectComponent {
   private store = inject(Store);
   private route = inject(ActivatedRoute);
 
