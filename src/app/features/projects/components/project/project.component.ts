@@ -6,11 +6,13 @@ import { mergeMap } from 'rxjs';
 import { SectionComponent } from '../section/section.component';
 import { Section } from '../../models/section.model';
 import { selectProjectsState } from '../../store/projects.feature';
+import { MenuItemComponent } from '../menu-item/menu-item.component';
+import { AreaComponent } from '../area/area.component';
 
 @Component({
   selector: 'app-project',
   standalone: true,
-  imports: [CommonModule, SectionComponent],
+  imports: [CommonModule, SectionComponent, MenuItemComponent, AreaComponent],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss'
 })

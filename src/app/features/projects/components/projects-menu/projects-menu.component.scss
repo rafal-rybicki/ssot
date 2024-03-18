@@ -1,0 +1,50 @@
+:host {
+    nav {
+        z-index: 100;
+        position: relative;
+        width: 200px;
+        height: 100vh;
+        background-color: var(--secondary);
+        
+        ul {
+            z-index: 2;
+            position: relative;
+            padding: 10px;
+            background-color: inherit;
+        }
+    }
+}
+
+// @media (max-width: 767px) {
+//     :host.open {
+//         .overlay {
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             z-index: 99;
+//             background-color:black;
+//             opacity: 0.5;
+//             min-height: 100%;
+//             min-width: 100vw;
+//         }
+//     }
+// }
+
+// @media (min-width: 768px) {
+//     :host {
+//         position: relative;
+//         width: 270px;
+
+//         &.open {
+//             nav app-icon-button {
+//                 left: 290px;
+//             }
+//         }
+
+//         nav {
+//             .overlay {
+//                 display: none;
+//             }
+//         }
+//     }
+// }

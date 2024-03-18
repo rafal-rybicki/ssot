@@ -1,0 +1,19 @@
+<nav>
+    <ul>
+        @for (project of projects$ | async; track $index) {
+            <app-menu-item 
+                color="{{ project.color }}"
+                cssClass="circle-fill project-icon"
+                [path]="project.id"
+                text="{{ project.name }}"
+            />
+        }
+    </ul>
+    @for (area of areas$ | async; track $index) {
+        <app-area
+            [name]="area.name"
+            [id]="area.id"
+            [isOpen]="area.isOpen"
+        />
+    }
+</nav>
