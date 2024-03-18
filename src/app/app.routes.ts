@@ -6,10 +6,12 @@ import { RegisterComponent } from './pages/register/register.component';
 import { authGuard } from './auth/auth.guard';
 import { HabitsComponent } from './pages/habits/habits.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { InboxComponent } from './pages/inbox/inbox.component';
 
 
 export const routes: Routes = [
     { path: 'habits', component: HabitsComponent, canActivate: [authGuard] },
+    { path: 'inbox', component: InboxComponent, canActivate: [authGuard] },
     { path: 'login', component: LoginComponent },
     { path: 'project/:id', component: ProjectPageComponent, canActivate: [authGuard] },
     // { path: 'register', component: RegisterComponent, },
