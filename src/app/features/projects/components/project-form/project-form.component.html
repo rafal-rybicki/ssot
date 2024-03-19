@@ -1,23 +1,24 @@
 <form
     class="editor"
-    [formGroup]="projectForm"
+    [formGroup]="form"
     (ngSubmit)="onSubmit()"
 >
     <div class="name">
         <label for="name">Name</label>
-        <input autofocus type="text" formControlName="name" autocomplete="off"/>
+        <input autofocus type="text" formControlName="name" autocomplete="off" />
     </div>
 
     <div class="color">
         <label for="subtasks">Color</label>
-        <input type="color" name="color" formControlName="color" value="#ff0000"/>
+        <input type="color" name="color" formControlName="color" value="#ff0000" />
     </div>
 
     <div class="view">
         <label for="subtasks">View</label>
-        <select name="view" formControlName="view" >
-            <option value="list">List</option>
-            <option value="board">Board</option>
+        <select name="view" formControlName="view">
+            @for (view of views; track $index) {
+                <option value="{{view}}">{{view}}</option>
+            }
         </select>
     </div>
 
@@ -25,7 +26,7 @@
         Cancel
     </button>
 
-    <button class="btn-submit" type="submit" [disabled]="!projectForm.valid">
+    <button class="btn-submit" type="submit" [disabled]="!form.valid">
         Save
     </button>
 </form>
