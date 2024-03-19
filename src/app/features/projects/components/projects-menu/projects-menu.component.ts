@@ -1,10 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
-import { IconButtonComponent } from '../../../../components/icon-button/icon-button.component';
+import { IconButtonComponent } from '../../../../shared/components/icon-button/icon-button.component';
 import { AreaComponent } from '../area/area.component';
 import { Store } from '@ngrx/store';
-import { selectAreasState } from '../../../../store/areas/areas.feature';
+import { selectAreasState } from '../../store/areas.feature';
 import { selectActiveProjects } from '../../store/projects.feature';
 
 @Component({

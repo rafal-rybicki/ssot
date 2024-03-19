@@ -6,12 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideState, provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideEffects } from '@ngrx/effects';
-import { areasFeature } from './store/areas/areas.feature';
+import { areasFeature } from './features/projects/store/areas.feature';
 import { projectsFeature } from './features/projects/store/projects.feature';
-import { tasksFeature } from './store/tasks/tasks.feature';
-import { AreasEffects } from './store/areas/areas.effects';
+import { tasksFeature } from './features/tasks/store/tasks.feature';
+import { AreasEffects } from './features/projects/store/areas.effects';
 import { ProjectsEffects } from './features/projects/store/projects.effects';
-import { TasksEffects } from './store/tasks/tasks.effects';
+import { TasksEffects } from './features/tasks/store/tasks.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [

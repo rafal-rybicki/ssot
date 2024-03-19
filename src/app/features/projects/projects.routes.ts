@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { authGuard } from '../../auth/auth.guard';
 import { ProjectsComponent } from './projects.component';
 import { ProjectComponent } from './components/project/project.component';
+import { authGuard } from '../../core/guards/auth.guard';
 
 export const projectRoutes: Routes = [
     { 

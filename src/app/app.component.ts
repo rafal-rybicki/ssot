@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { MenuComponent } from './components/menu/menu.component';
+import { MenuComponent } from './core/components/menu/menu.component';
 import { RouterOutlet } from '@angular/router';
-import { ThemeService } from './services/theme.service';
-import { AuthService } from './auth/auth.service';
+import { ThemeService } from './core/services/theme.service';
+import { AuthService } from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',

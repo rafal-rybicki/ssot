@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { TodayComponent } from './pages/today/today.component';
-import { LoginComponent } from './pages/login/login.component';
-import { RegisterComponent } from './pages/register/register.component';
-import { authGuard } from './auth/auth.guard';
-import { HabitsComponent } from './pages/habits/habits.component';
-import { SettingsComponent } from './pages/settings/settings.component';
-import { InboxComponent } from './pages/inbox/inbox.component';
+import { authGuard } from './core/guards/auth.guard';
+import { TodayComponent } from './features/today/today.component';
+import { LoginComponent } from './features/login/login.component';
+import { RegisterComponent } from './features/register/register.component';
+import { HabitsComponent } from './features/habits/habits.component';
+import { SettingsComponent } from './features/settings/settings.component';
+import { InboxComponent } from './features/inbox/inbox.component';
 import { projectRoutes } from './features/projects/projects.routes';
 
 
