@@ -1,0 +1,7 @@
+<h1>Register</h1>
+<app-auth-form
+    [message]="message"
+    [registrationForm]="true"
+    (submit)="submit($event)"
+/>
+<a routerLink="/login">Already have an account? Log In</a>
