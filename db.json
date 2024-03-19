@@ -125,6 +125,48 @@
       "content": "Show me a hero, and I'll write you a tragedy",
       "id": "3",
       "ownerId": 1
+    },
+    {
+      "author": "Bob Dylan",
+      "content": "When you ain't got nothing, you got nothing to lose",
+      "id": "4",
+      "ownerId": 1
+    },
+    {
+      "author": "Albert Einstein",
+      "content": "The only source of knowledge is experience",
+      "id": "5",
+      "ownerId": 1
+    },
+    {
+      "author": "Winston Churchill",
+      "content": "Success is not final, failure is not fatal: It is the courage to continue that counts",
+      "id": "6",
+      "ownerId": 1
+    },
+    {
+      "author": "Napoleon Bonaparte",
+      "content": "Victory belongs to the most persevering",
+      "id": "7",
+      "ownerId": 1
+    },
+    {
+      "author": "Walt Disney",
+      "content": "The way to get started is to quit talking and begin doing",
+      "id": "8",
+      "ownerId": 1
+    },
+    {
+      "author": "Steve Jobs",
+      "content": "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it",
+      "id": "9",
+      "ownerId": 1
+    },
+    {
+      "author": "Steve Jobs",
+      "content": "Your time is limited, don't waste it living someone else's life. Don't be trapped by dogma, which is living the result of other people's thinking. Don't let the noise of other opinions drown your own inner voice. And most important, have the courage to follow your heart and intuition, they somehow already know what you truly want to become. Everything else is secondary",
+      "id": "10",
+      "ownerId": 1
     }
   ],
   "tasks": [
