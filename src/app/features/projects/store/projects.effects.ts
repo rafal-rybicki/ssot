@@ -3,7 +3,7 @@ import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from '@ngrx/effects'
 import { ProjectService } from '../services/project.service';
 import { EMPTY, catchError, exhaustMap, map, tap } from 'rxjs';
 import { ProjectsApiActions } from './projects-api.actions';
-import { addProject } from './projects.actions';
+import { addProject, deleteProject, updateProject } from './projects.actions';
 
 @Injectable()
 export class ProjectsEffects {
@@ -22,9 +22,33 @@ export class ProjectsEffects {
     addProject$ = createEffect(() => 
         this.actions$.pipe(
             ofType(addProject),
-            exhaustMap(action => this.projectService.createProject(action.project)
+            exhaustMap(({ project }) => this.projectService.createProject(project)
                 .pipe(
                     map(project => ProjectsApiActions.projectAddedSuccess({ project })),
+                    catchError(() => EMPTY)
+                )
+            )
+        )
+    )
+
+    deleteTask$ = createEffect(() => 
+        this.actions$.pipe(
+            ofType(deleteProject),
+            exhaustMap(({ projectId }) => this.projectService.deleteProject(projectId)
+                .pipe(
+                    map(project => ProjectsApiActions.projectDeletedSuccess({ projectId: project.id })),
+                    catchError(() => EMPTY)
+                )
+            )
+        )
+    )
+
+    updateTask$ = createEffect(() => 
+        this.actions$.pipe(
+            ofType(updateProject),
+            exhaustMap(({ projectId, values }) => this.projectService.updateProject(projectId, values)
+                .pipe(
+                    map(project => ProjectsApiActions.projectUpdatedSuccess({ project })),
                     catchError(() => EMPTY)
                 )
             )
