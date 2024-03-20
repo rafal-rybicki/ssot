@@ -12,16 +12,15 @@ import { deleteTask } from '../../store/tasks.actions';
   templateUrl: './task-context-menu.component.html',
   styleUrl: './task-context-menu.component.scss',
   host: {
-    '[class]': "'context-menu'",
+    'class': 'context-menu'
   }
 })
 export class TaskContextMenuComponent {
-  private store = inject(Store);
-
   @Input({ required: true }) id!: string;
   @Output() openEditor = new EventEmitter<void>();
   @Output() openDatePicker = new EventEmitter<void>();
-
+  
+  private store = inject(Store);
   isOpen = false;
 
   changeDate() {

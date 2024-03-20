@@ -38,7 +38,6 @@ export class ProjectFormComponent {
   onSubmit() {
     if (this.form.valid) {
       this.save.emit(this.form.value);
-      this.onClose();
     }
   }
 }

@@ -1,0 +1,21 @@
+<app-icon-button
+    [height]="27"
+    [fontSize]="15"
+    icon="three-dots"
+    (onClick)="toggle()"
+/>
+
+@if (isOpen) {
+    <ul>
+        <app-context-menu-item
+            icon="pen"
+            text="Edit"
+            (onClick)="edit()"
+        />
+        <app-context-menu-item
+            icon="trash3"
+            text="Delete"
+            (onClick)="delete()"
+        />
+    </ul>  
+}

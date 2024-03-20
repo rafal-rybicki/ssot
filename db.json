@@ -18,9 +18,10 @@
   "projects": [
     {
       "areaId": 1,
-      "color": "green",
+      "color": "#00ff00",
       "id": "1",
       "isActive": true,
+      "isFavorite": true,
       "name": "Project 1",
       "ownerId": "1",
       "order": 1,
@@ -54,6 +55,7 @@
       "color": "blue",
       "id": "2",
       "isActive": true,
+      "isFavorite": true,
       "name": "Project 2",
       "ownerId": "1",
       "order": 2,
@@ -73,6 +75,7 @@
       "color": "yellow",
       "id": "3",
       "isActive": true,
+      "isFavorite": true,
       "name": "Project 3",
       "ownerId": "1",
       "order": 3,
@@ -82,25 +85,6 @@
           "name": "default section",
           "order": 0,
           "projectId": "3",
-          "isOpen": true
-        }
-      ],
-      "view": "list"
-    },
-    {
-      "areaId": "1",
-      "color": "red",
-      "id": "4",
-      "isActive": false,
-      "name": "Project 4",
-      "ownerId": "1",
-      "order": 4,
-      "sections": [
-        {
-          "id": "4",
-          "name": "default section",
-          "order": 0,
-          "projectId": "4",
           "isOpen": true
         }
       ],
@@ -198,7 +182,7 @@
       "priority": false,
       "projectId": "1",
       "sectionId": "11",
-      "date": "2024-3-8"
+      "date": "2024-3-20"
     },
     {
       "id": "50a9c9e8-ed9c-49c6-823a-4d1844d84318",
@@ -213,7 +197,7 @@
       "priority": false,
       "projectId": "1",
       "sectionId": "10",
-      "date": "2024-3-12"
+      "date": "2024-3-21"
     }
   ],
   "users": [

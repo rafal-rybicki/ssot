@@ -5,7 +5,10 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './inbox.component.html',
-  styleUrl: './inbox.component.scss'
+  styleUrl: './inbox.component.scss',
+  host: {
+    class: 'container'
+  }
 })
 export class InboxComponent {
 

@@ -8,6 +8,7 @@ export interface Project {
     description?: string;
     id: string;
     isActive: boolean;
+    isFavorite: boolean;
     name: string;
     ownerId: string; 
     order: number;

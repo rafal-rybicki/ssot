@@ -1,5 +1,7 @@
 <h1>{{ name }}</h1>
 
+<app-project-context-menu [id]="id" [isFavorite]="isFavorite" />
+
 @for (section of sections; track section.id) {
     <app-section 
         [name]="section.name"

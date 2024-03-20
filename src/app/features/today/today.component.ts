@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './today.component.html',
   styleUrl: './today.component.scss',
   host: {
-    '[class]': "'main-container'",
+    class: 'container'
   }
 })
 export class TodayComponent {
