@@ -15,7 +15,7 @@ export class ProjectFormComponent {
   @Input() currentColor: string = 'black';
   @Input() currentName: string = '';
   @Input() currentView: string = 'list';
-  @Output() submit = new EventEmitter<ProjectPayload>();
+  @Output() save = new EventEmitter<ProjectPayload>();
 
   private fb = inject(FormBuilder);
   private location = inject(Location);
@@ -37,7 +37,8 @@ export class ProjectFormComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submit.emit(this.form.value);
+      this.save.emit(this.form.value);
+      this.onClose();
     }
   }
 }

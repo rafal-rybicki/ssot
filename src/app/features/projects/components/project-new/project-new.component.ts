@@ -15,7 +15,7 @@ import { v4 as uuid } from 'uuid';
 export class ProjectNewComponent {
   private store = inject(Store);
 
-  onSubmit(payload: ProjectPayload) {
+  onSave(payload: ProjectPayload) {
     const defaultSectionId = uuid();
     const id = uuid();
     const project = {
