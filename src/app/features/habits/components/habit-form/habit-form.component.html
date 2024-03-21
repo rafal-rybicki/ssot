@@ -1,0 +1,46 @@
+<form
+    class="editor"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="form-control">
+        <label for="name">Name</label>
+        <input autofocus type="text" formControlName="name" autocomplete="off" />
+    </div>
+
+    <div class="form-control">
+        <label for="dailyGoal">Name</label>
+        <input autofocus type="number" formControlName="dailyGoal" autocomplete="off" />
+    </div>
+
+    <div class="form-control">
+        <label for="description">Description</label>
+        <input type="text" formControlName="description" />
+    </div>
+
+    <div class="form-control">
+        <label for="startDate">Start date</label>
+        <input autofocus type="date" formControlName="startDate" />
+    </div>
+
+    <div class="form-control">
+        <label for="endDate">End date</label>
+        <input autofocus type="date" formControlName="endDate" />
+    </div>
+
+    <div class="form-control">
+        <label for="isMonitored">Is Monitored</label>
+        <select formControlName="isMonitored">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+
+    <button (click)="onClose()" class="btn-cancel" type="button">
+        Cancel
+    </button>
+
+    <button class="btn-submit" type="submit" [disabled]="!form.valid">
+        Save
+    </button>
+</form>

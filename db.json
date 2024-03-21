@@ -15,6 +15,10 @@
       "ownerId": "1"
     }
   ],
+  "habits": [
+  ],
+  "habit-items": [
+  ],
   "projects": [
     {
       "areaId": 1,
@@ -190,7 +194,7 @@
       "completedSubtasks": 0,
       "content": "some task",
       "duration": 5,
-      "isCompleted": true,
+      "isCompleted": false,
       "isTimeSet": false,
       "order": 0,
       "ownerId": "1",
