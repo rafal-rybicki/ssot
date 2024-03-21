@@ -12,6 +12,8 @@ import { tasksFeature } from './features/tasks/store/tasks.feature';
 import { AreasEffects } from './features/projects/store/areas.effects';
 import { ProjectsEffects } from './features/projects/store/projects.effects';
 import { TasksEffects } from './features/tasks/store/tasks.effects';
+import { HabitsEffects } from './features/habits/store/habits.effects';
+import { habitsFeature } from './features/habits/store/habits.feature';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,10 +21,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore(),
     provideState(areasFeature),
+    provideState(habitsFeature),
     provideState(projectsFeature),
     provideState(tasksFeature),
     provideEffects(
       AreasEffects,
+      HabitsEffects,
       ProjectsEffects,
       TasksEffects
     ),

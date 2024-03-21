@@ -6,8 +6,8 @@ import { addHabit, deleteHabit, updateHabit } from './habits.actions';
 import { HabitService } from '../services/habit.service';
 
 @Injectable()
-export class ProjectsEffects {
-    loadProjects$ = createEffect(() => 
+export class HabitsEffects {
+    loadHabits$ = createEffect(() => 
         this.actions$.pipe(
             ofType(ROOT_EFFECTS_INIT),
             exhaustMap(() => this.habitService.getHabits()
@@ -19,7 +19,7 @@ export class ProjectsEffects {
         )
     )
 
-    addProject$ = createEffect(() => 
+    addHabit$ = createEffect(() => 
         this.actions$.pipe(
             ofType(addHabit),
             exhaustMap(({ habit }) => this.habitService.createHabit(habit)
@@ -31,7 +31,7 @@ export class ProjectsEffects {
         )
     )
 
-    deleteTask$ = createEffect(() => 
+    deleteHabit$ = createEffect(() => 
         this.actions$.pipe(
             ofType(deleteHabit),
             exhaustMap(({ habitId }) => this.habitService.deleteHabit(habitId)
@@ -43,7 +43,7 @@ export class ProjectsEffects {
         )
     )
 
-    updateTask$ = createEffect(() => 
+    updateHabit$ = createEffect(() => 
         this.actions$.pipe(
             ofType(updateHabit),
             exhaustMap(({ habitId, values }) => this.habitService.updateHabit(habitId, values)

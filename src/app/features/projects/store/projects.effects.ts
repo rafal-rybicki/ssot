@@ -31,7 +31,7 @@ export class ProjectsEffects {
         )
     )
 
-    deleteTask$ = createEffect(() => 
+    deleteProject$ = createEffect(() => 
         this.actions$.pipe(
             ofType(deleteProject),
             exhaustMap(({ projectId }) => this.projectService.deleteProject(projectId)
@@ -43,7 +43,7 @@ export class ProjectsEffects {
         )
     )
 
-    updateTask$ = createEffect(() => 
+    updateProject$ = createEffect(() => 
         this.actions$.pipe(
             ofType(updateProject),
             exhaustMap(({ projectId, values }) => this.projectService.updateProject(projectId, values)
