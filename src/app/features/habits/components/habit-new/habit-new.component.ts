@@ -23,7 +23,7 @@ export class HabitNewComponent {
   private location = inject(Location);
   private store = inject(Store);
 
-  onSubmit(payload: HabitPayload) {
+  onSave(payload: HabitPayload) {
     const filteredValues = Object.fromEntries(
       Object.entries(payload).filter(([key, value]) => value)
     ) as HabitPayload;

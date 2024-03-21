@@ -1,1 +1,10 @@
-<p>habit-edit works!</p>
+<h1>New habit</h1>
+<app-habit-form
+    [currentDailyGoal]="currentDailyGoal"
+    [currentDescription]="currentDescription"
+    [currentEndDate]="currentEndDate"
+    [currentName]="currentName"
+    [currentIsMonitored]="currentIsMonitored"
+    [currentStartDate]="currentStartDate"
+    (save)="onSave($event)"
+/>
