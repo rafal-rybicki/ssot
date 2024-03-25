@@ -6,7 +6,7 @@ import { HabitFormComponent } from '../habit-form/habit-form.component';
 import { HabitPayload } from '../../models/habit-payload.mode';
 import { v4 as uuid } from 'uuid';
 import { addHabit } from '../../store/habits.actions';
-import { HabitItem } from '../../models/habit-item.model';
+import { addHabitItem } from '../../store/habit-items.actions';
 
 @Component({
   selector: 'app-habit-new',
@@ -27,29 +27,30 @@ export class HabitNewComponent {
     const filteredValues = Object.fromEntries(
       Object.entries(payload).filter(([key, value]) => value)
     ) as HabitPayload;
-    const items: HabitItem[] = [];
-    const habitId = uuid();
     
-    this.calendar.getDaysOfMonth(this.calendar.getCurrentYear(), this.calendar.getCurrentMonth()).forEach(date => {
-      items.push({
-        id: uuid(),
-        habitId: habitId,
-        isCompleted: false,
-        currentValue: 0,
-        date: date.value,
-      });
-    })
-
+    const habitId = uuid();
     const habit = {
       ...filteredValues,
       id: habitId,
       isActive: true,
-      items,
       order: 0,
       ownerId: '1'
     }
 
     this.store.dispatch(addHabit({ habit }));
+
+    this.calendar.getDaysOfMonth(this.calendar.getCurrentYear(), this.calendar.getCurrentMonth()).forEach(date => {
+      const habitItem ={
+        id: uuid(),
+        habitId: habitId,
+        isCompleted: false,
+        currentValue: 0,
+        date: date.value,
+      }
+      
+      this.store.dispatch(addHabitItem({ habitItem }));
+    })
+
     this.location.back();
   }
 }

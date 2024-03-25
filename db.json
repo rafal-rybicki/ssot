@@ -16,8 +16,670 @@
     }
   ],
   "habits": [
+    {
+      "id": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "dailyGoal": 1,
+      "isMonitored": true,
+      "name": "test",
+      "startDate": "2024-03-01",
+      "isActive": true,
+      "order": 0,
+      "ownerId": "1"
+    }
   ],
-  "habit-items": [],
+  "habit-items": [
+    {
+      "id": "f29ce9ba-b480-48e2-9089-26e83301455c",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-1"
+    },
+    {
+      "id": "8ff889a6-63ee-4d6c-a24c-bbf811d3391b",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-2"
+    },
+    {
+      "id": "4d532c92-0f17-4fd7-8ed3-ccef97855bcd",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-3"
+    },
+    {
+      "id": "635eefd3-265d-48fd-bb85-42a5918f92a9",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-4"
+    },
+    {
+      "id": "004a7d37-45ff-4113-a99b-13ac27ca6c71",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-5"
+    },
+    {
+      "id": "3ca75ce7-6596-44a0-a3dd-71cc6e9d1fa7",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-6"
+    },
+    {
+      "id": "1694ce27-d2e1-4151-b873-2a515b168c0f",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-7"
+    },
+    {
+      "id": "076e75c6-c9ed-485c-8104-dd918a6f91dd",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-8"
+    },
+    {
+      "id": "b9214e26-5a5a-41bf-8b7e-fb9792182725",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-9"
+    },
+    {
+      "id": "9d8ab4ec-e3b0-406f-9427-c32679f23f5c",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-10"
+    },
+    {
+      "id": "bf25faa8-4a17-40c9-89d2-1fe8f220eb19",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-11"
+    },
+    {
+      "id": "0e0e7ade-ebae-4416-88d7-18256b3b44da",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-12"
+    },
+    {
+      "id": "06e0618a-41cc-451e-8fd5-31b3c09f406b",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-13"
+    },
+    {
+      "id": "995949b0-bacc-4921-9139-a367da0718e1",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-14"
+    },
+    {
+      "id": "7e8d942b-b7e2-45f5-9b6d-5654f4779668",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-15"
+    },
+    {
+      "id": "18a47a31-909e-4c1f-b75b-46edbc07ec58",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-16"
+    },
+    {
+      "id": "69c20bec-d1d9-48e3-ac8e-d71b0859bb44",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-17"
+    },
+    {
+      "id": "da96ccb5-debc-4563-b71d-5ebd1b081aea",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-18"
+    },
+    {
+      "id": "3b8d262b-c1ba-4461-87d2-f5b3d9f2c001",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-19"
+    },
+    {
+      "id": "7ad9c4f2-6761-4b83-af60-66f0a02f69fb",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-20"
+    },
+    {
+      "id": "49431db7-3011-4d6e-b506-4d545851cf77",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-21"
+    },
+    {
+      "id": "709cd05e-3830-4c63-9864-48f3e596b96e",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-22"
+    },
+    {
+      "id": "a679ad1f-3a98-4830-9346-bae978c34a3c",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-23"
+    },
+    {
+      "id": "49722054-dfca-48b2-bd62-fdc92f44f2b0",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-24"
+    },
+    {
+      "id": "37e80a5e-4417-4a6a-9aef-79e62357225f",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-25"
+    },
+    {
+      "id": "03beec2e-38b2-43c6-8089-1e0d2bd96d7d",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-26"
+    },
+    {
+      "id": "d7f96275-fa68-46ed-a778-742accc28c89",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-27"
+    },
+    {
+      "id": "a2f52bb2-e149-4c66-8907-f5830aee649c",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-28"
+    },
+    {
+      "id": "79eea490-b571-479c-a08d-7d699092238e",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-29"
+    },
+    {
+      "id": "fc8e6d5d-e905-443c-a8e7-2479220523fb",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-30"
+    },
+    {
+      "id": "a92d46f5-3d9a-43c9-a1a1-6cac871260fd",
+      "habitId": "aa29cbc7-9f06-4113-af37-a5b6d98d8a25",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-31"
+    },
+    {
+      "id": "713825ee-7510-4242-b47d-c9103d477938",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-1"
+    },
+    {
+      "id": "38d82246-258a-4f64-9396-13f43fc2a9d3",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-12"
+    },
+    {
+      "id": "0aa7d169-c363-48df-a74d-e94ed21b62c9",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-13"
+    },
+    {
+      "id": "62edcab8-0831-4e5f-bcf4-d32877ebe0db",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-14"
+    },
+    {
+      "id": "43baf0ee-96a9-40b9-91bd-e3519c43d4e7",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-15"
+    },
+    {
+      "id": "5f92ed58-8293-4fb3-aa59-4415fb91dde9",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-2"
+    },
+    {
+      "id": "488a84b7-88f7-4f82-b52d-61a9e51ea830",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-3"
+    },
+    {
+      "id": "518d8f0c-d33c-4d10-abf0-775b7386daa2",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-4"
+    },
+    {
+      "id": "e470e480-f2c8-44f7-9606-6086a3eee4d4",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-16"
+    },
+    {
+      "id": "0eee4aac-95fe-41e6-961e-5fb4a206574d",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-17"
+    },
+    {
+      "id": "99297aee-20f3-4410-8a07-e0b9dc5e9fe4",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-5"
+    },
+    {
+      "id": "482fd330-65e3-4902-83e8-986fd80da76d",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-18"
+    },
+    {
+      "id": "b06a57c9-4027-423d-87ad-051b13c941b0",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-6"
+    },
+    {
+      "id": "832103f6-d2d7-48d5-8904-8543da2d64db",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-19"
+    },
+    {
+      "id": "9f27ff9b-749c-402a-8763-67156e34a63d",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-20"
+    },
+    {
+      "id": "ede85b7b-9a6b-4758-998f-42bd5f5cc64b",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-7"
+    },
+    {
+      "id": "afbcfeff-9f38-4531-83fd-e6b5b82fb224",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-21"
+    },
+    {
+      "id": "96a4d8e6-a7af-4f4b-b8ac-62cda8710275",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-22"
+    },
+    {
+      "id": "901ecf94-e02c-4e6a-a3be-dc4b5e3bcf19",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-8"
+    },
+    {
+      "id": "0de00065-16ca-4608-9aa6-cbf1818697ba",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-23"
+    },
+    {
+      "id": "2e6ff306-5ab1-4c48-ae6b-e5121c01ed34",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-24"
+    },
+    {
+      "id": "7d4df832-1a14-40d7-9f95-c2501fbd28cd",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-9"
+    },
+    {
+      "id": "67fd001d-21ff-4e81-a564-ac7fd26d60d9",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-25"
+    },
+    {
+      "id": "ae6ce56b-ec19-4118-8f31-d2c2eba99ced",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-10"
+    },
+    {
+      "id": "4cdc5937-da21-49b9-8c20-503fda39b9a8",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-26"
+    },
+    {
+      "id": "b15bd0f2-f954-413e-9f0f-2acc817e83f0",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-27"
+    },
+    {
+      "id": "ed86616d-a856-4d79-b0cd-de9f96bc2975",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-28"
+    },
+    {
+      "id": "8d1422e7-61c5-4e23-b023-f638f7ce323f",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-11"
+    },
+    {
+      "id": "d991a8aa-fbb1-40ae-a8d3-a498d1ef4b9c",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-29"
+    },
+    {
+      "id": "0d3b6967-9c93-4fed-a051-8edf9fac53b9",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-30"
+    },
+    {
+      "id": "663c70d9-9f2b-4aa3-a43b-aecbdb986f67",
+      "habitId": "42c41025-a145-4d33-a873-f42d4ce0b18d",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-31"
+    },
+    {
+      "id": "055bc301-6344-4c50-a12f-ae2b38d443e0",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-01"
+    },
+    {
+      "id": "128424ed-e2f4-4ecb-9c88-e2c8891774c8",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-02"
+    },
+    {
+      "id": "cd2371bf-bd17-4c80-8044-7b6c544570a7",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-03"
+    },
+    {
+      "id": "c701af99-ffdb-4ebb-9f1b-620dfc778ca9",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-04"
+    },
+    {
+      "id": "2c31d3a3-bb73-45d2-9568-673d66f05110",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-05"
+    },
+    {
+      "id": "0db766c5-9d28-400d-bac1-4cb6a964b9e1",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-06"
+    },
+    {
+      "id": "4fb8f5f5-8dc0-4fa6-bc9b-a634a7b1dcd1",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-07"
+    },
+    {
+      "id": "cc0c0505-d77a-4607-b36e-a4517e6c6b54",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-08"
+    },
+    {
+      "id": "167cd347-ef38-4205-8c91-992b44732e8b",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-09"
+    },
+    {
+      "id": "33d1a5ee-15b1-4148-8606-e244fb4a9073",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-10"
+    },
+    {
+      "id": "b1664867-d128-4554-9bf0-52756e256ea9",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-11"
+    },
+    {
+      "id": "d27d2864-884e-440f-ba2c-1d6888c7cb9f",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-12"
+    },
+    {
+      "id": "e655abce-157a-4150-b240-6444c7825745",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-13"
+    },
+    {
+      "id": "8fadf68c-873c-4778-b933-390ad0eafef7",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-14"
+    },
+    {
+      "id": "2b175b80-7edb-4d7d-b5ed-7c7d3f6c830b",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-15"
+    },
+    {
+      "id": "517fb8f3-0337-42ba-a653-36fa103dc580",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-16"
+    },
+    {
+      "id": "cf71a61c-3090-4476-90fe-1564d16b47cf",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-17"
+    },
+    {
+      "id": "49a8b45c-99e2-4d6a-9263-a67776ea83db",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-18"
+    },
+    {
+      "id": "23d31a14-eae1-476f-b6b4-9a585f8cde7a",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-19"
+    },
+    {
+      "id": "1f7e119f-99ba-49d5-b483-69f2c9f4de0f",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-20"
+    },
+    {
+      "id": "027fb2ff-4ace-4ea4-be77-77c76036b0d5",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": true,
+      "currentValue": 0,
+      "date": "2024-3-21"
+    },
+    {
+      "id": "bca25868-7213-4fba-b400-122096ed759a",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-22"
+    },
+    {
+      "id": "f6299de1-36d7-4094-a618-73eefa8171ae",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-23"
+    },
+    {
+      "id": "0b6ecce8-1fed-403c-a166-2187cb46785a",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-24"
+    },
+    {
+      "id": "88b45376-7a57-4661-bf53-242328b220c6",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-25"
+    },
+    {
+      "id": "a31b22ac-a32a-47ee-8186-a188c62e1fc0",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-26"
+    },
+    {
+      "id": "1b1b4d8a-5cae-4df2-a3cb-034dae248603",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-27"
+    },
+    {
+      "id": "78ef9493-d622-418c-b1a5-42e252f9aff2",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-28"
+    },
+    {
+      "id": "78115878-dbd5-4150-9968-ba3386d1eaa7",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-29"
+    },
+    {
+      "id": "e0eb3316-2e55-456d-8dfd-dce33c76413c",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-30"
+    },
+    {
+      "id": "755a09a3-5927-4d3c-90fe-43cc4690e608",
+      "habitId": "8fb4194e-1da5-4a45-a27b-bbc9d7b2ac30",
+      "isCompleted": false,
+      "currentValue": 0,
+      "date": "2024-3-31"
+    }
+  ],
   "projects": [
     {
       "areaId": 1,
@@ -185,7 +847,7 @@
       "priority": false,
       "projectId": "1",
       "sectionId": "11",
-      "date": "2024-3-20"
+      "date": "2024-3-25"
     },
     {
       "id": "50a9c9e8-ed9c-49c6-823a-4d1844d84318",
@@ -200,7 +862,7 @@
       "priority": false,
       "projectId": "1",
       "sectionId": "10",
-      "date": "2024-3-21"
+      "date": "2024-3-25"
     }
   ],
   "users": [

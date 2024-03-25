@@ -1,0 +1,26 @@
+<h1>Habits</h1>
+<table>
+    <tr>
+        <th class="ceil"></th>
+        @for (date of dates; track date.value) {
+            <th class="ceil">{{ date.day }}</th>
+        }
+    </tr>
+
+    @for (habit of habits$ | async; track $index) {
+        <tr>
+            <td class="ceil">{{ habit.name }}</td>
+        
+            @for (date of dates; track date.value) {
+                <td
+                    class="ceil"
+                    [attr.data-value]="date.value"
+                    [class.completed]="habitItems[habit.id][date.value].isCompleted"
+                    [class.inactive]="date.value > today"
+                    (click)="markHabit(habitItems[habit.id][date.value])"
+                ></td>
+            }
+        </tr>
+    } 
+</table>
+<a routerLink="new">Add new habit</a>

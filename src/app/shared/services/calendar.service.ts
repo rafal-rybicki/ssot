@@ -7,12 +7,12 @@ import { CalendarDate } from '../models/calendar-date.model';
 })
 export class CalendarService {
   getToday(): Today {
-    const day = this.getCurrentDay();
+    const  day = this.getCurrentDay();
     const month = this.getCurrentMonth();
     const year = this.getCurrentYear();
 
     return {
-      date: `${year}-${month}-${day}`,
+      date: `${year}-${month}-${day < 10 ? `0${day}` : day}`,
       day,
       month: this.getMonthName(month),
       year
@@ -34,10 +34,14 @@ export class CalendarService {
   getDaysOfMonth(year: number, month: number): CalendarDate[] {
     const daysInMonth = this.getDaysInMonth(year, month);
 
-    return Array(daysInMonth).fill(0).map((x,i) => ({
-      day: i + 1,
-      value: `${year}-${month}-${i+1}`
-    }));
+    return Array(daysInMonth).fill(0).map((x,i) => {
+      const day = i + 1 < 10 ? `0${i + 1}` : i + 1;
+
+      return {
+        day: i + 1,
+        value: `${year}-${month}-${day}`
+      }
+    });
   }
 
   getMonthName(month: number): string {

@@ -13,7 +13,10 @@ import { updateHabit } from '../../store/habits.actions';
   standalone: true,
   imports: [HabitFormComponent],
   templateUrl: './habit-edit.component.html',
-  styleUrl: './habit-edit.component.scss'
+  styleUrl: './habit-edit.component.scss',
+  host: {
+    class: 'container'
+  }
 })
 export class HabitEditComponent {
   private location = inject(Location);

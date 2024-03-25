@@ -37,7 +37,7 @@ export class HabitItemsEffects {
     updateHabitItem$ = createEffect(() => 
         this.actions$.pipe(
             ofType(updateHabitItem),
-            exhaustMap(({ habitId, values }) => this.habitItemsService.updateHabitItem(habitId, values)
+            exhaustMap(({ habitItemId, values }) => this.habitItemsService.updateHabitItem(habitItemId, values)
                 .pipe(
                     map(habitItem => HabitItemsApiActions.habitItemUpdatedSuccess({ habitItem })),
                     catchError(() => EMPTY)

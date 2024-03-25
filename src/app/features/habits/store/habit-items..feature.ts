@@ -22,14 +22,19 @@ export const habitItemsFeature = createFeature({
         )
     ),
     extraSelectors: ({ selectHabitItemsState }) => ({
-        // selectActiveHabits: createSelector(
-        //     selectHabitsState,
-        //     (habits) => habits.filter(habitItem => habitItem.isActive === true)
-        // ),
-        // selectInactiveHabits: createSelector(
-        //     selectHabitsState,
-        //     (habits) => habits.filter(habitItem => habitItem.isActive === false)
-        // )
+        selectHabitItemsByHabitId: createSelector(
+            selectHabitItemsState,
+            (habitItems) => habitItems.reduce((acc: any, habitItem: HabitItem) => {
+                if(habitItem.habitId) {
+                    if (acc[habitItem.habitId]) {
+                        acc[habitItem.habitId][habitItem.date] = habitItem;
+                    } else {
+                        acc[habitItem.habitId] = { [habitItem.date]: habitItem };
+                    }
+                }
+                return acc;
+            }, {})
+        )
     })
 })
 
@@ -37,4 +42,5 @@ export const {
     name,
     reducer,
     selectHabitItemsState,
+    selectHabitItemsByHabitId,
 } = habitItemsFeature;
