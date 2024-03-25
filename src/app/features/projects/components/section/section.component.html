@@ -2,6 +2,8 @@
     <h2>{{ name }}</h2>
 }
 
+<app-section-context-menu [sectionId]="id" [projectId]="projectId" [name]="name" />
+
 @for (task of tasks$ | async; track task.id) {
     <app-task
         [date]="task.date"

@@ -3,13 +3,14 @@ import { TaskNewComponent } from '../../../tasks/components/task-new/task-new.co
 import { TaskComponent } from '../../../tasks/components/task/task.component';
 import { Store, select } from '@ngrx/store';
 import { selectTasksBySectionId } from '../../../tasks/store/tasks.feature';
+import { SectionContextMenuComponent } from '../section-context-menu/section-context-menu.component';
 import { CommonModule } from '@angular/common';
 import { map } from 'rxjs';
 
 @Component({
   selector: 'app-section',
   standalone: true,
-  imports: [CommonModule,TaskComponent, TaskNewComponent],
+  imports: [CommonModule,TaskComponent, TaskNewComponent, SectionContextMenuComponent],
   templateUrl: './section.component.html',
   styleUrl: './section.component.scss'
 })
