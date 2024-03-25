@@ -8,6 +8,11 @@
 @if (isOpen) {
     <ul>
         <app-context-menu-item
+            icon="sign-intersection"
+            text="Add section"
+            (onClick)="newSection()"
+        />
+        <app-context-menu-item
             icon="pen"
             text="Edit"
             (onClick)="edit()"

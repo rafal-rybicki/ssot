@@ -9,6 +9,10 @@ import { selectProjectsState } from '../../store/projects.feature';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 import { AreaComponent } from '../area/area.component';
 import { ProjectContextMenuComponent } from '../project-context-menu/project-context-menu.component';
+import { SectionEditorComponent } from '../section-editor/section-editor.component';
+import { SectionPayload } from '../../models/section-payload.model';
+import { updateProject } from '../../store/projects.actions';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-project',
@@ -18,7 +22,8 @@ import { ProjectContextMenuComponent } from '../project-context-menu/project-con
     SectionComponent,
     MenuItemComponent,
     AreaComponent,
-    ProjectContextMenuComponent
+    ProjectContextMenuComponent,
+    SectionEditorComponent
   ],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss',
@@ -30,6 +35,7 @@ export class ProjectComponent {
   private store = inject(Store);
   private route = inject(ActivatedRoute);
 
+  showSectionEditor = false;
   id!: string;
   isFavorite!: boolean;
   name!: string;
@@ -49,5 +55,21 @@ export class ProjectComponent {
         this.view = project.view;
       })
     })
+  }
+
+  toggleSectionEditor() {
+    this.showSectionEditor = !this.showSectionEditor;
+  }
+
+  saveSection(payload: SectionPayload) {
+    const newSection: Section = {
+      name: payload.name,
+      id: uuid(),
+      isOpen: true,
+      order: this.sections.length,
+      projectId: this.id
+    }
+    const values = { sections: [...this.sections, newSection] };
+    this.store.dispatch(updateProject({ projectId: this.id, values }));
   }
 }

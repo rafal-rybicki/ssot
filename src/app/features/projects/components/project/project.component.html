@@ -1,6 +1,10 @@
 <h1>{{ name }}</h1>
 
-<app-project-context-menu [id]="id" [isFavorite]="isFavorite" />
+<app-project-context-menu
+    [id]="id"
+    [isFavorite]="isFavorite"
+    (openSectionEditor)="toggleSectionEditor()"
+/>
 
 @for (section of sections; track section.id) {
     <app-section 
@@ -8,5 +12,12 @@
         [id]="section.id"
         [isOpen]="section.isOpen"
         [projectId]="section.projectId"
+    />
+}
+
+@if (showSectionEditor) {
+    <app-section-editor
+        (close)="toggleSectionEditor()"
+        (save)="saveSection($event)"
     />
 }

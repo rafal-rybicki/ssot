@@ -1,0 +1,17 @@
+<form
+    class="editor"
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="name">
+        <input autofocus type="text" formControlName="name" autocomplete="off" placeholder="Enter section name" />
+    </div>
+
+    <button (click)="close.emit()" class="btn-cancel" type="button">
+        Cancel
+    </button>
+
+    <button class="btn-submit" type="submit" [disabled]="!form.valid">
+        Save
+    </button>
+</form>

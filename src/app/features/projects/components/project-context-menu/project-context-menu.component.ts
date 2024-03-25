@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { deleteProject, updateProject } from '../../store/projects.actions';
 import { Location } from '@angular/common';
@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 export class ProjectContextMenuComponent {
   @Input({ required: true }) id!: string;
   @Input({ required: true }) isFavorite!: boolean;
+  @Output() openSectionEditor = new EventEmitter<void>();
 
   private location = inject(Location);
   private store = inject(Store);
@@ -47,6 +48,11 @@ export class ProjectContextMenuComponent {
   edit() {
     this.location.path
     this.router.navigateByUrl('projects/edit/' + this.id);
+  }
+
+  newSection() {
+    this.toggle();
+    this.openSectionEditor.emit();
   }
 
   toggle() {
