@@ -1,0 +1,23 @@
+:host {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 30px;
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+    i {
+        margin: 0 5px 0 1px;
+    
+        &.completed {
+            color: var(--success);
+        }
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+}

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Today } from '../../features/today/today.model';
+import { Today } from '../../features/today/models/today.model';
 import { CalendarDate } from '../models/calendar-date.model';
 
 @Injectable({

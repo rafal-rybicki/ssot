@@ -13,7 +13,7 @@
         [completedSubtasks]="completedSubtasks"
     />
 
-    <p (click)="showDescription()" class="content">
+    <span (click)="showDescription()" class="content">
         {{ content }}
 
         @if (hasSubtasks) {
@@ -25,7 +25,7 @@
         @if (date) {
             [{{ date }}]
         }
-    </p>
+    </span>
     <app-task-context-menu [id]="id" (openEditor)="toggleEditor()" (openDatePicker)="toggleDatePicker()" />
     
     @if (showDatePicker) {

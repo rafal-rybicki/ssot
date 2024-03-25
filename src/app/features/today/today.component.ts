@@ -6,11 +6,13 @@ import { Store, select } from '@ngrx/store';
 import { selectTasksState } from '../tasks/store/tasks.feature';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { selectHabitItemsState } from '../habits/store/habit-items..feature';
+import { HabitTaskComponent } from './components/habit-task/habit-task.component';
 
 @Component({
   selector: 'app-today',
   standalone: true,
-  imports: [TaskComponent, TaskNewComponent, CommonModule],
+  imports: [CommonModule, TaskComponent, TaskNewComponent, HabitTaskComponent],
   templateUrl: './today.component.html',
   styleUrl: './today.component.scss',
   host: {
@@ -31,6 +33,13 @@ export class TodayComponent {
     select(selectTasksState),
     map(
       tasks => tasks.filter(task => task.date === this.date)
+    )
+  )
+
+  habits$ = this.store.pipe(
+    select(selectHabitItemsState),
+    map(
+      habitItems => habitItems.filter(habitItem => habitItem.date === this.date)
     )
   )
 }

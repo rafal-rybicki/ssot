@@ -18,7 +18,15 @@
                     [class.completed]="habitItems[habit.id][date.value].isCompleted"
                     [class.inactive]="date.value > today"
                     (click)="markHabit(habitItems[habit.id][date.value])"
-                ></td>
+                >
+                    @if (
+                        habit.dailyGoal > 1 &&
+                        habitItems[habit.id][date.value].currentValue > 0 &&
+                        habitItems[habit.id][date.value].currentValue < habit.dailyGoal
+                    ) {
+                        {{ habitItems[habit.id][date.value].currentValue }}
+                    }
+                </td>
             }
         </tr>
     } 

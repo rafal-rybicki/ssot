@@ -43,9 +43,11 @@ export class HabitNewComponent {
       const habitItem ={
         id: uuid(),
         habitId: habitId,
+        name: habit.name,
         isCompleted: false,
         currentValue: 0,
         date: date.value,
+        targetValue: habit.dailyGoal
       }
       
       this.store.dispatch(addHabitItem({ habitItem }));

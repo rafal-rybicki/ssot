@@ -34,10 +34,18 @@ export class HabitsTableComponent {
     if (habitItem.date <= this.today) {
       this.store.dispatch(updateHabitItem({ 
         habitItemId: habitItem.id,
-        values: { 
-          isCompleted: !habitItem.isCompleted
-        }
+        values: this.incrementHabitItem(habitItem.currentValue, habitItem.targetValue)
       }));
     }
+  }
+
+  private incrementHabitItem(currentValue: number, targetValue: number) {
+    const newValue = currentValue === targetValue ? 0 : currentValue + 1;
+    const values = {
+      currentValue: newValue,
+      isCompleted: newValue === targetValue
+    };
+
+    return values;
   }
 }

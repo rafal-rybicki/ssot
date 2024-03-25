@@ -1,0 +1,11 @@
+<i
+    (click)="changeCompletion()"
+    class="bi {{ isCompleted ? 'bi-check-square-fill' : 'bi-square' }}"
+    [class.completed]="isCompleted"
+></i>
+<span>
+    [h] {{ name }} 
+    @if (targetValue > 1) {
+        {{ currentValue }}/{{ targetValue }}
+    }
+</span>

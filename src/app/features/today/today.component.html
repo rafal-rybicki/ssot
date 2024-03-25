@@ -1,6 +1,16 @@
 <h1>{{ day }} {{ month }}</h1>
 
-@for (task of tasks$ | async; track $index) {
+@for (habit of habits$ | async; track habit.id) {
+    <app-habit-task
+        [currentValue]="habit.currentValue"
+        [id]="habit.id"
+        [isCompleted]="habit.isCompleted"
+        [name]="habit.name"
+        [targetValue]="habit.targetValue"
+    /> 
+}
+
+@for (task of tasks$ | async; track task.id) {
     <app-task
         [subtasks]="task.subtasks || 0"
         [completedSubtasks]="task.completedSubtasks || 0"  
