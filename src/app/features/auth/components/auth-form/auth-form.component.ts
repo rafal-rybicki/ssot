@@ -14,7 +14,7 @@ import { AuthPayload } from '../../models/auth-payload.model';
 export class AuthFormComponent {
   @Input({ required: true }) message!: string;;
   @Input() registrationForm = false;
-  @Output() submit = new EventEmitter<AuthPayload>();
+  @Output() formSubmit = new EventEmitter<AuthPayload>();
 
   private fb = inject(FormBuilder);
 
@@ -33,7 +33,7 @@ export class AuthFormComponent {
 
   onSubmit() {
     if (this.form.valid) {
-      this.submit.emit(this.form.value);
+      this.formSubmit.emit(this.form.value);
     }
   }
 }

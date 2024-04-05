@@ -23,7 +23,7 @@ export class RegisterComponent {
       user.password,
       user.username!
     ).subscribe(message => {
-      this.message = message
+      this.message = message || '';
     })
   }
 }

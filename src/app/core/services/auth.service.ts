@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, effect, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../shared/models/user.model';
 import { Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
@@ -12,9 +11,8 @@ export class AuthService {
   private router = inject(Router);
 
   private _accessToken = signal<string>('find backend developer');
-  private refreshToken = signal<string>('');
 
-  private url = 'http://localhost:3000/users' ;
+  private url = '/auth/' ;
 
   isLoggedIn = computed(() => !!this._accessToken());
 
@@ -28,64 +26,49 @@ export class AuthService {
 
   constructor() {
     const access: string = localStorage.getItem('access') || '';
-    const refresh: string = localStorage.getItem('refresh') || '';
-    this.setTokens(access, refresh)
+    this.setAccessToken(access)
   }
 
-  login(email: string, password: string): Observable<string> {
-    const query = `?email=${email}&password=${password}`;
-
-    return this.http.get<User[]>(this.url+ query).pipe(
+  login(email: string, password: string): Observable<void | string> {
+    return this.http.post<AuthResponse>(this.url + 'login', {
+      email,
+      password 
+    }).pipe(
       map(response => {
-        const user = response[0];
-
-        if(user) {  
-          this.setTokens('access', 'refresh')
-          return 'OK';
-        } else {
-          return 'Invalid password or email';
-        }
+        this.setAccessToken(response.accessToken);
+      }),
+      catchError(err => {
+        return of(err.error.message);
       })
     )
-
-    // return this.http.post<AuthToken>('/auth/token/', {
-    //   username,
-    //   password
-    // }).pipe(
-    //   map(response => {
-    //     this.setTokens(response.access, response.refresh)
-    //     return 'OK';
-    //   }),
-    //   catchError(err => {
-    //     return of(err.error.detail)
-    //   })
-    // )
   }  
 
-    logout() {
-    this.setTokens('', '')
+  logout() {
+    this.setAccessToken('');
   }
 
-  register(email: string, password: string, username: string): Observable<string> {
-    return this.http.post<User>('/auth/register', {
+  register(email: string, password: string, username: string): Observable<void | string> {
+    return this.http.post<AuthResponse>(this.url + 'register', {
       email,
       password,
       username
     }).pipe(
       map(response => {
-        const user = response;
-  
-        if (user) {
-          // this.isAuthenticated.set(true);
-          return 'OK';
-        } else {
-          return 'Something went wrong';
-        }
-  
-        // catchError((err, c) => {
-        //   console.log(err);
-        //   return 'Something went wrong';
-        // })
+        this.setAccessToken(response.accessToken);
+      }),
+      catchError(err => {
+        return of(err.error.message);
+      })
+    )
+  }
+
+  refreshToken(): void | Observable<void | string> {
+    return this.http.post<AccessToken>(this.url + 'refresh', {}).pipe(
+      map(response => {
+        this.setAccessToken(response.accessToken)
+      }),
+      catchError(err => {
+        return of(err.error.message)
       })
     )
   }
@@ -94,15 +77,19 @@ export class AuthService {
     return this._accessToken;
   }
 
-  private setTokens(access: string, refresh: string) {
+  private setAccessToken(access: string) {
     localStorage.setItem('access', access);
-    localStorage.setItem('refresh', refresh);
     this.accessToken.set(access);
-    this.refreshToken.set(refresh);
   }
 }
 
-interface AuthToken {
-  access: string;
-  refresh: string;
+interface AccessToken {
+  accessToken: string;
+}
+
+interface AuthResponse {
+  id: number;
+  email: string;
+  username: string;
+  accessToken: string;
 }

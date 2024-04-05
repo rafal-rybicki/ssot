@@ -22,7 +22,7 @@ export class LoginComponent {
       user.email!,
       user.password!
     ).subscribe(message => {
-      this.message = message
+      this.message = message || '';
     })
   }
 }
