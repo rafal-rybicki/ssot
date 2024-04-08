@@ -2,16 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, effect, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, map, of } from 'rxjs';
+import { AuthResponse } from '../models/auth-response.model';
+import { AccessToken } from '../models/access-token.model';
+import { Store } from '@ngrx/store';
+import { UserApiActions } from '../store/user/user-api.actions';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private http = inject(HttpClient);
+  private store = inject(Store);
   private router = inject(Router);
 
-  private _accessToken = signal<string>('find backend developer');
 
+  private _accessToken = signal<string>('');
   private url = '/auth/' ;
 
   isLoggedIn = computed(() => !!this._accessToken());
@@ -25,8 +31,8 @@ export class AuthService {
   })
 
   constructor() {
-    const access: string = localStorage.getItem('access') || '';
-    this.setAccessToken(access)
+    const accessToken: string = localStorage.getItem('accessToken') || '';
+    this.setAccessToken(accessToken)
   }
 
   login(email: string, password: string): Observable<void | string> {
@@ -36,6 +42,7 @@ export class AuthService {
     }).pipe(
       map(response => {
         this.setAccessToken(response.accessToken);
+        this.setUser(response);
       }),
       catchError(err => {
         return of(err.error.message);
@@ -55,6 +62,7 @@ export class AuthService {
     }).pipe(
       map(response => {
         this.setAccessToken(response.accessToken);
+        this.setUser(response);
       }),
       catchError(err => {
         return of(err.error.message);
@@ -77,19 +85,26 @@ export class AuthService {
     return this._accessToken;
   }
 
-  private setAccessToken(access: string) {
-    localStorage.setItem('access', access);
-    this.accessToken.set(access);
+  get getAuthHeaders() {
+    return { 
+      headers: {
+        Authorization: `Bearer ${this.accessToken}`
+      }
+    }
   }
-}
 
-interface AccessToken {
-  accessToken: string;
-}
+  private setAccessToken(accessToken: string) {
+    localStorage.setItem('accessToken', accessToken);
+    this.accessToken.set(accessToken);
+  }
 
-interface AuthResponse {
-  id: number;
-  email: string;
-  username: string;
-  accessToken: string;
+  private setUser(user: User) {
+    this.store.dispatch(UserApiActions.userLoadedSuccess({
+      user: {
+        id: user.id,
+        username: user.username,
+        email: user.email
+      }
+    }))
+  }
 }

@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { User } from '../../../../shared/models/user.model';
 import { AuthPayload } from '../../models/auth-payload.model';
 
 @Component({

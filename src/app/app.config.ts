@@ -16,6 +16,7 @@ import { HabitsEffects } from './features/habits/store/habits.effects';
 import { habitsFeature } from './features/habits/store/habits.feature';
 import { habitItemsFeature } from './features/habits/store/habit-items..feature';
 import { HabitItemsEffects } from './features/habits/store/habit-items.effects';
+import { userFeature } from './core/store/user/user.feature';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -27,12 +28,13 @@ export const appConfig: ApplicationConfig = {
     provideState(habitItemsFeature),
     provideState(projectsFeature),
     provideState(tasksFeature),
+    provideState(userFeature),
     provideEffects(
       AreasEffects,
       HabitsEffects,
       HabitItemsEffects,
       ProjectsEffects,
-      TasksEffects
+      TasksEffects,
     ),
     provideStoreDevtools({
         maxAge: 25,
