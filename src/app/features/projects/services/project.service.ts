@@ -3,6 +3,7 @@ import { Project } from '../models/project.model';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
 import { HttpClient } from '@angular/common/http';
+import { ProjectPayload } from '../models/project-payload.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +18,15 @@ export class ProjectService {
     return this.http.get<Project[]>(this.url, this.auth.getAuthHeaders);
   }
 
-  createProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(this.url, project, this.auth.getAuthHeaders);
+  createProject(projectPayload: ProjectPayload): Observable<Project> {
+    return this.http.post<Project>(this.url, projectPayload, this.auth.getAuthHeaders);
   }
 
-  updateProject(id: string, values: Partial<Project>): Observable<Project> {
+  updateProject(id: number, values: Partial<Project>): Observable<Project> {
     return this.http.patch<Project>(`${this.url}/${id}`, values, this.auth.getAuthHeaders);
   }
 
-  deleteProject(id: string): Observable<any> {
+  deleteProject(id: number): Observable<any> {
     return this.http.delete<Project>(`${this.url}/${id}`, this.auth.getAuthHeaders);
   }
 }

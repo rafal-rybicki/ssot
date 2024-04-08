@@ -17,8 +17,9 @@ import { Router } from '@angular/router';
   }
 })
 export class ProjectContextMenuComponent {
-  @Input({ required: true }) id!: string;
+  @Input({ required: true }) id!: number;
   @Input({ required: true }) isFavorite!: boolean;
+  @Input({ required: true }) uuid!: string;
   @Output() openSectionEditor = new EventEmitter<void>();
 
   private location = inject(Location);
@@ -47,7 +48,7 @@ export class ProjectContextMenuComponent {
 
   edit() {
     this.location.path
-    this.router.navigateByUrl('projects/edit/' + this.id);
+    this.router.navigateByUrl('projects/edit/' + this.uuid);
   }
 
   newSection() {

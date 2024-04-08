@@ -18,9 +18,9 @@ export class SectionComponent {
   private store = inject(Store);
 
   @Input({ required: true }) name!: string;
-  @Input({ required: true }) id!: string;
+  @Input({ required: true }) id!: number;
   @Input({ required: true }) isOpen!: boolean;
-  @Input({ required: true }) projectId!: string;
+  @Input({ required: true }) projectId!: number;
 
   tasks$ = this.store.pipe(
     select(selectTasksBySectionId), 

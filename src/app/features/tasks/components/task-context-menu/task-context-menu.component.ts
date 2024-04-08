@@ -16,7 +16,7 @@ import { deleteTask } from '../../store/tasks.actions';
   }
 })
 export class TaskContextMenuComponent {
-  @Input({ required: true }) id!: string;
+  @Input({ required: true }) id!: number;
   @Output() openEditor = new EventEmitter<void>();
   @Output() openDatePicker = new EventEmitter<void>();
   

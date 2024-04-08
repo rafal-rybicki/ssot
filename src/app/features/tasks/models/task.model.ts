@@ -4,13 +4,13 @@ export interface Task {
     date?: string;
     description?: string;
     duration: number;
-    id: string;
+    id: number;
     isCompleted: boolean;
     isTimeSet: boolean;
     ownerId: string;
     order: number;
     priority: boolean;
-    projectId?: string;
-    sectionId?: string;
+    projectId?: number;
+    sectionId?: number;
     subtasks?: number;
 }

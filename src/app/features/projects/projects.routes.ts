@@ -16,11 +16,11 @@ export const projectRoutes: Routes = [
                 component: ProjectNewComponent
             },
             {
-                path: 'edit/:id',
+                path: 'edit/:uuid',
                 component: ProjectEditComponent
             },
             {
-                path: ':id',
+                path: ':uuid',
                 component: ProjectComponent
             }
         ]

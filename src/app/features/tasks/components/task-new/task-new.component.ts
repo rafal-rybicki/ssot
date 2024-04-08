@@ -14,8 +14,8 @@ import { v4 as uuid } from 'uuid';
 })
 export class TaskNewComponent {
   @Input() date?: string;
-  @Input() projectId?: string;
-  @Input() sectionId?: string;
+  @Input() projectId?: number;
+  @Input() sectionId?: number;
   showEditor = false;
 
   constructor(private store: Store) {}
@@ -31,7 +31,7 @@ export class TaskNewComponent {
       content: values.content!,
       date: values.date ? values.date : this.date,
       duration: 5,
-      id: uuid(),
+      id: Math.random(),
       isCompleted: false,
       isTimeSet: false,
       order: 0,

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProjectService } from '../services/project.service';
 import { EMPTY, catchError, exhaustMap, map, tap } from 'rxjs';
 import { ProjectsApiActions } from './projects-api.actions';
 import { addProject, deleteProject, updateProject } from './projects.actions';
+import { UserApiActions } from '../../../core/store/user/user-api.actions';
 
 @Injectable()
 export class ProjectsEffects {
     loadProjects$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(ROOT_EFFECTS_INIT),
+            ofType(UserApiActions.userLoadedSuccess),
             exhaustMap(() => this.projectService.getProjects()
                 .pipe(
                     map(projects => ProjectsApiActions.projectsLoadedSuccess({ projects })),
@@ -22,10 +23,10 @@ export class ProjectsEffects {
     addProject$ = createEffect(() => 
         this.actions$.pipe(
             ofType(addProject),
-            exhaustMap(({ project }) => this.projectService.createProject(project)
+            exhaustMap(({ projectPayload }) => this.projectService.createProject(projectPayload)
                 .pipe(
                     map(project => ProjectsApiActions.projectAddedSuccess({ project })),
-                    catchError(() => EMPTY)
+                    catchError((err) => EMPTY)
                 )
             )
         )
@@ -36,7 +37,7 @@ export class ProjectsEffects {
             ofType(deleteProject),
             exhaustMap(({ projectId }) => this.projectService.deleteProject(projectId)
                 .pipe(
-                    map(project => ProjectsApiActions.projectDeletedSuccess({ projectId: project.id })),
+                    map(project =>  ProjectsApiActions.projectDeletedSuccess({ projectId: project.id })),
                     catchError(() => EMPTY)
                 )
             )

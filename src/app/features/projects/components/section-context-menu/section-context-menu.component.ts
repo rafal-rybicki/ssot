@@ -11,8 +11,8 @@ import { Store } from '@ngrx/store';
   styleUrl: './section-context-menu.component.scss'
 })
 export class SectionContextMenuComponent {
-  @Input({ required: true}) sectionId!: string;
-  @Input({ required: true}) projectId!: string;
+  @Input({ required: true}) sectionId!: number;
+  @Input({ required: true}) projectId!: number;
   @Input({ required: true}) name!: string;
 
   private store = inject(Store);

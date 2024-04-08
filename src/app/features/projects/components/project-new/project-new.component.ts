@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { ProjectFormComponent } from '../project-form/project-form.component';
-import { Store } from '@ngrx/store';
-import { ProjectPayload } from '../../models/project-payload.model';
+import { Store, select } from '@ngrx/store';
 import { addProject } from '../../store/projects.actions';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuidv4  } from 'uuid';
 import { Router } from '@angular/router';
+import { ProjectFormData } from '../../models/project-form-data.model';
+import { selectUserId } from '../../../../core/store/user/user.feature';
 
 @Component({
   selector: 'app-project-new',
@@ -17,29 +18,22 @@ export class ProjectNewComponent {
   private store = inject(Store);
   private router = inject(Router);
 
-  onSave(payload: ProjectPayload) {
-    const defaultSectionId = uuid();
-    const id = uuid();
-    const project = {
-      ...payload,
-      defaultSectionId,
-      id,
-      isActive: true,
-      isFavorite: false,
+  ownerId!: number;
+  
+  ngOnInit() {
+    this.store.select(selectUserId).subscribe(userId => this.ownerId = userId)
+  }
+
+  onSave(formData: ProjectFormData) {
+    const uuid = uuidv4();
+    const projectPayload = {
+      ...formData,
+      uuid,
       order: 1,
-      ownerId: '1',
-      sections: [
-       {
-        name: 'default',
-        id: defaultSectionId,
-        isOpen: true,
-        order: 1,
-        projectId: id
-       }
-      ]
+      ownerId: this.ownerId,
     }
 
-    this.store.dispatch(addProject({ project }));
-    this.router.navigate(['projects', id]);
+    this.store.dispatch(addProject({ projectPayload }));
+    this.router.navigate(['projects', uuid]);
   }
 }

@@ -1,7 +1,7 @@
 export interface Area {
-    id: string;
+    id: number;
     isOpen: boolean;
     name: string;
     order: number;
-    ownerId: string;
+    ownerId: number;
 }

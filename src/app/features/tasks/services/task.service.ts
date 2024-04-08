@@ -1,30 +1,32 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Task } from '../models/task.model';
-import { environment } from '../../../../environments/environment.development';
 import { Observable } from 'rxjs';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  url = environment.baseUrl + '/tasks';
+  private auth = inject(AuthService);
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
+  url = 'api/tasks';
+
 
   getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.url);
+    return this.http.get<Task[]>(this.url, this.auth.getAuthHeaders);
   }
 
   createTask(task: Task): Observable<Task> {
-    return this.http.post<Task>(this.url, task);
+    return this.http.post<Task>(this.url, task, this.auth.getAuthHeaders);
   }
 
-  updateTask(id: string, values: Partial<Task>): Observable<Task> {
-    return this.http.patch<Task>(`${this.url}/${id}`, values);
+  updateTask(id: number, values: Partial<Task>): Observable<Task> {
+    return this.http.patch<Task>(`${this.url}/${id}`, values, this.auth.getAuthHeaders);
   }
 
-  deleteTask(id: string): Observable<any> {
-    return this.http.delete<Task>(`${this.url}/${id}`);
+  deleteTask(id: number): Observable<any> {
+    return this.http.delete<Task>(`${this.url}/${id}`, this.auth.getAuthHeaders);
   }
 }

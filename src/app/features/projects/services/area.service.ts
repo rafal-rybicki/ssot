@@ -8,10 +8,11 @@ import { AuthService } from '../../../core/services/auth.service';
   providedIn: 'root'
 })
 export class AreaService {
-  // private auth = inject(AuthService);
+  private auth = inject(AuthService);
   private http = inject(HttpClient);
 
-  private url = '/areas';
+
+  private url = 'api/areas';
   // private headers = new HttpHeaders({
   //   'Authorization': 'Bearer ' + this.auth.accessToken()
   // });
@@ -30,18 +31,18 @@ export class AreaService {
   // }
 
   getAreas(): Observable<Area[]> {
-    return this.http.get<Area[]>(this.url);
+    return this.http.get<Area[]>(this.url, this.auth.getAuthHeaders);
   }
 
   createArea(area: Area): Observable<Area> {
-    return this.http.post<Area>(this.url, area);
+    return this.http.post<Area>(this.url, area, this.auth.getAuthHeaders);
   }
 
-  updateArea(id: string, values: Partial<Area>): Observable<Area> {
-    return this.http.patch<Area>(`${this.url}/${id}`, values);
+  updateArea(id: number, values: Partial<Area>): Observable<Area> {
+    return this.http.patch<Area>(`${this.url}/${id}`, values, this.auth.getAuthHeaders);
   }
 
-  deleteArea(id: string): Observable<any> {
-    return this.http.delete<Area>(`${this.url}/${id}`);
+  deleteArea(id: number): Observable<any> {
+    return this.http.delete<Area>(`${this.url}/${id}`, this.auth.getAuthHeaders);
   }
 }

@@ -1,7 +1,7 @@
 export interface Section {
     name: string;
-    id: string;
+    id: number;
     isOpen: boolean;
     order: number;
-    projectId: string;
+    projectId: number;
 }

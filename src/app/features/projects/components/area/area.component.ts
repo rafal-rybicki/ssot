@@ -14,7 +14,7 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
 })
 export class AreaComponent {
   @Input({ required: true }) name!: string;
-  @Input({ required: true }) id!: string;
+  @Input({ required: true }) id!: number;
   @Input({ required: true }) isOpen!: boolean;
 
   projects$ = this.store.pipe(

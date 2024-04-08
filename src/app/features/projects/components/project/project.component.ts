@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { select, Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
-import { mergeMap } from 'rxjs';
+import { mergeMap, switchMap } from 'rxjs';
 import { SectionComponent } from '../section/section.component';
 import { Section } from '../../models/section.model';
 import { selectProjectsState } from '../../store/projects.feature';
@@ -36,25 +36,29 @@ export class ProjectComponent {
   private route = inject(ActivatedRoute);
 
   showSectionEditor = false;
-  id!: string;
+  uuid!: string;
+  id!: number;
   isFavorite!: boolean;
   name!: string;
   sections!: Section[];
   view!: string;
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.id = params['id'];
-      this.store.pipe(
-        select(selectProjectsState),
-        mergeMap(projects => projects.filter(project => project.id === this.id))
-      ).subscribe(project => {
-        this.isFavorite = project.isFavorite;
-        this.name = project.name;
-        this.sections = project.sections;
-        this.view = project.view;
+    this.route.params.pipe(
+      switchMap((params) => {
+        this.uuid = params['uuid'];
+        return this.store.pipe(
+          select(selectProjectsState),
+          mergeMap(projects => projects.filter(project => project.uuid === this.uuid))
+        );
       })
-    })
+    ).subscribe(project => {
+      this.id = project.id;
+      this.isFavorite = project.isFavorite;
+      this.name = project.name;
+      this.sections = project.sections;
+      this.view = project.view;
+    });
   }
 
   toggleSectionEditor() {
@@ -64,7 +68,7 @@ export class ProjectComponent {
   saveSection(payload: SectionPayload) {
     const newSection: Section = {
       name: payload.name,
-      id: uuid(),
+      id: Math.random(),
       isOpen: true,
       order: this.sections.length,
       projectId: this.id

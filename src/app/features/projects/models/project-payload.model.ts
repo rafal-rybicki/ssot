@@ -1,8 +1,13 @@
 import { View } from "./view.model";
 
 export interface ProjectPayload {
-    color: string; 
+    areaId?: number;
     description?: string;
+    isActive?: boolean;
+    isFavorite?: boolean;
     name: string;
+    ownerId: number; 
+    order: number;
+    uuid: string;
     view: View; 
 }

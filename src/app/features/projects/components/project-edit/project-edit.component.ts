@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 import { Store, select } from '@ngrx/store';
 import { updateProject } from '../../store/projects.actions';
-import { ProjectPayload } from '../../models/project-payload.model';
+import { ProjectFormData } from '../../models/project-form-data.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { selectProjectsState } from '../../store/projects.feature';
 import { mergeMap } from 'rxjs';
@@ -23,24 +23,25 @@ export class ProjectEditComponent {
   currentColor!: string;
   currentName!: string;
   currentView!: string;
-  id!: string;
+  id!: number;
+  uuid!: string;
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.id = params['id'];
+      this.uuid = params['uuid'];
       this.store.pipe(
         select(selectProjectsState),
-        mergeMap(projects => projects.filter(project => project.id === this.id))
+        mergeMap(projects => projects.filter(project => project.uuid === this.uuid))
       ).subscribe(project => {
-        this.currentColor = project.color;
+        this.id = project.id;
         this.currentName = project.name;
         this.currentView = project.view;
       })
     })
   }
 
-  onSave(payload: ProjectPayload) {
-    this.store.dispatch(updateProject({ projectId: this.id, values: payload }));
+  onSave(formData: ProjectFormData) {
+    this.store.dispatch(updateProject({ projectId: this.id, values: formData }));
     this.location.back();
   }
 }

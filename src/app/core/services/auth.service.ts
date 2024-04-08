@@ -32,12 +32,6 @@ export class AuthService {
   constructor() {
     const accessToken: string = localStorage.getItem('accessToken') || '';
     this.setAccessToken(accessToken);
-
-    const user = localStorage.getItem('user');
-
-    if (user) {
-      this.setUser(JSON.parse(user));
-    }
   }
 
   login(email: string, password: string): Observable<void | string> {

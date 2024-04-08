@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ProjectPayload } from '../../models/project-payload.model';
+import { ProjectFormData } from '../../models/project-form-data.model';
 import { Location } from '@angular/common';
 import { View } from '../../models/view.model';
 
@@ -15,7 +15,7 @@ export class ProjectFormComponent {
   @Input() currentColor: string = 'black';
   @Input() currentName: string = '';
   @Input() currentView: string = 'list';
-  @Output() save = new EventEmitter<ProjectPayload>();
+  @Output() save = new EventEmitter<ProjectFormData>();
 
   private fb = inject(FormBuilder);
   private location = inject(Location);
@@ -25,7 +25,6 @@ export class ProjectFormComponent {
 
   ngOnInit() {
     this.form = this.fb.nonNullable.group({
-      color: new FormControl(this.currentColor, [Validators.required]),
       name: new FormControl(this.currentName, [Validators.required]),
       view: new FormControl(this.currentView, [Validators.required])
     });

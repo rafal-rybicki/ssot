@@ -6,7 +6,7 @@ export const TasksApiActions = createActionGroup({
     events: {
         taskAddedSuccess: props<{ task: Task }>(),
         taskAddedFailure: props<{ errorMsg: string }>(),
-        taskDeletedSuccess: props<{ taskId: string }>(),
+        taskDeletedSuccess: props<{ taskId: number }>(),
         taskDeletedFailure: props<{ errorMsg: string }>(),
         taskUpdatedSuccess: props<{ task: Task }>(), 
         taskUpdatedFailure: props<{ errorMsg: string }>(),

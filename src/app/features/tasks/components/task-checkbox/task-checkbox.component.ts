@@ -12,7 +12,7 @@ import { updateTask } from '../../store/tasks.actions';
 export class TaskCheckboxComponent {
   private store = inject(Store);
 
-  @Input({ required: true }) id!: string;
+  @Input({ required: true }) id!: number;
   @Input({ required: true }) isCompleted!: boolean;
   @Input({ required: true }) subtasks!: number;
   @Input({ required: true }) completedSubtasks!: number;

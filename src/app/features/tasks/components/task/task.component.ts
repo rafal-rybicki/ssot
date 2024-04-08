@@ -25,7 +25,7 @@ export class TaskComponent {
   }
 
   @Input({ required: true }) content!: string;
-  @Input({ required: true }) id!: string;
+  @Input({ required: true }) id!: number;
   @Input({ required: true }) isCompleted!: boolean;
   @Input() completedSubtasks: number = 0;
   @Input() date?: string;

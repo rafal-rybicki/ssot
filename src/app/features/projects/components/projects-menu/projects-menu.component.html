@@ -2,9 +2,8 @@
     <ul>
         @for (project of projects$ | async; track $index) {
             <app-menu-item 
-                color="{{ project.color }}"
                 cssClass="circle-fill project-icon"
-                [path]="project.id"
+                [path]="project.uuid"
                 text="{{ project.name }}"
             />
         }

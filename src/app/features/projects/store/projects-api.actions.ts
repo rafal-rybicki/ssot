@@ -6,7 +6,7 @@ export const ProjectsApiActions = createActionGroup({
     events: {
         projectAddedSuccess: props<{ project: Project }>(),
         projectAddedFailure: props<{ errorMsg: string }>(),
-        projectDeletedSuccess: props<{ projectId: string }>(),
+        projectDeletedSuccess: props<{ projectId: number }>(),
         projectDeletedFailure: props<{ errorMsg: string }>(),
         projectUpdatedSuccess: props<{ project: Project }>(), 
         projectUpdatedFailure: props<{ errorMsg: string }>(),
