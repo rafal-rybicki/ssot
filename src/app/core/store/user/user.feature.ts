@@ -10,10 +10,7 @@ export const userFeature = createFeature({
         initialState,
         on(
             UserApiActions.userLoadedSuccess,
-            ( state, { user } ) => { 
-                console.log(user);
-                return user
-            }
+            ( state, { user }) => user
         ),
         // on(
         //     UserApiActions.userDeletedSuccess,

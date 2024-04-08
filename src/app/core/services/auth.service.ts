@@ -16,7 +16,6 @@ export class AuthService {
   private store = inject(Store);
   private router = inject(Router);
 
-
   private _accessToken = signal<string>('');
   private url = '/auth/' ;
 
@@ -32,7 +31,13 @@ export class AuthService {
 
   constructor() {
     const accessToken: string = localStorage.getItem('accessToken') || '';
-    this.setAccessToken(accessToken)
+    this.setAccessToken(accessToken);
+
+    const user = localStorage.getItem('user');
+
+    if (user) {
+      this.setUser(JSON.parse(user));
+    }
   }
 
   login(email: string, password: string): Observable<void | string> {
@@ -52,6 +57,7 @@ export class AuthService {
 
   logout() {
     this.setAccessToken('');
+    localStorage.removeItem('user');
   }
 
   register(email: string, password: string, username: string): Observable<void | string> {
@@ -82,7 +88,7 @@ export class AuthService {
   }
 
   get accessToken() {
-    return this._accessToken;
+    return this._accessToken();
   }
 
   get getAuthHeaders() {
@@ -95,10 +101,11 @@ export class AuthService {
 
   private setAccessToken(accessToken: string) {
     localStorage.setItem('accessToken', accessToken);
-    this.accessToken.set(accessToken);
+    this._accessToken.set(accessToken);
   }
 
   private setUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.store.dispatch(UserApiActions.userLoadedSuccess({
       user: {
         id: user.id,
