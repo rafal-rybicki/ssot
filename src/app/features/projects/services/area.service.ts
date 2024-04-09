@@ -11,24 +11,7 @@ export class AreaService {
   private auth = inject(AuthService);
   private http = inject(HttpClient);
 
-
   private url = 'api/areas';
-  // private headers = new HttpHeaders({
-  //   'Authorization': 'Bearer ' + this.auth.accessToken()
-  // });
-
-  // getAreas(): Observable<Area[]> {
-  //   return this.http.get<Area[]>(this.url, {
-  //     headers: this.headers
-  //   });
-  // }
-
-  // createArea(area: Area): Observable<Area> {
-  //   console.log(area)
-  //   return this.http.post<Area>(this.url, area, {
-  //     headers: this.headers
-  //   });
-  // }
 
   getAreas(): Observable<Area[]> {
     return this.http.get<Area[]>(this.url, this.auth.getAuthHeaders);

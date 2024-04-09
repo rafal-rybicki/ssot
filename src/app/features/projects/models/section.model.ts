@@ -4,4 +4,5 @@ export interface Section {
     isOpen: boolean;
     order: number;
     projectId: number;
+    uuid: string;
 }
