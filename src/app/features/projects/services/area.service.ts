@@ -25,7 +25,7 @@ export class AreaService {
     return this.http.patch<Area>(`${this.url}/${id}`, values, this.auth.getAuthHeaders);
   }
 
-  deleteArea(id: number): Observable<any> {
+  deleteArea(id: number): Observable<Area> {
     return this.http.delete<Area>(`${this.url}/${id}`, this.auth.getAuthHeaders);
   }
 }

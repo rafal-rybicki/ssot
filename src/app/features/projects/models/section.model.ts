@@ -3,6 +3,7 @@ export interface Section {
     id: number;
     isOpen: boolean;
     order: number;
+    ownerId: number;
     projectId: number;
     uuid: string;
 }

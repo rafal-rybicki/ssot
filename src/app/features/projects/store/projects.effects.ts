@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ProjectService } from '../services/project.service';
-import { EMPTY, catchError, exhaustMap, map, tap } from 'rxjs';
+import { EMPTY, catchError, exhaustMap, map } from 'rxjs';
 import { ProjectsApiActions } from './projects-api.actions';
 import { addProject, deleteProject, updateProject } from './projects.actions';
 import { UserApiActions } from '../../../core/store/user/user-api.actions';
@@ -37,7 +37,7 @@ export class ProjectsEffects {
             ofType(deleteProject),
             exhaustMap(({ projectId }) => this.projectService.deleteProject(projectId)
                 .pipe(
-                    map(project =>  ProjectsApiActions.projectDeletedSuccess({ projectId: project.id })),
+                    map(project => ProjectsApiActions.projectDeletedSuccess({ projectId: project.id })),
                     catchError(() => EMPTY)
                 )
             )

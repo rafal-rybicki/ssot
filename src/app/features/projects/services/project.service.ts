@@ -26,7 +26,7 @@ export class ProjectService {
     return this.http.patch<Project>(`${this.url}/${id}`, values, this.auth.getAuthHeaders);
   }
 
-  deleteProject(id: number): Observable<any> {
+  deleteProject(id: number): Observable<Project> {
     return this.http.delete<Project>(`${this.url}/${id}`, this.auth.getAuthHeaders);
   }
 }

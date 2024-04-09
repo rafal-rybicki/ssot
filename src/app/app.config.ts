@@ -18,6 +18,7 @@ import { habitItemsFeature } from './features/habits/store/habit-items..feature'
 import { HabitItemsEffects } from './features/habits/store/habit-items.effects';
 import { userFeature } from './core/store/user/user.feature';
 import { UserEffects } from './core/store/user/user.effects';
+import { SectionsEffects } from './features/projects/store/seactions.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -35,6 +36,7 @@ export const appConfig: ApplicationConfig = {
       HabitsEffects,
       HabitItemsEffects,
       ProjectsEffects,
+      SectionsEffects,
       TasksEffects,
       UserEffects
     ),
