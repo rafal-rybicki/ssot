@@ -1,8 +1,20 @@
-@if (id !== projectId) {
-    <h2>{{ name }}</h2>
-}
-
-<app-section-context-menu [sectionId]="id" [projectId]="projectId" [name]="name" />
+<div class="section-header">
+    @if (showEditor) {
+        <app-section-editor
+            [name]="name"
+            (close)="toggleEditor()"
+            (save)="update($event)"
+        />
+    } @else {
+        <h2>{{ name }}</h2>
+        <app-section-context-menu
+            [sectionId]="id"
+            [projectId]="projectId"
+            [name]="name"
+            (openSectionEditor)="toggleEditor()"
+        />
+    }
+</div>
 
 @for (task of tasks$ | async; track task.id) {
     <app-task

@@ -13,7 +13,6 @@ export class TaskService {
 
   url = 'api/tasks';
 
-
   getTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.url, this.auth.getAuthHeaders);
   }
@@ -26,7 +25,7 @@ export class TaskService {
     return this.http.patch<Task>(`${this.url}/${id}`, values, this.auth.getAuthHeaders);
   }
 
-  deleteTask(id: number): Observable<any> {
+  deleteTask(id: number): Observable<Task> {
     return this.http.delete<Task>(`${this.url}/${id}`, this.auth.getAuthHeaders);
   }
 }

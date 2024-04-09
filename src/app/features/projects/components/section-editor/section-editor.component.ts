@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { SectionPayload } from '../../models/section-payload.model';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SectionFormData } from '../../models/section-form-data.model';
 
 @Component({
   selector: 'app-section-editor',
@@ -12,17 +12,21 @@ import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angu
 export class SectionEditorComponent {
   @Input() name: string = '';
   @Output() close = new EventEmitter<void>();
-  @Output() save = new EventEmitter<SectionPayload>();
+  @Output() save = new EventEmitter<SectionFormData>();
 
   private fb = inject(FormBuilder);
 
-  form = this.fb.nonNullable.group({
-    name: new FormControl(this.name, [Validators.required]),
-  });
+  form!: FormGroup;
+
+  ngOnInit() {
+    this.form = this.fb.nonNullable.group({
+      name: new FormControl(this.name, [Validators.required]),
+    });
+  }
 
   onSubmit() {
     if (this.form.valid) {
-      this.save.emit(this.form.value as SectionPayload);
+      this.save.emit(this.form.value as SectionFormData);
       this.form.patchValue({ name: '' });
     }
   }

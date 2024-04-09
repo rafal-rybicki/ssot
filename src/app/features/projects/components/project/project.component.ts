@@ -10,9 +10,11 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
 import { AreaComponent } from '../area/area.component';
 import { ProjectContextMenuComponent } from '../project-context-menu/project-context-menu.component';
 import { SectionEditorComponent } from '../section-editor/section-editor.component';
+import { SectionFormData } from '../../models/section-form-data.model';
 import { SectionPayload } from '../../models/section-payload.model';
-import { updateProject } from '../../store/projects.actions';
 import { v4 as uuid } from 'uuid';
+import { addSection } from '../../store/sections.actions';
+import { updateProject } from '../../store/projects.actions';
 
 @Component({
   selector: 'app-project',
@@ -40,6 +42,7 @@ export class ProjectComponent {
   id!: number;
   isFavorite!: boolean;
   name!: string;
+  ownerId!: number;
   sections!: Section[];
   view!: string;
 
@@ -56,24 +59,26 @@ export class ProjectComponent {
       this.id = project.id;
       this.isFavorite = project.isFavorite;
       this.name = project.name;
+      this.ownerId = project.ownerId;
       this.sections = project.sections;
       this.view = project.view;
     });
   }
 
-  toggleSectionEditor() {
-    this.showSectionEditor = !this.showSectionEditor;
-  }
-
-  saveSection(payload: SectionPayload) {
-    const newSection: Section = {
-      name: payload.name,
-      id: Math.random(),
+  saveSection(formData: SectionFormData) {
+    const sectionPayload: SectionPayload = {
+      ...formData,
       isOpen: true,
       order: this.sections.length,
-      projectId: this.id
+      projectId: this.id,
+      ownerId: this.ownerId,
+      uuid: uuid(),
     }
-    const values = { sections: [...this.sections, newSection] };
-    this.store.dispatch(updateProject({ projectId: this.id, values }));
+    
+    this.store.dispatch(addSection({ sectionPayload }));
+  }
+
+  toggleSectionEditor() {
+    this.showSectionEditor = !this.showSectionEditor;
   }
 }
