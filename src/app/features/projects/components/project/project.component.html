@@ -11,6 +11,7 @@
     <app-section 
         [name]="section.name"
         [id]="section.id"
+        [isDefault]="section.id === defaultSectionId"
         [isOpen]="section.isOpen"
         [projectId]="section.projectId"
     />

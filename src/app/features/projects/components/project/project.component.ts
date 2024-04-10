@@ -38,13 +38,15 @@ export class ProjectComponent {
   private route = inject(ActivatedRoute);
 
   showSectionEditor = false;
-  uuid!: string;
+  
+  defaultSectionId!: number;
   id!: number;
   isFavorite!: boolean;
   name!: string;
   ownerId!: number;
   sections!: Section[];
   view!: string;
+  uuid!: string;
 
   ngOnInit(): void {
     this.route.params.pipe(
@@ -56,6 +58,7 @@ export class ProjectComponent {
         );
       })
     ).subscribe(project => {
+      this.defaultSectionId = project.defaultSectionId;
       this.id = project.id;
       this.isFavorite = project.isFavorite;
       this.name = project.name;
@@ -69,7 +72,7 @@ export class ProjectComponent {
     const sectionPayload: SectionPayload = {
       ...formData,
       isOpen: true,
-      order: this.sections.length,
+      order: this.sections.length + 1,
       projectId: this.id,
       ownerId: this.ownerId,
       uuid: uuid(),

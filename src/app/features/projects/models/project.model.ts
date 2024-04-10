@@ -4,6 +4,7 @@ import { View } from "./view.model";
 export interface Project {
     areaId?: number;
     description?: string;
+    defaultSectionId: number;
     id: number;
     isActive: boolean;
     isFavorite: boolean;
