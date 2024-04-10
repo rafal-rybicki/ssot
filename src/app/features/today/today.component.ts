@@ -8,6 +8,7 @@ import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { selectHabitItemsState } from '../habits/store/habit-items..feature';
 import { HabitTaskComponent } from './components/habit-task/habit-task.component';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-today',

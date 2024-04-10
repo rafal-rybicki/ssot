@@ -1,6 +1,5 @@
 import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { HttpClientModule } from '@angular/common/http';
 import { provideState, provideStore } from '@ngrx/store';
@@ -16,7 +15,6 @@ import { HabitsEffects } from './features/habits/store/habits.effects';
 import { habitsFeature } from './features/habits/store/habits.feature';
 import { habitItemsFeature } from './features/habits/store/habit-items..feature';
 import { HabitItemsEffects } from './features/habits/store/habit-items.effects';
-import { userFeature } from './core/store/user/user.feature';
 import { UserEffects } from './core/store/user/user.effects';
 import { SectionsEffects } from './features/projects/store/sections.effects';
 

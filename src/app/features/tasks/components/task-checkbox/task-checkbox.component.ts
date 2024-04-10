@@ -35,7 +35,6 @@ export class TaskCheckboxComponent {
       taskId: this.id,
       values: {
         isCompleted: this.isCompleted,
-        completedSubtasks: this.completedSubtasks
       }
     }));
   }

@@ -12,12 +12,10 @@
 
 @for (task of tasks$ | async; track task.id) {
     <app-task
-        [subtasks]="task.subtasks || 0"
-        [completedSubtasks]="task.completedSubtasks || 0"  
         [content]="task.content"
         [isCompleted]="task.isCompleted"
         [id]="task.id"
     />
 }
 
-<app-task-new [date]="date"/>
+<app-task-new [date]="date" [nextOrder]="0" />

@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { TaskEditorComponent } from '../task-editor/task-editor.component';
-import { Task } from '../../models/task.model';
 import { Store } from '@ngrx/store';
 import { addTask } from '../../store/tasks.actions';
 import { v4 as uuid } from 'uuid';
+import { TaskFormData } from '../../models/task-form-data.model';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-task-new',
@@ -14,33 +15,31 @@ import { v4 as uuid } from 'uuid';
 })
 export class TaskNewComponent {
   @Input() date?: string;
+  @Input({ required: true }) nextOrder!: number;
   @Input() projectId?: number;
   @Input() sectionId?: number;
+  
+  private auth = inject(AuthService);
+  private store = inject(Store);
+
+  userId = this.auth.userId();
   showEditor = false;
 
-  constructor(private store: Store) {}
+  onSave(formData: TaskFormData): void {
+    const taskPayload = {
+      ...formData,
+      date: this.date,
+      order: this.nextOrder || 0,
+      ownerId: this.userId,
+      projectId: this.projectId,
+      sectionId: this.sectionId,
+      uuid: uuid(),
+    }
+
+    this.store.dispatch(addTask({ taskPayload }));
+  }
 
   toggleEditor(): void {
     this.showEditor = !this.showEditor;
-  }
-
-  onSave(values: Partial<Task>): void {
-    const task = {
-      subtasks: values.subtasks!,
-      completedSubtasks: 0,
-      content: values.content!,
-      date: values.date ? values.date : this.date,
-      duration: 5,
-      id: Math.random(),
-      isCompleted: false,
-      isTimeSet: false,
-      order: 0,
-      ownerId: '1',
-      priority: false,
-      projectId: this.projectId,
-      sectionId: this.sectionId
-    }
-    
-    this.store.dispatch(addTask({ task }))
   }
 }

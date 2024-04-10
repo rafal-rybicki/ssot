@@ -10,27 +10,14 @@
     
     form {
         font-size: 16px;
+        display: flex;
+        align-content: center;
 
         div {
             display: flex;
             align-items: center;
             height: 26px;
-            
-            &.content {
-                margin-bottom: 10px;
-
-                input {
-                    padding: 0 5px;
-                    flex: 1;
-                }
-            }
-            
-            &.subtasks {
-                input {
-                    max-width: 50px;
-                    text-align: center;
-                }
-            }
+            flex-grow: 1;
             
             label {
                 min-width: 65px;
@@ -43,31 +30,19 @@
                 border-radius: 3px;
                 border: none;
                 font-size: 16px;
+                flex-grow: 1;
+                padding: 0 7px;
             }
         }
 
         button {
-            position: absolute;
             padding: 4px 10px;
             border: none;
-            bottom: 10px;
 
             &.btn-cancel {
                 right: 60px;
-                margin: 0 10px 0 270px;
+                margin: 0 10px;
             }
-
-            &.btn-submit {
-                right: 10px;
-            }
-        }
-    }
-}
-
-@media (min-width: 768px) {
-    .subtasks {
-        input {
-            padding-left: 10px;
         }
     }
 }

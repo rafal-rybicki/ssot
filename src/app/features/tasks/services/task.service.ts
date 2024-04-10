@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Task } from '../models/task.model';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
+import { TaskPayload } from '../models/task-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,8 @@ export class TaskService {
     return this.http.get<Task[]>(this.url, this.auth.getAuthHeaders);
   }
 
-  createTask(task: Task): Observable<Task> {
-    return this.http.post<Task>(this.url, task, this.auth.getAuthHeaders);
+  createTask(taskPayload: TaskPayload): Observable<Task> {
+    return this.http.post<Task>(this.url, taskPayload, this.auth.getAuthHeaders);
   }
 
   updateTask(id: number, values: Partial<Task>): Observable<Task> {

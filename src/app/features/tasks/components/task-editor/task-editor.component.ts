@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 import { Task } from '../../models/task.model';
+import { TaskFormData } from '../../models/task-form-data.model';
 
 @Component({
   selector: 'app-task-editor',
@@ -14,15 +15,14 @@ export class TaskEditorComponent {
   @Input() currentContent: string = '';
   @Input() currentSubtasks: number = 0;
   @Output() close = new EventEmitter<void>();
-  @Output() save = new EventEmitter<Partial<Task>>();
+  @Output() save = new EventEmitter<TaskFormData>();
 
-  public taskForm = new FormGroup({
-    content: new FormControl(this.currentContent, [Validators.required]),
-    subtasks: new FormControl(this.currentSubtasks, [Validators.required]),
-  });
+  private fb = inject(FormBuilder);
+
+  taskForm!: FormGroup;
 
   ngOnInit(): void {
-    this.taskForm.patchValue({
+    this.taskForm = this.fb.nonNullable.group({
       content: this.currentContent,
       subtasks: this.currentSubtasks
     });
@@ -33,11 +33,8 @@ export class TaskEditorComponent {
   }
 
   onSubmit(): void {
-    const subtasks = this.taskForm.value.subtasks!
-    
     this.save.emit({
-      content: this.taskForm.value.content!,
-      subtasks: subtasks === 1 ? 0 : subtasks
+      content: this.taskForm.value.content!
     });
 
     this.taskForm.patchValue({
@@ -47,7 +44,6 @@ export class TaskEditorComponent {
   }
 
   get isValid() {
-    return this.taskForm.valid && 
-      (this.taskForm.value.content !== this.currentContent || this.taskForm.value.subtasks !== this.currentSubtasks)
+    return this.taskForm.valid
   }
 }

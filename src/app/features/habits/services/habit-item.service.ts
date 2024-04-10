@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { environment } from '../../../../environments/environment.development';
 import { Observable } from 'rxjs';
 import { HabitItem } from '../models/habit-item.model';
 
@@ -10,7 +9,7 @@ import { HabitItem } from '../models/habit-item.model';
 export class HabitItemService {
   private http = inject(HttpClient);
 
-  url = environment.baseUrl + '/habit-items';
+  url = 'api/habit-items';
 
   getHabitItems(): Observable<HabitItem[]> {
     return this.http.get<HabitItem[]>(this.url);

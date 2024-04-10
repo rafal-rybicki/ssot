@@ -1,12 +1,7 @@
 <form class="editor" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <div class="content">
-        <label for="content">Content</label>
+        <!-- <label for="content">Content</label> -->
         <input id="content" autofocus type="text" formControlName="content" autocomplete="off"/>
-    </div>
-
-    <div class="subtasks">
-        <label for="subtasks">Subtasks</label>
-        <input type="number" formControlName="subtasks" min="0" max="100" step="1" />
     </div>
 
     <button (click)="onClose()" class="btn-cancel" type="button">

@@ -6,6 +6,7 @@ import { TaskContextMenuComponent } from '../task-context-menu/task-context-menu
 import { DatePickerComponent } from '../../../../shared/components/date-picker/date-picker.component';
 import { Task } from '../../models/task.model';
 import { updateTask } from '../../store/tasks.actions';
+import { TaskFormData } from '../../models/task-form-data.model';
 
 @Component({
   selector: 'app-task',
@@ -40,12 +41,8 @@ export class TaskComponent {
     alert('there will be modal with description');
   }
 
-  update(values: Partial<Task>) {
-    if (values.subtasks! < this.subtasks) {
-      values.completedSubtasks = 0;
-    }
-
-    this.dispatchValues(values);
+  update(formData: TaskFormData) {
+    this.dispatchValues({ ...formData });
     this.toggleEditor();
   }
 
