@@ -7,7 +7,7 @@ import { SectionComponent } from '../../../sections/components/section/section.c
 import { Section } from '../../../sections/models/section.model';
 import { selectProjectsState } from '../../store/projects.feature';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
-import { AreaComponent } from '../area/area.component';
+import { AreaComponent } from '../../../areas/components/area/area.component';
 import { ProjectContextMenuComponent } from '../project-context-menu/project-context-menu.component';
 import { SectionEditorComponent } from '../../../sections/components/section-editor/section-editor.component';
 import { SectionFormData } from '../../../sections/models/section-form-data.model';

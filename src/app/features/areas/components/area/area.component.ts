@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { selectActiveProjects } from '../../store/projects.feature';
+import { selectActiveProjects } from '../../../projects/store/projects.feature';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { MenuItemComponent } from '../menu-item/menu-item.component';
+import { MenuItemComponent } from '../../../projects/components/menu-item/menu-item.component';
 
 @Component({
   selector: 'app-area',
