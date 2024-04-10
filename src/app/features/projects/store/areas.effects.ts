@@ -1,15 +1,16 @@
 import { Injectable } from "@angular/core";
-import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from "@ngrx/effects";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { AreaService } from "../services/area.service";
 import { AreasApiActions } from "./areas-api.actions";
 import { EMPTY, catchError, exhaustMap, map } from "rxjs";
 import { addArea, deleteArea, updateArea } from "./areas.actions";
+import { loadUsersData } from "../../../core/store/user/user.actions";
 
 @Injectable()
 export class AreasEffects {
     loadAreas$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(ROOT_EFFECTS_INIT),
+            ofType(loadUsersData),
             exhaustMap(() => this.areaService.getAreas()
                 .pipe(
                     map(areas => AreasApiActions.areasLoadedSuccess({ areas })),

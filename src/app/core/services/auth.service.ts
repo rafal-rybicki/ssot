@@ -5,8 +5,7 @@ import { Observable, catchError, map, of } from 'rxjs';
 import { AuthResponse } from '../models/auth-response.model';
 import { AccessToken } from '../models/access-token.model';
 import { Store } from '@ngrx/store';
-import { UserApiActions } from '../store/user/user-api.actions';
-import { User } from '../models/user.model';
+import { loadUsersData } from '../store/user/user.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +16,11 @@ export class AuthService {
   private router = inject(Router);
 
   private _accessToken = signal<string>('');
+  private _userId = signal<number>(0);
   private url = '/auth/' ;
 
   isLoggedIn = computed(() => !!this._accessToken());
+  userId = computed(() => this._userId());
 
   authenticate = effect(() => {
     if (this.isLoggedIn()) {
@@ -32,6 +33,11 @@ export class AuthService {
   constructor() {
     const accessToken: string = localStorage.getItem('accessToken') || '';
     this.setAccessToken(accessToken);
+
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.setUserId(Number(userId));
+    }
   }
 
   login(email: string, password: string): Observable<void | string> {
@@ -41,7 +47,8 @@ export class AuthService {
     }).pipe(
       map(response => {
         this.setAccessToken(response.accessToken);
-        this.setUser(response);
+        this.setUserId(response.id);
+        this.store.dispatch(loadUsersData());
       }),
       catchError(err => {
         return of(err.error.message);
@@ -51,7 +58,7 @@ export class AuthService {
 
   logout() {
     this.setAccessToken('');
-    localStorage.removeItem('user');
+    this.setUserId(0);
   }
 
   register(email: string, password: string, username: string): Observable<void | string> {
@@ -62,7 +69,7 @@ export class AuthService {
     }).pipe(
       map(response => {
         this.setAccessToken(response.accessToken);
-        this.setUser(response);
+        this.setUserId(response.id);
       }),
       catchError(err => {
         return of(err.error.message);
@@ -98,14 +105,8 @@ export class AuthService {
     this._accessToken.set(accessToken);
   }
 
-  private setUser(user: User) {
-    localStorage.setItem('user', JSON.stringify(user));
-    this.store.dispatch(UserApiActions.userLoadedSuccess({
-      user: {
-        id: user.id,
-        username: user.username,
-        email: user.email
-      }
-    }))
+  private setUserId(userId: number) {
+    localStorage.setItem('userId', userId.toString());
+    this._userId.set(userId);
   }
 }

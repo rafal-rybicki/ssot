@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Actions, ROOT_EFFECTS_INIT, createEffect, ofType } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, catchError, exhaustMap, map } from 'rxjs';
 import { HabitsApiActions } from './habits-api.actions';
 import { addHabit, deleteHabit, updateHabit } from './habits.actions';
 import { HabitService } from '../services/habit.service';
+import { loadUsersData } from '../../../core/store/user/user.actions';
 
 @Injectable()
 export class HabitsEffects {
     loadHabits$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(ROOT_EFFECTS_INIT),
+            ofType(loadUsersData),
             exhaustMap(() => this.habitService.getHabits()
                 .pipe(
                     map(habits => HabitsApiActions.habitsLoadedSuccess({ habits })),

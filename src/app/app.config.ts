@@ -18,7 +18,7 @@ import { habitItemsFeature } from './features/habits/store/habit-items..feature'
 import { HabitItemsEffects } from './features/habits/store/habit-items.effects';
 import { userFeature } from './core/store/user/user.feature';
 import { UserEffects } from './core/store/user/user.effects';
-import { SectionsEffects } from './features/projects/store/seactions.effects';
+import { SectionsEffects } from './features/projects/store/sections.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,7 +30,6 @@ export const appConfig: ApplicationConfig = {
     provideState(habitItemsFeature),
     provideState(projectsFeature),
     provideState(tasksFeature),
-    provideState(userFeature),
     provideEffects(
       AreasEffects,
       HabitsEffects,
@@ -45,5 +44,5 @@ export const appConfig: ApplicationConfig = {
         logOnly: !isDevMode()
     }),
     provideEffects()
-]
+  ]
 };

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType, ROOT_EFFECTS_INIT } from '@ngrx/effects';
-import { UserApiActions } from './user-api.actions';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
+import { loadUsersData } from './user.actions';
 
 
 @Injectable()
@@ -11,9 +11,9 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(ROOT_EFFECTS_INIT),
       tap(() => {
-        const user = localStorage.getItem('user');
-        if (user) {
-          this.store.dispatch(UserApiActions.userLoadedSuccess({ user: JSON.parse(user) }));
+        const userId = localStorage.getItem('userId');
+        if (userId) {
+          this.store.dispatch(loadUsersData());
         }
       })
     ),

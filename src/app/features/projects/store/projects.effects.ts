@@ -4,13 +4,13 @@ import { ProjectService } from '../services/project.service';
 import { EMPTY, catchError, exhaustMap, map } from 'rxjs';
 import { ProjectsApiActions } from './projects-api.actions';
 import { addProject, deleteProject, updateProject } from './projects.actions';
-import { UserApiActions } from '../../../core/store/user/user-api.actions';
+import { loadUsersData } from '../../../core/store/user/user.actions';
 
 @Injectable()
 export class ProjectsEffects {
     loadProjects$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(UserApiActions.userLoadedSuccess),
+            ofType(loadUsersData),
             exhaustMap(() => this.projectService.getProjects()
                 .pipe(
                     map(projects => ProjectsApiActions.projectsLoadedSuccess({ projects })),
