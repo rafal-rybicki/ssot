@@ -11,7 +11,7 @@ export class UserEffects {
     this.actions$.pipe(
       ofType(ROOT_EFFECTS_INIT),
       tap(() => {
-        const userId = localStorage.getItem('userId');
+        const userId = Number(localStorage.getItem('userId'));
         if (userId) {
           this.store.dispatch(loadUsersData());
         }

@@ -1,4 +1,4 @@
-import { Section } from "./section.model";
+import { Section } from "../../sections/models/section.model";
 import { View } from "./view.model";
 
 export interface Project {

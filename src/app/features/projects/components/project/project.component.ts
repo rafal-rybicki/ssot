@@ -3,17 +3,17 @@ import { CommonModule } from '@angular/common';
 import { select, Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { mergeMap, switchMap } from 'rxjs';
-import { SectionComponent } from '../section/section.component';
-import { Section } from '../../models/section.model';
+import { SectionComponent } from '../../../sections/components/section/section.component';
+import { Section } from '../../../sections/models/section.model';
 import { selectProjectsState } from '../../store/projects.feature';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 import { AreaComponent } from '../area/area.component';
 import { ProjectContextMenuComponent } from '../project-context-menu/project-context-menu.component';
-import { SectionEditorComponent } from '../section-editor/section-editor.component';
-import { SectionFormData } from '../../models/section-form-data.model';
-import { SectionPayload } from '../../models/section-payload.model';
+import { SectionEditorComponent } from '../../../sections/components/section-editor/section-editor.component';
+import { SectionFormData } from '../../../sections/models/section-form-data.model';
+import { SectionPayload } from '../../../sections/models/section-payload.model';
 import { v4 as uuid } from 'uuid';
-import { addSection } from '../../store/sections.actions';
+import { addSection } from '../../../sections/store/sections.actions';
 import { updateProject } from '../../store/projects.actions';
 
 @Component({
