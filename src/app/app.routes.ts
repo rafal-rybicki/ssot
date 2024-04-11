@@ -3,7 +3,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { TodayComponent } from './features/today/today.component';
 import { SettingsComponent } from './features/settings/settings.component';
 import { InboxComponent } from './features/inbox/inbox.component';
-import { projectRoutes } from './features/projects/projects.routes';
+import { projectsRoutes } from './features/projects/projects.routes';
 import { authRoutes } from './features/auth/auth.routes';
 import { habitRoutes } from './features/habits/habits.routes';
 
@@ -13,6 +13,6 @@ export const routes: Routes = [
     { path: 'today', component: TodayComponent, canActivate: [authGuard]  },
     ...authRoutes,
     ...habitRoutes,
-    ...projectRoutes,
+    ...projectsRoutes,
     { path: '**', redirectTo: 'today' },
 ];

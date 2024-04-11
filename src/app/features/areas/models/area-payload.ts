@@ -1,6 +1,4 @@
-export interface Area {
-    id: number;
-    isOpen: boolean;
+export interface AreaPayload {
     name: string;
     order: number;
     ownerId: number;

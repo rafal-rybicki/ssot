@@ -4,8 +4,13 @@
     (ngSubmit)="onSubmit()"
 >
     <div class="name">
-        <label for="name">Name</label>
-        <input autofocus type="text" formControlName="name" autocomplete="off"/>
+        <input
+            autofocus
+            type="text"
+            formControlName="name"
+            autocomplete="off"
+            placeholder="Name"
+        />
     </div>
 
     <button (click)="close.emit()" class="btn-cancel" type="button">

@@ -1,15 +1,25 @@
 <ul>
-    <p (click)="isOpen = !isOpen">
-        <i class="bi bi-stack area-icon"></i>
-        {{ name }}
-    </p>
+    @if (showEditor) {
+        <app-area-edit [id]="id" [name]="name" (close)="toggleEditor()" />
+    } @else {
+        <p (click)="isOpen = !isOpen">
+            <i class="bi bi-stack area-icon"></i>
+            <span>{{ name }}</span>
+            <i class="bi bi-trash" (click)="delete()"></i>
+            <i class="bi bi-pen" (click)="toggleEditor()"></i>
+            <i class="bi bi-chevron-{{ isOpen ? 'down' : 'right'}}"></i>
+        </p>
+    }
     @if (isOpen) {
-        @for (project of projects$ | async; track $index) {
+        @for (project of projects; track $index) {
             <app-menu-item 
                 cssClass="circle-fill project-icon"
-                path="project/{{ project.id }}"
+                [path]="project.uuid"
                 text="{{ project.name }}"
             />
         }
-    }
+        @if (projects.length === 0) {
+            <li class="empty">No projects</li>
+        }
+    } 
 </ul>

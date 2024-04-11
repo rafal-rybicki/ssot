@@ -23,7 +23,7 @@ export class AreasEffects {
     addArea$ = createEffect(() => 
         this.actions$.pipe(
             ofType(addArea),
-            exhaustMap(({ area }) => this.areaService.createArea(area)
+            exhaustMap(({ areaPayload }) => this.areaService.createArea(areaPayload)
                 .pipe(
                     map(area => AreasApiActions.areaAddedSuccess({ area })),
                     catchError(() => EMPTY)

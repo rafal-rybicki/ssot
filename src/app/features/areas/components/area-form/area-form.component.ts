@@ -27,7 +27,7 @@ export class AreaFormComponent {
   onSubmit() {
     if (this.form.valid) {
       this.save.emit(this.form.value);
-      this.close.emit();
+      this.form.patchValue({ name: '' });
     }
   }
 }

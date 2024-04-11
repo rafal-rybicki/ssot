@@ -5,7 +5,7 @@ import { ProjectComponent } from './components/project/project.component';
 import { ProjectEditComponent } from './components/project-edit/project-edit.component';
 import { ProjectNewComponent } from './components/project-new/project-new.component';
 
-export const projectRoutes: Routes = [
+export const projectsRoutes: Routes = [
     { 
         path: 'projects',
         canActivate: [authGuard],

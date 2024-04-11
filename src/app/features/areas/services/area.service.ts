@@ -1,8 +1,9 @@
 import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Area } from '../models/area.model';
 import { Observable } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
+import { AreaPayload } from '../models/area-payload';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AreaService {
     return this.http.get<Area[]>(this.url, this.auth.getAuthHeaders);
   }
 
-  createArea(area: Area): Observable<Area> {
+  createArea(area: AreaPayload): Observable<Area> {
     return this.http.post<Area>(this.url, area, this.auth.getAuthHeaders);
   }
 

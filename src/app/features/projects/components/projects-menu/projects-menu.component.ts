@@ -7,11 +7,19 @@ import { Store } from '@ngrx/store';
 import { selectAreasState } from '../../../areas/store/areas.feature';
 import { selectActiveProjects } from '../../store/projects.feature';
 import { RouterLink } from '@angular/router';
+import { AreaNewComponent } from '../../../areas/components/area-new/area-new.component';
 
 @Component({
   selector: 'app-projects-menu',
   standalone: true,
-  imports: [CommonModule, MenuItemComponent, IconButtonComponent, AreaComponent, RouterLink],
+  imports: [
+    CommonModule,
+    MenuItemComponent,
+    IconButtonComponent,
+    AreaComponent,
+    RouterLink,
+    AreaNewComponent
+  ],
   templateUrl: './projects-menu.component.html',
   styleUrl: './projects-menu.component.scss'
 })
