@@ -19,15 +19,13 @@ export class ProjectNewComponent {
   private store = inject(Store);
   private router = inject(Router);
 
-  userId: number = this.auth.userId();
-
   onSave(formData: ProjectFormData) {
     const uuid = uuidv4();
     const projectPayload = {
       ...formData,
       uuid,
       order: 1,
-      ownerId: this.userId,
+      ownerId: this.auth.userId,
     }
 
     this.store.dispatch(addProject({ projectPayload }));

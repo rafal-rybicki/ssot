@@ -22,7 +22,6 @@ export class TaskNewComponent {
   private auth = inject(AuthService);
   private store = inject(Store);
 
-  userId = this.auth.userId();
   showEditor = false;
 
   onSave(formData: TaskFormData): void {
@@ -30,7 +29,7 @@ export class TaskNewComponent {
       ...formData,
       date: this.date,
       order: this.nextOrder || 0,
-      ownerId: this.userId,
+      ownerId: this.auth.userId,
       projectId: this.projectId,
       sectionId: this.sectionId,
       uuid: uuid(),

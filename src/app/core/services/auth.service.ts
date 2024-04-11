@@ -20,7 +20,7 @@ export class AuthService {
   private url = '/auth/' ;
 
   isLoggedIn = computed(() => !!this._accessToken());
-  userId = computed(() => this._userId());
+  // userId = computed(() => this._userId());
 
   authenticate = effect(() => {
     if (this.isLoggedIn()) {
@@ -98,6 +98,10 @@ export class AuthService {
         Authorization: `Bearer ${this.accessToken}`
       }
     }
+  }
+
+  get userId(): number {
+    return this._userId();
   }
 
   private setAccessToken(accessToken: string) {
