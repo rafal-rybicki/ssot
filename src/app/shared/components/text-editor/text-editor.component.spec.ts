@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SectionEditorComponent } from './section-editor.component';
+import { TextEditorComponent } from './text-editor.component';
 
-describe('SectionEditorComponent', () => {
-  let component: SectionEditorComponent;
-  let fixture: ComponentFixture<SectionEditorComponent>;
+describe('TextEditorComponent', () => {
+  let component: TextEditorComponent;
+  let fixture: ComponentFixture<TextEditorComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SectionEditorComponent]
+      imports: [TextEditorComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(SectionEditorComponent);
+    fixture = TestBed.createComponent(TextEditorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

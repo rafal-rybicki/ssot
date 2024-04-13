@@ -9,12 +9,10 @@ import { selectProjectsState } from '../../store/projects.feature';
 import { MenuItemComponent } from '../menu-item/menu-item.component';
 import { AreaComponent } from '../../../areas/components/area/area.component';
 import { ProjectContextMenuComponent } from '../project-context-menu/project-context-menu.component';
-import { SectionEditorComponent } from '../../../sections/components/section-editor/section-editor.component';
-import { SectionFormData } from '../../../sections/models/section-form-data.model';
 import { SectionPayload } from '../../../sections/models/section-payload.model';
 import { v4 as uuid } from 'uuid';
 import { addSection } from '../../../sections/store/sections.actions';
-import { updateProject } from '../../store/projects.actions';
+import { TextEditorComponent } from '../../../../shared/components/text-editor/text-editor.component';
 
 @Component({
   selector: 'app-project',
@@ -25,7 +23,7 @@ import { updateProject } from '../../store/projects.actions';
     MenuItemComponent,
     AreaComponent,
     ProjectContextMenuComponent,
-    SectionEditorComponent
+    TextEditorComponent
   ],
   templateUrl: './project.component.html',
   styleUrl: './project.component.scss',
@@ -68,9 +66,9 @@ export class ProjectComponent {
     });
   }
 
-  saveSection(formData: SectionFormData) {
+  saveSection(name: string) {
     const sectionPayload: SectionPayload = {
-      ...formData,
+      name,
       isOpen: true,
       order: this.sections.length + 1,
       projectId: this.id,

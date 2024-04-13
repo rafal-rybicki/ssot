@@ -1,15 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { AreaFormData } from '../../models/area-form-data';
-import { AreaFormComponent } from '../area-form/area-form.component';
 import { AuthService } from '../../../../core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { v4 as uuid } from 'uuid';
 import { addArea } from '../../store/areas.actions';
+import { TextEditorComponent } from '../../../../shared/components/text-editor/text-editor.component';
 
 @Component({
   selector: 'app-area-new',
   standalone: true,
-  imports: [AreaFormComponent],
+  imports: [TextEditorComponent],
   templateUrl: './area-new.component.html',
   styleUrl: './area-new.component.scss'
 })
@@ -23,9 +22,9 @@ export class AreaNewComponent {
     this.showEditor = !this.showEditor;
   }
 
-  onSave(areaFormData: AreaFormData) {
+  onSubmit(name: string) {
     const areaPayload = {
-      ...areaFormData,
+      name,
       order: 0,
       ownerId: this.auth.userId,
       uuid: uuid(),

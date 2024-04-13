@@ -1,17 +1,22 @@
-ul {
-    margin-bottom: 20px;
-}
+:host {
+    display: block;
+    margin: 10px;
 
-p {
-    margin-bottom: 5px;
-    cursor: pointer;
-    display: flex;
-
-    span {
-        flex: 1;
+    ul {
+        margin-bottom: 20px;
     }
-}
+    
+    p {
+        margin-bottom: 5px;
+        cursor: pointer;
+        display: flex;
+    
+        span {
+            flex: 1;
+        }
+    }
 
-i {
-    margin: 0 5px 0 10px;
+    i {
+        margin-right: 5px;
+    }
 }

@@ -1,0 +1,39 @@
+:host {
+    width: 100%;
+
+    form {
+        display: grid;
+        column-gap: 5px;
+        row-gap: 7px;
+        grid-template-areas: 
+            "text text"
+            "cancel submit";
+        grid-template-columns: 1fr 1fr;
+
+        &.single-row {
+            grid-template-areas: "text cancel submit";
+            grid-template-columns: 1fr 75px 75px;
+        }
+        
+        input {
+            margin-bottom: 10px;
+            grid-area: text;
+            height: 100%;
+            border-radius: 5px;
+            padding: 0 5px;
+        }
+
+        button {
+            height: 100%;
+            padding: 5px;
+            
+            &.btn-cancel {
+                grid-area: cancel;
+            }
+
+            &.btn-submit {
+                grid-area: submit;
+            }
+        }
+    }
+}

@@ -1,8 +1,9 @@
 @if (!isDefault) {
     <div class="section-header">
         @if (showEditor) {
-            <app-section-editor
-                [name]="name"
+            <app-text-editor
+                [initialValue]="name"
+                [singleRow]="true"
                 (close)="toggleEditor()"
                 (save)="update($event)"
             />

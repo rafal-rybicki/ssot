@@ -1,5 +1,5 @@
 @if (showEditor) {
-    <app-area-form (close)="toggleEditor()" (save)="onSave($event)"></app-area-form>
+    <app-text-editor (close)="toggleEditor()" (save)="onSubmit($event)" />
 } @else {
     <button (click)="toggleEditor()">Add new area</button>
 }

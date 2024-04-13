@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
-import { AreaFormComponent } from '../area-form/area-form.component';
-import { AreaFormData } from '../../models/area-form-data';
 import { Store } from '@ngrx/store';
 import { updateArea } from '../../store/areas.actions';
+import { TextEditorComponent } from '../../../../shared/components/text-editor/text-editor.component';
 
 @Component({
   selector: 'app-area-edit',
   standalone: true,
-  imports: [AreaFormComponent],
+  imports: [TextEditorComponent],
   templateUrl: './area-edit.component.html',
   styleUrl: './area-edit.component.scss'
 })
@@ -22,8 +21,8 @@ export class AreaEditComponent {
     this.close.emit();
   }
 
-  onSave(values: AreaFormData) {
-    this.store.dispatch(updateArea({ areaId: this.id, values }));
+  onSave(name: string) {
+    this.store.dispatch(updateArea({ areaId: this.id, values: { name } }));
     this.close.emit();
   }
 }

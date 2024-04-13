@@ -6,11 +6,10 @@ import { selectTasksBySectionId } from '../../../tasks/store/tasks.feature';
 import { SectionContextMenuComponent } from '../section-context-menu/section-context-menu.component';
 import { CommonModule } from '@angular/common';
 import { map } from 'rxjs';
-import { SectionEditorComponent } from '../section-editor/section-editor.component';
-import { SectionFormData } from '../../models/section-form-data.model';
 import { updateSection } from '../../store/sections.actions';
 import { Task } from '../../../tasks/models/task.model';
 import { IconButtonComponent } from '../../../../shared/components/icon-button/icon-button.component';
+import { TextEditorComponent } from '../../../../shared/components/text-editor/text-editor.component';
 
 @Component({
   selector: 'app-section',
@@ -20,7 +19,7 @@ import { IconButtonComponent } from '../../../../shared/components/icon-button/i
     TaskComponent,
     TaskNewComponent,
     SectionContextMenuComponent,
-    SectionEditorComponent,
+    TextEditorComponent,
     IconButtonComponent
   ],
   templateUrl: './section.component.html',
@@ -49,11 +48,11 @@ export class SectionComponent {
     });
   }
 
-  update(formData: SectionFormData) {
+  update(name: string) {
     this.showEditor = false;
     this.store.dispatch(updateSection({
       sectionId: this.id,
-      values: formData
+      values: { name }
     }));
   }
 

@@ -18,7 +18,8 @@
 }
 
 @if (showSectionEditor) {
-    <app-section-editor
+    <app-text-editor
+        [singleRow]="true"
         (close)="toggleSectionEditor()"
         (save)="saveSection($event)"
     />
