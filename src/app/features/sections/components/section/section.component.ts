@@ -10,6 +10,7 @@ import { SectionEditorComponent } from '../section-editor/section-editor.compone
 import { SectionFormData } from '../../models/section-form-data.model';
 import { updateSection } from '../../store/sections.actions';
 import { Task } from '../../../tasks/models/task.model';
+import { IconButtonComponent } from '../../../../shared/components/icon-button/icon-button.component';
 
 @Component({
   selector: 'app-section',
@@ -19,7 +20,8 @@ import { Task } from '../../../tasks/models/task.model';
     TaskComponent,
     TaskNewComponent,
     SectionContextMenuComponent,
-    SectionEditorComponent
+    SectionEditorComponent,
+    IconButtonComponent
   ],
   templateUrl: './section.component.html',
   styleUrl: './section.component.scss'
@@ -57,5 +59,12 @@ export class SectionComponent {
 
   toggleEditor() {
     this.showEditor = !this.showEditor;
+  }
+
+  toggleOpening() {
+    this.store.dispatch(updateSection({
+      sectionId: this.id,
+      values: { isOpen: !this.isOpen }
+    }));
   }
 }

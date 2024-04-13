@@ -7,28 +7,42 @@
                 (save)="update($event)"
             />
         } @else {
-            <h2>{{ name }}</h2>
+            <h2>
+                {{ name }}
+                @if (tasks.length) {
+                    <span class="task-count">{{ tasks.length }}</span>
+                }
+            </h2>
             <app-section-context-menu
                 [sectionId]="id"
                 [projectId]="projectId"
                 [name]="name"
                 (openSectionEditor)="toggleEditor()"
             />
+            <app-icon-button
+                class="opening-status"
+                [height]="27"
+                [fontSize]="15"
+                icon="chevron-{{ isOpen ? 'down' : 'right'}}"
+                (click)="toggleOpening()"
+            />
         }
     </div>
 }
 
-@for (task of tasks; track task.id) {
-    <app-task
-        [date]="task.date"
-        [content]="task.content"
-        [isCompleted]="task.isCompleted"
-        [id]="task.id"
-    />
+@if (isOpen) {
+    @for (task of tasks; track task.id) {
+        <app-task
+            [date]="task.date"
+            [content]="task.content"
+            [isCompleted]="task.isCompleted"
+            [id]="task.id"
+        />
+    }
+    
+    <app-task-new
+        [nextOrder]="nextOrder"
+        [projectId]="projectId"
+        [sectionId]="id"
+    />    
 }
-
-<app-task-new
-    [nextOrder]="nextOrder"
-    [projectId]="projectId"
-    [sectionId]="id"
-/>

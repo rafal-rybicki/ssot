@@ -2,8 +2,26 @@
     display: block;
     margin-bottom: 40px;
 
-    h2 {
-        margin-bottom: 15px;
-        font-size: 22px;
+    .section-header {
+        display: flex;
+        position: relative;
+        
+        h2 {
+            flex: 1;
+            margin-bottom: 15px;
+            font-size: 22px;
+            cursor: default;
+
+            .task-count {
+                font-weight: 100;
+                font-size: 18px;
+            }
+        }
+
+        .opening-status {
+            position: absolute;
+            top: 0;
+            left: -30px;
+        }
     }
 }
