@@ -8,7 +8,7 @@
             />
         }
     </ul>
-    @for (area of areas$ | async; track $index) {
+    @for (area of areas; track $index) {
         <app-area
             [name]="area.name"
             [id]="area.id"
@@ -16,5 +16,5 @@
         />
     }
     <a routerLink="new">+ new project</a>
-    <app-area-new />
+    <app-area-new [nextOrder]="areas.length + 1" />
 </nav>

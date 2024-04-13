@@ -28,7 +28,7 @@ export class TextEditorComponent {
   onSubmit() {
     if (this.form.valid) {
       this.save.emit(this.form.get('text')?.value);
-      this.form.patchValue({ initialValue: '' });
+      this.form.patchValue({ text: '' });
     }
   }
 }

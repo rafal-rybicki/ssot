@@ -8,6 +8,8 @@ import { selectAreasState } from '../../../areas/store/areas.feature';
 import { selectActiveProjects } from '../../store/projects.feature';
 import { RouterLink } from '@angular/router';
 import { AreaNewComponent } from '../../../areas/components/area-new/area-new.component';
+import { map } from 'rxjs';
+import { Area } from '../../../areas/models/area.model';
 
 @Component({
   selector: 'app-projects-menu',
@@ -26,6 +28,13 @@ import { AreaNewComponent } from '../../../areas/components/area-new/area-new.co
 export class ProjectsMenuComponent {
   private store = inject(Store);
 
-  areas$ = this.store.select(selectAreasState);
+  areas: Area[] = [];
+
+  ngOnInit() {
+    this.store.select(selectAreasState).pipe(
+      map(areas => [...areas].sort((a, b) => a.order - b.order))
+    ).subscribe(areas => this.areas = areas);
+  }
+
   projects$ = this.store.select(selectActiveProjects);
 }

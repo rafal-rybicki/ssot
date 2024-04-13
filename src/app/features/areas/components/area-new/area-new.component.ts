@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject,  } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { Store } from '@ngrx/store';
 import { v4 as uuid } from 'uuid';
@@ -13,6 +13,8 @@ import { TextEditorComponent } from '../../../../shared/components/text-editor/t
   styleUrl: './area-new.component.scss'
 })
 export class AreaNewComponent {
+  @Input({ required: true }) nextOrder!: number;
+
   private auth = inject(AuthService);
   private store = inject(Store);
 
@@ -25,7 +27,7 @@ export class AreaNewComponent {
   onSubmit(name: string) {
     const areaPayload = {
       name,
-      order: 0,
+      order: this.nextOrder,
       ownerId: this.auth.userId,
       uuid: uuid(),
     };
