@@ -2,12 +2,12 @@
     @if (showEditor) {
         <app-area-edit [id]="id" [name]="name" (close)="toggleEditor()" />
     } @else {
-        <p (click)="isOpen = !isOpen">
+        <p>
             <i class="bi bi-stack area-icon"></i>
             <span>{{ name }}</span>
             <i class="bi bi-trash" (click)="delete()"></i>
             <i class="bi bi-pen" (click)="toggleEditor()"></i>
-            <i class="bi bi-chevron-{{ isOpen ? 'down' : 'right'}}"></i>
+            <i (click)="toggleOpening()" class="bi bi-chevron-{{ isOpen ? 'down' : 'right'}}"></i>
         </p>
     }
     @if (isOpen) {

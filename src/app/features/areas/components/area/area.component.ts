@@ -4,7 +4,7 @@ import { selectActiveProjects } from '../../../projects/store/projects.feature';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { MenuItemComponent } from '../../../projects/components/menu-item/menu-item.component';
-import { deleteArea } from '../../store/areas.actions';
+import { deleteArea, updateArea } from '../../store/areas.actions';
 import { AreaEditComponent } from '../area-edit/area-edit.component';
 import { Project } from '../../../projects/models/project.model';
 
@@ -42,5 +42,9 @@ export class AreaComponent {
 
   toggleEditor() {
     this.showEditor = !this.showEditor;
+  }
+
+  toggleOpening() {
+    this.store.dispatch(updateArea({ areaId: this.id, values: { isOpen: !this.isOpen } }));
   }
 }
