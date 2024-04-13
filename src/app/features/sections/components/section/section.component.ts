@@ -44,7 +44,7 @@ export class SectionComponent {
       select(selectTasksBySectionId), 
       map(obj => obj[this.id])
     ).subscribe(tasks => {
-      this.tasks = tasks;
+      this.tasks = tasks || [];
       this.nextOrder = (tasks?.length || 0) + 1;
     });
   }

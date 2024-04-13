@@ -63,7 +63,7 @@ export class ProjectComponent {
       this.isFavorite = project.isFavorite;
       this.name = project.name;
       this.ownerId = project.ownerId;
-      this.sections = project.sections;
+      this.sections = [...project.sections].sort((a, b) => a.order - b.order);
       this.view = project.view;
     });
   }
