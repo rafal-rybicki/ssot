@@ -1,12 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Location } from '@angular/common';
-import { CalendarService } from '../../../../shared/services/calendar.service';
 import { HabitFormComponent } from '../habit-form/habit-form.component';
-import { HabitPayload } from '../../models/habit-payload.mode';
-import { v4 as uuid } from 'uuid';
 import { addHabit } from '../../store/habits.actions';
-import { addHabitItem } from '../../store/habit-items.actions';
+import { HabitFormData } from '../../models/habit-form-data.model';
+import { AuthService } from '../../../../core/services/auth.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-habit-new',
@@ -19,39 +18,21 @@ import { addHabitItem } from '../../store/habit-items.actions';
   }
 })
 export class HabitNewComponent {
-  private calendar = inject(CalendarService);
+  private auth = inject(AuthService);
   private location = inject(Location);
   private store = inject(Store);
 
-  onSave(payload: HabitPayload) {
-    const filteredValues = Object.fromEntries(
-      Object.entries(payload).filter(([key, value]) => value)
-    ) as HabitPayload;
-    
-    const habitId = uuid();
+  nextOrder = 0;
+
+  onSave(formData: HabitFormData) {    
     const habit = {
-      ...filteredValues,
-      id: habitId,
-      isActive: true,
-      order: 0,
-      ownerId: '1'
+      ...formData,
+      order: this.nextOrder,
+      ownerId: this.auth.userId,
+      uuid: uuid()
     }
 
     this.store.dispatch(addHabit({ habit }));
-
-    this.calendar.getDaysOfMonth(this.calendar.getCurrentYear(), this.calendar.getCurrentMonth()).forEach(date => {
-      const habitItem ={
-        id: uuid(),
-        habitId: habitId,
-        name: habit.name,
-        isCompleted: false,
-        currentValue: 0,
-        date: date.value,
-        targetValue: habit.dailyGoal
-      }
-      
-      this.store.dispatch(addHabitItem({ habitItem }));
-    })
 
     this.location.back();
   }

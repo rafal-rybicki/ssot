@@ -7,7 +7,7 @@ export const HabitsApiActions = createActionGroup({
     events: {
         habitAddedSuccess: props<{ habit: Habit }>(),
         habitAddedFailure: props<{ errorMsg: string }>(),
-        habitDeletedSuccess: props<{ habitId: string }>(),
+        habitDeletedSuccess: props<{ habitId: number }>(),
         habitDeletedFailure: props<{ errorMsg: string }>(),
         habitUpdatedSuccess: props<{ habit: Habit }>(), 
         habitUpdatedFailure: props<{ errorMsg: string }>(),

@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CalendarService } from '../../../../shared/services/calendar.service';
-import { Store, select } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { selectHabitsState } from '../../store/habits.feature';
 import { CommonModule } from '@angular/common';
 import { selectHabitItemsByHabitId } from '../../store/habit-items..feature';
-import { map, mergeMap, tap } from 'rxjs';
 import { HabitItems } from '../../models/habit-items.model';
 import { HabitItem } from '../../models/habit-item.model';
 import { updateHabitItem } from '../../store/habit-items.actions';
+import { deleteHabit } from '../../store/habits.actions';
 
 @Component({
   selector: 'app-habits',
@@ -19,6 +19,7 @@ import { updateHabitItem } from '../../store/habit-items.actions';
 })
 export class HabitsTableComponent {
   private calendar = inject(CalendarService);
+  private router = inject(Router);
   private store = inject(Store);
 
   dates = this.calendar.getDaysOfMonth(this.calendar.getCurrentYear(), this.calendar.getCurrentMonth());
@@ -37,6 +38,16 @@ export class HabitsTableComponent {
         values: this.incrementHabitItem(habitItem.currentValue, habitItem.targetValue)
       }));
     }
+  }
+
+  delete(habitId: number) {
+    if (confirm('Are you sure you want to delete this habit?')) {
+      this.store.dispatch(deleteHabit({ habitId }));
+    }
+  }
+
+  edit(habitId: number) {
+    this.router.navigate(['/habits/edit', habitId]);
   }
 
   private incrementHabitItem(currentValue: number, targetValue: number) {

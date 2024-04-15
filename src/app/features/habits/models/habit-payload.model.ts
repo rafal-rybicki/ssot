@@ -1,8 +1,6 @@
-export interface Habit {
+export interface HabitPayload {
     dailyTarget: number;
     endDate?: string;
-    id: number;
-    isActive: boolean;
     isShownOnTodayView: boolean;
     name: string;
     order: number;

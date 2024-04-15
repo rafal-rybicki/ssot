@@ -1,10 +1,10 @@
-<h1>New habit</h1>
+<h1>Edit habit</h1>
 <app-habit-form
-    [currentDailyGoal]="currentDailyGoal"
-    [currentDescription]="currentDescription"
+    [currentDailyTarget]="currentDailyTarget"
     [currentEndDate]="currentEndDate"
     [currentName]="currentName"
-    [currentIsMonitored]="currentIsMonitored"
+    [currentIsShownOnTodayView]="currentIsShownOnTodayView"
     [currentStartDate]="currentStartDate"
+    [currentWeekDays]="currentWeekDays"
     (save)="onSave($event)"
 />

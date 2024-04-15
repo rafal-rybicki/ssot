@@ -9,7 +9,11 @@
 
     @for (habit of habits$ | async; track $index) {
         <tr>
-            <td class="ceil">{{ habit.name }}</td>
+            <td class="ceil">
+                {{ habit.name }}
+                <i class="bi bi-trash" (click)="delete(habit.id)"></i>
+                <i class="bi bi-pen" (click)="edit(habit.id)"></i>
+            </td>
         
             @for (date of dates; track date.value) {
                 <td
@@ -20,9 +24,9 @@
                     (click)="markHabit(habitItems[habit.id][date.value])"
                 >
                     @if (
-                        habit.dailyGoal > 1 &&
+                        habit.dailyTarget > 1 &&
                         habitItems[habit.id][date.value].currentValue > 0 &&
-                        habitItems[habit.id][date.value].currentValue < habit.dailyGoal
+                        habitItems[habit.id][date.value].currentValue < habit.dailyTarget
                     ) {
                         {{ habitItems[habit.id][date.value].currentValue }}
                     }

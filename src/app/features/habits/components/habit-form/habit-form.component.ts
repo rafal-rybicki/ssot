@@ -1,7 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { HabitPayload } from '../../models/habit-payload.mode';
+import { HabitFormData } from '../../models/habit-form-data.model';
 
 @Component({
   selector: 'app-habit-form',
@@ -11,13 +11,13 @@ import { HabitPayload } from '../../models/habit-payload.mode';
   styleUrl: './habit-form.component.scss'
 })
 export class HabitFormComponent {
-  @Input() currentDailyGoal: number = 1;
-  @Input() currentDescription: string = '';
+  @Input() currentDailyTarget: number = 1;
   @Input() currentEndDate?: string;
   @Input() currentName: string = '';
-  @Input() currentIsMonitored: boolean = true;
+  @Input() currentIsShownOnTodayView: boolean = true;
   @Input() currentStartDate: string = '';
-  @Output() save = new EventEmitter<HabitPayload>();
+  @Input() currentWeekDays: number[] = [0, 1, 2, 3, 4, 5, 6];
+  @Output() save = new EventEmitter<HabitFormData>();
 
   private fb = inject(FormBuilder);
   private location = inject(Location);
@@ -26,12 +26,12 @@ export class HabitFormComponent {
 
   ngOnInit() {
     this.form = this.fb.nonNullable.group({
-      dailyGoal: new FormControl(this.currentDailyGoal, [Validators.required]),
-      description: new FormControl(this.currentDescription),
+      dailyTarget: new FormControl(this.currentDailyTarget, [Validators.required]),
       endDate: new FormControl(this.currentEndDate),
-      isMonitored: new FormControl(this.currentIsMonitored, [Validators.required]),
+      isShownOnTodayView: new FormControl(this.currentIsShownOnTodayView, [Validators.required]),
       name: new FormControl(this.currentName, [Validators.required]),
       startDate: new FormControl(this.currentStartDate, [Validators.required]),
+      weekDays: new FormControl(this.currentWeekDays, [Validators.required]),
     });
   }
 
