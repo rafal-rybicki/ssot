@@ -1,0 +1,18 @@
+<h1>Habits</h1>
+<div class="table">
+    <div class="row">
+        <div class="cell">
+            <a routerLink="new">Add new habit</a>
+        </div>
+        @for (date of dates; track date.value) {
+            <div class="cell">{{ date.day }}</div>
+        }
+    </div>
+
+    @for (habit of habits$ | async; track $index) {
+        <app-habits-table-row 
+            [dates]="dates"
+            [habit]="habit"
+        />
+    }
+</div>

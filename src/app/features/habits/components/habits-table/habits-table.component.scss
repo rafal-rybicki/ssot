@@ -1,0 +1,19 @@
+.table {
+    display: table;
+
+    .row {
+        display: table-row;
+        height: 40px;
+    }
+
+    .cell {
+        display: table-cell;
+        width: 40px;
+        text-align: center;
+        vertical-align: middle;
+        
+        &:first-of-type {
+            width: 200px;
+        }
+    }  
+}
