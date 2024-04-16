@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, catchError, exhaustMap, map, mergeMap } from 'rxjs';
 import { HabitItemService } from '../services/habit-item.service';
 import { HabitItemsApiActions } from './habit-items-api.actions';
-import { addHabitItem, updateHabitItem } from './habit-items.actions';
+import { updateOrCreateHabitItem } from './habit-items.actions';
 import { loadUsersData } from '../../../core/store/user/user.actions';
 
 @Injectable()
@@ -20,27 +20,12 @@ export class HabitItemsEffects {
         )
     )
 
-    addHabitItem$ = createEffect(() => 
+    updateOrCreateHabitItem$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(addHabitItem),
-            mergeMap(({ habitItem }) => this.habitItemsService.createHabitItem(habitItem)
+            ofType(updateOrCreateHabitItem),
+            exhaustMap(({ habitItem }) => this.habitItemsService.updateOrCreateHabitItem(habitItem)
                 .pipe(
-                    map(habitItem => HabitItemsApiActions.habitItemAddedSuccess({ habitItem })),
-                    catchError((err) => {
-                        console.error(err);
-                        return EMPTY;
-                    })
-                )
-            )
-        )
-    )
-
-    updateHabitItem$ = createEffect(() => 
-        this.actions$.pipe(
-            ofType(updateHabitItem),
-            exhaustMap(({ habitItemId, values }) => this.habitItemsService.updateHabitItem(habitItemId, values)
-                .pipe(
-                    map(habitItem => HabitItemsApiActions.habitItemUpdatedSuccess({ habitItem })),
+                    map(habitItem => HabitItemsApiActions.habitItemUpdatedOrCreatedSuccess({ habitItem })),
                     catchError(() => EMPTY)
                 )
             )

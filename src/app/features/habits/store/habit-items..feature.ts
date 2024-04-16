@@ -13,12 +13,18 @@ export const habitItemsFeature = createFeature({
             (state, { habitItems }) => [...habitItems]
         ),
         on(
-            HabitItemsApiActions.habitItemAddedSuccess,
-            (state, { habitItem }) => [...state, habitItem]
-        ),
-        on(
-            HabitItemsApiActions.habitItemUpdatedSuccess,
-            (state, { habitItem }) => [...state.map(h => h.id === habitItem.id ? habitItem : h)]
+            HabitItemsApiActions.habitItemUpdatedOrCreatedSuccess,
+            (state, { habitItem }) => {
+                const index = state.findIndex((item) => item.id === habitItem.id);
+                
+                if (index > -1) {
+                    const newState = [...state];
+                    newState[index] = habitItem;
+                    return newState;
+                } else {
+                    return [...state, habitItem];
+                }
+            }
         )
     ),
     extraSelectors: ({ selectHabitItemsState }) => ({
@@ -34,6 +40,13 @@ export const habitItemsFeature = createFeature({
                 }
                 return acc;
             }, {})
+        ),
+        selectHabitItemsByIndex: createSelector(
+            selectHabitItemsState,
+            (habitItems) => habitItems.reduce((acc: any, item: HabitItem) => {
+                acc[`${item.habitId}-${item.date}`] = item;
+                return acc;
+            }, {})
         )
     })
 })
@@ -43,4 +56,5 @@ export const {
     reducer,
     selectHabitItemsState,
     selectHabitItemsByHabitId,
+    selectHabitItemsByIndex
 } = habitItemsFeature;

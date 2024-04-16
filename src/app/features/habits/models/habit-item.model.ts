@@ -1,10 +1,10 @@
 export interface HabitItem {
-    id: string;
+    id?: number;
     currentValue: number;
     date: string;
     description?: string;
-    habitId: string;
-    isCompleted: boolean;
-    name: string;
+    habitId: number;
+    ownerId: number;
     targetValue: number;
+    uuid: string;
 }

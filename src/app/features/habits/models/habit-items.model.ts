@@ -1,9 +1,9 @@
 import { HabitItem } from "./habit-item.model";
 
 export interface HabitItems {
-    [key: string]: HabitItemByDate;
+    [habitId: number]: HabitItemByDate;
 }
 
-interface HabitItemByDate {
-    [key: string]: HabitItem;
+export interface HabitItemByDate {
+    [date: string]: HabitItem;
 }
