@@ -1,0 +1,13 @@
+<div class="cell">
+    <span class="name">{{ habit.name }}</span>
+    <i class="bi bi-trash" (click)="delete(habit.id)"></i>
+    <i class="bi bi-pen" (click)="edit(habit.id)"></i>
+</div>
+
+@for (date of dates; track date.value) {
+    <app-habits-table-cell
+        [date]="date.value"
+        [habitId]="habit.id"
+        [targetValue]="habit.dailyTarget"
+    />
+}

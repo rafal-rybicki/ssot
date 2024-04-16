@@ -1,0 +1,9 @@
+:host {
+    display: table-row;
+    height: 40px;
+
+    .name {
+        display: inline-block;
+        width: calc(100% - 32px);
+    }
+}
