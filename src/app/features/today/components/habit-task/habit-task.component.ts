@@ -1,7 +1,10 @@
 import { Component, Input, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { updateHabitItem } from '../../../habits/store/habit-items.actions';
-import { __values } from 'tslib';
+import { AuthService } from '../../../../core/services/auth.service';
+import { HabitItem } from '../../../habits/models/habit-item.model';
+import { v4 as uuid } from 'uuid';
+import { updateOrCreateHabitItem } from '../../../habits/store/habit-items.actions';
+import { selectHabitItemsByIndex } from '../../../habits/store/habit-items..feature';
 
 @Component({
   selector: 'app-habit-task',
@@ -11,31 +14,41 @@ import { __values } from 'tslib';
   styleUrl: './habit-task.component.scss'
 })
 export class HabitTaskComponent {
-  @Input({ required: true }) currentValue!: number;
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) isCompleted!: boolean;
+  @Input({ required: true }) date!: string;
+  @Input({ required: true }) habitId!: number;
   @Input({ required: true }) name!: string;
-  @Input({ required: true }) targetValue!: number;
+  @Input({ required: true }) dailyTarget!: number;
 
+  private auth = inject(AuthService);
   private store = inject(Store);
 
-  changeCompletion() {
-    const values = this.incrementHabitItem(this.currentValue, this.targetValue);
-    
-    this.store.dispatch(updateHabitItem({habitItemId: this.id, values }));
+  habitItem?: HabitItem;
+
+  ngOnInit() {
+    this.store.select(selectHabitItemsByIndex).subscribe(habitItems => {
+      this.habitItem = habitItems[`${this.habitId}-${this.date}`];
+    })
   }
 
-  private incrementHabitItem(currentValue: number, targetValue: number) {
-    const newValue = currentValue === targetValue ? 0 : currentValue + 1;
-    const values = {
-      currentValue: newValue,
-      isCompleted: newValue === targetValue
-    };
+  toggleOrIncrementCurrentValue() {
+    let habitItem: HabitItem;
 
-    return values;
+    if (this.habitItem) {
+      habitItem = { ...this.habitItem };
+    } else {
+      habitItem = {
+        currentValue: 1,
+        date: this.date,
+        habitId: this.habitId,
+        ownerId: this.auth.userId,
+        dailyTarget: this.dailyTarget,
+        uuid: uuid()
+      };
+    }
+    this.store.dispatch(updateOrCreateHabitItem({ habitItem }));
   }
 
-  private get isHabitCompleted(): boolean {
-    return this.currentValue === this.targetValue;
+  get isCompleted() {
+    return this.habitItem && this.habitItem?.currentValue === this.habitItem?.dailyTarget;
   }
 }

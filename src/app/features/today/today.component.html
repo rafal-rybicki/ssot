@@ -2,11 +2,10 @@
 
 @for (habit of habits$ | async; track habit.id) {
     <app-habit-task
-        [currentValue]="habit.currentValue"
-        [id]="habit.id"
-        [isCompleted]="habit.isCompleted"
+        [date]="today.date"
+        [habitId]="habit.id"
         [name]="habit.name"
-        [targetValue]="habit.targetValue"
+        [dailyTarget]="habit.dailyTarget"
     /> 
 }
 

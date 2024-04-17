@@ -18,6 +18,14 @@ export class HabitItemService {
   }
 
   updateOrCreateHabitItem(habitItem: HabitItem): Observable<HabitItem> {
-    return this.http.post<HabitItem>(this.url, habitItem, this.auth.getAuthHeaders);
+    const payload = { ...habitItem };
+    
+    if (payload.currentValue === payload.dailyTarget) {
+      payload.currentValue = 0;
+    } else {
+      payload.currentValue++;
+    }
+
+    return this.http.post<HabitItem>(this.url, payload, this.auth.getAuthHeaders);
   }
 }

@@ -6,9 +6,8 @@ import { Store, select } from '@ngrx/store';
 import { selectTasksState } from '../tasks/store/tasks.feature';
 import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { selectHabitItemsState } from '../habits/store/habit-items..feature';
 import { HabitTaskComponent } from './components/habit-task/habit-task.component';
-import { AuthService } from '../../core/services/auth.service';
+import { selectTodayHabits } from '../habits/store/habits.feature';
 
 @Component({
   selector: 'app-today',
@@ -37,10 +36,5 @@ export class TodayComponent {
     )
   )
 
-  habits$ = this.store.pipe(
-    select(selectHabitItemsState),
-    map(
-      habitItems => habitItems.filter(habitItem => habitItem.date === this.date)
-    )
-  )
+  habits$ = this.store.pipe(select(selectTodayHabits))
 }

@@ -33,6 +33,13 @@ export const habitsFeature = createFeature({
         selectInactiveHabits: createSelector(
             selectHabitsState,
             (habits) => habits.filter(habit => habit.isActive === false)
+        ),
+        selectTodayHabits: createSelector(
+            selectHabitsState,
+            (habits) => {
+                const weekDay = new Date().getDay();
+                return habits.filter(habit => habit.weekDays.includes(weekDay))
+            }
         )
     })
 })
@@ -43,4 +50,5 @@ export const {
     selectHabitsState,
     selectActiveHabits,
     selectInactiveHabits,
+    selectTodayHabits,
 } = habitsFeature;

@@ -1,11 +1,11 @@
 <i
-    (click)="changeCompletion()"
+    (click)="toggleOrIncrementCurrentValue()"
     class="bi {{ isCompleted ? 'bi-check-square-fill' : 'bi-square' }}"
     [class.completed]="isCompleted"
 ></i>
 <span>
-    [h] {{ name }} 
-    @if (targetValue > 1) {
-        {{ currentValue }}/{{ targetValue }}
+    [H] {{ name }} 
+    @if (dailyTarget > 1) {
+        {{ habitItem?.currentValue || 0 }}/{{ dailyTarget }}
     }
 </span>

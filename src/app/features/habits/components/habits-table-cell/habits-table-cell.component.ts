@@ -16,7 +16,7 @@ import { v4 as uuid } from 'uuid';
 export class HabitsTableCellComponent {
   @Input({ required: true }) habitId!: number;
   @Input({ required: true }) date!: string;
-  @Input() targetValue: number = 1;
+  @Input() dailyTarget: number = 1;
 
   private auth = inject(AuthService);
   private store = inject(Store);
@@ -24,7 +24,7 @@ export class HabitsTableCellComponent {
   habitItem?: HabitItem;
 
   @HostBinding('class.completed') get isCompleted() {
-    return this.habitItem && this.habitItem?.currentValue === this.habitItem?.targetValue;
+    return this.habitItem && this.habitItem?.currentValue === this.habitItem?.dailyTarget;
   }
 
   ngOnInit() {
@@ -39,19 +39,13 @@ export class HabitsTableCellComponent {
 
     if (this.habitItem) {
       habitItem = { ...this.habitItem };
-
-      if (this.habitItem.currentValue === this.habitItem.targetValue) {
-        habitItem.currentValue = 0;
-      } else {
-        habitItem.currentValue++;
-      }
     } else {
       habitItem = {
         currentValue: 1,
         date: this.date,
         habitId: this.habitId,
         ownerId: this.auth.userId,
-        targetValue: this.targetValue,
+        dailyTarget: this.dailyTarget,
         uuid: uuid()
       };
     }
